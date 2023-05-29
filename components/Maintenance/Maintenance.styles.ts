@@ -2,13 +2,13 @@ import { createStyles } from '@mantine/core';
 
 export default createStyles((theme) => ({
   backgroundImage: {
-    backgroundImage: `url(https://www.ragnarokbot.com/upload/files/bg_1685371454.png)`,
+    backgroundImage: `url(/bg.png)`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '100vh',
     width: '100vw',
-    position: 'fixed',
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
