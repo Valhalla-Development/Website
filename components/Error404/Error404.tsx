@@ -14,13 +14,13 @@ export function Error404() {
       <div className={classes.label}>404</div>
       <Title className={classes.title}>You have found a secret place.</Title>
       <Text color="dimmed" size="lg" align="center" className={classes.description}>
-        Ye've stumbled upon a secret spot.
-        <br />Unfortunately, it's just a 404 page. You might've mistyped the address, or the page got moved elsewhere.
+        Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has
+        been moved to another URL.
       </Text>
       <Group position="center">
         <Link href="/">
           <Button variant="subtle" size="md">
-            Click me to get back home!
+            Take me back to home page
           </Button>
         </Link>
       </Group>

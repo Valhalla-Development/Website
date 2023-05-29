@@ -11,14 +11,14 @@ export function Maintenance() {
             <title>Under Maintenance</title>
         </Head>
         <Title className={classes.title} align="center" mt={100}>
-        Somethin' {' '}
+        Something {' '}
         <Text className={`${classes.gradientText}`} component="span">
           Big {' '} <br />
         </Text>
-          is comin' soon, matey!
+          is coming soon...
       </Title>
       <Text className={classes.description} align="center" size="lg" sx={{ maxWidth: 580 }} mx="auto" mt="xl">
-          This page is currently under development.<br />Swim back later and check again!
+          This page is currently under development<br />Check back soon!
       </Text>
     </div>
   );
