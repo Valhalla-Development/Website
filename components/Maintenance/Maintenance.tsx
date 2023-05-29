@@ -1,23 +1,21 @@
-import { Title, Text, Anchor, BackgroundImage } from '@mantine/core';
+import { Title, Text, Anchor } from '@mantine/core';
 import useStyles from './Maintenance.styles';
 
 export function Maintenance() {
   const { classes } = useStyles();
 
   return (
-    <>
-      <BackgroundImage src="https://www.ragnarokbot.com/upload/files/bg_1685371454.png">
+    <div className={classes.backgroundImage}>
       <Title className={classes.title} align="center" mt={100}>
         Something {' '}
-        <Text inherit variant="gradient" component="span">
-          Big {' '}
+        <Text className={`${classes.gradientText}`} component="span">
+          Big {' '} <br />
         </Text>
-          is coming...
+          is coming soon...
       </Title>
-      <Text color="dimmed" align="center" size="lg" sx={{ maxWidth: 580 }} mx="auto" mt="xl">
+      <Text className={classes.description} align="center" size="lg" sx={{ maxWidth: 580 }} mx="auto" mt="xl">
           This page is currently under development<br />Come back soon!
       </Text>
-      </BackgroundImage>
-    </>
+    </div>
   );
 }
