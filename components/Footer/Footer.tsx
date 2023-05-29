@@ -1,7 +1,6 @@
 import { Container, Group, ActionIcon, rem } from '@mantine/core';
 import { IconBrandDiscord } from '@tabler/icons-react';
 import useStyles from "./Footer.styles";
-import { MantineLogo } from '@mantine/ds';
 import Link from 'next/link';
 import { Image } from '@mantine/core';
 
