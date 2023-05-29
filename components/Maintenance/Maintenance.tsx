@@ -14,7 +14,7 @@ export function Maintenance() {
           is coming soon...
       </Title>
       <Text className={classes.description} align="center" size="lg" sx={{ maxWidth: 580 }} mx="auto" mt="xl">
-          This page is currently under development<br />Come back soon!
+          This page is currently under development<br />Check back soon!
       </Text>
     </div>
   );
