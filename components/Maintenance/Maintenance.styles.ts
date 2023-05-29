@@ -36,6 +36,7 @@ export default createStyles((theme) => ({
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: "sans-serif",
     fontSize: 20,
+    marginBottom: 100,
 
     [theme.fn.smallerThan('md')]: {
       fontSize: 20,
