@@ -1,5 +1,6 @@
 import { createStyles, Title, Text, Button, Container, Group, rem } from '@mantine/core';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -44,6 +45,9 @@ export function NotFoundTitle() {
 
   return (
     <Container className={classes.root}>
+      <Head>
+        <title>404 Page Not Found</title>
+      </Head>
       <div className={classes.label}>404</div>
       <Title className={classes.title}>You have found a secret place.</Title>
       <Text color="dimmed" size="lg" align="center" className={classes.description}>

@@ -1,12 +1,16 @@
 import { Title, Text, Anchor } from '@mantine/core';
 import useStyles from './Maintenance.styles';
+import Head from "next/head";
 
 export function Maintenance() {
   const { classes } = useStyles();
 
   return (
     <div className={classes.backgroundImage}>
-      <Title className={classes.title} align="center" mt={100}>
+        <Head>
+            <title>Under Maintenance</title>
+        </Head>
+        <Title className={classes.title} align="center" mt={100}>
         Something {' '}
         <Text className={`${classes.gradientText}`} component="span">
           Big {' '} <br />
