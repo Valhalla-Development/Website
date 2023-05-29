@@ -1,4 +1,4 @@
-import { Title, Text, Anchor } from '@mantine/core';
+import { Title, Text } from '@mantine/core';
 import useStyles from './Maintenance.styles';
 import Head from "next/head";
 

@@ -1,5 +1,5 @@
-import { NotFoundTitle } from '../components/NotFoundTitle/NotFoundTitle';
+import { Error404 } from '../components/Error404/Error404';
 
 export default function Custom404() {
-    return <NotFoundTitle />;
+    return <Error404 />;
 }
