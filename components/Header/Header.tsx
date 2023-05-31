@@ -4,6 +4,7 @@ import { Header, Container, Anchor, Group, Burger, rem, Image, useMantineColorSc
 import useStyles, { headerHeight } from "./Header.styles";
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
+import { useRouter } from 'next/router';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 import Link from "next/link";
 
@@ -33,26 +34,21 @@ interface CustomHeaderProps {
 }
 
 export function CustomHeader({ mainLinks }: CustomHeaderProps) {
+  const router = useRouter();
   const [opened, { toggle }] = useDisclosure(false);
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState(0);
   const { colorScheme } = useMantineColorScheme();
   const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
   const mainItems = mainLinks.map((item, index) => (
-      <Anchor<'a'>
-          href={item.link}
-          key={item.label}
-          className={cx(classes.mainLink, { [classes.mainLinkActive]: index === active })}
-          onClick={(event) => {
-            event.preventDefault();
-            setActive(index);
-          }}
-      >
-        {item.label}
-      </Anchor>
-  ));
-
+        <Anchor<'a'>
+            href={item.link}
+            key={item.label}
+            className={cx(classes.mainLink, { [classes.mainLinkActive]: router.pathname === item.link })}
+        >
+            {item.label}
+        </Anchor>
+    ));
 
     const icons = (
         <Paper style={{ display: 'flex', justifyContent: 'flex-end', padding: '25px 0', alignItems: 'center' }}>
