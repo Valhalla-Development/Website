@@ -14,16 +14,18 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
     setColorScheme(nextColorScheme);
-    setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
+    setCookie('valhalla-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
 
   const mainLinksArray = [{ label: 'Home', link: '/' }, { label: 'About', link: '/about' }];
   const footerLinksArray = [{ label: 'Contact', link: '/contact' }, { label: 'Team', link: '/team' }, { label: 'Blog', link: '/blog' }, { label: 'Privacy', link: '/privacy' }, { label: 'Terms', link: '/terms ' }];
 
   useEffect(() => {
-    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const initialColorScheme = darkModeQuery.matches ? 'dark' : 'light';
-    setColorScheme(initialColorScheme);
+    if (!getCookie('valhalla-color-scheme')) {
+      const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const initialColorScheme = darkModeQuery.matches ? 'dark' : 'light';
+      setColorScheme(initialColorScheme);
+    }
   }, []);
 
   return (
@@ -51,8 +53,18 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
 App.getInitialProps = async (appContext: AppContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
+  const cookieColorScheme = getCookie('valhalla-color-scheme', appContext.ctx);
+  let colorScheme;
+
+  if (cookieColorScheme) {
+    colorScheme = cookieColorScheme;
+  } else {
+    const darkModeQuery = appContext.ctx.req?.headers['user-agent']?.includes('DarkMode') ? 'dark' : 'light';
+    colorScheme = darkModeQuery;
+  }
+
   return {
     ...appProps,
-    colorScheme: getCookie('mantine-color-scheme', appContext.ctx) || 'dark',
+    colorScheme,
   };
 };
