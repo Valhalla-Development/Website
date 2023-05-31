@@ -18,6 +18,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   };
 
   const mainLinksArray = [{ label: 'Home', link: '/' }, { label: 'About', link: '/about' }];
+  const footerLinksArray = [{ label: 'Contact', link: '/contact' }, { label: 'Team', link: '/team' }, { label: 'Blog', link: '/blog' }, { label: 'Privacy', link: '/privacy' }, { label: 'Terms', link: '/terms ' }];
 
   return (
       <>
@@ -30,7 +31,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
             <AppShell
               header={<CustomHeader mainLinks={mainLinksArray} />}
-              footer={<Footer />}
+              footer={<Footer footerLinks={footerLinksArray}/>}
               padding={0}
             >
               <Component {...pageProps} />
