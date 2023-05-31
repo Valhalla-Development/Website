@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { Footer } from '../components/Footer/Footer';
+import { CustomHeader } from "../components/Header/Header";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -16,6 +17,8 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
 
+  const mainLinksArray = [{ label: 'Home', link: '/' }, { label: 'About', link: '/about' }];
+
   return (
     <>
       <Head>
@@ -25,6 +28,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+          <CustomHeader mainLinks={mainLinksArray} />
           <Component {...pageProps} />
           <Footer />
           <Notifications />
