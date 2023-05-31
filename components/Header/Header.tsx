@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Header, Container, Anchor, Group, Burger, rem, Image, useMantineColorScheme, Tooltip,
-    ActionIcon, ActionIconProps, Drawer, Paper, Box } from '@mantine/core';
+import { useEffect } from 'react';
+import { Header, Container, Anchor, Group, Burger, Image, useMantineColorScheme, Tooltip,
+    ActionIcon, ActionIconProps, Drawer, Paper } from '@mantine/core';
 import useStyles, { headerHeight } from "./Header.styles";
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
@@ -78,6 +78,20 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
             </div>
         </Drawer>
     );
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 576 && opened) {
+                toggle();
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [opened, toggle]);
 
   return (
       <Header height={headerHeight} mb={120}>
