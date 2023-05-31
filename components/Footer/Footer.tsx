@@ -3,6 +3,7 @@ import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import useStyles from "./Footer.styles";
 import Link from 'next/link';
 import { Image } from '@mantine/core';
+import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
 
 interface IconProps extends ActionIconProps {
   label: string;
@@ -38,6 +39,7 @@ export function Footer() {
           <div className={classes.iconContainer}>
             <Icon label="GitHub" href="https://github.com/Valhalla-Development" icon={<IconBrandGithub size="1.8rem" stroke={1.2} color={iconColor} />} />
           </div>
+          <ColorSchemeToggle />
         </Group>
       </Container>
     </div>
