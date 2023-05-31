@@ -25,4 +25,9 @@ export default createStyles((theme) => ({
       marginTop: theme.spacing.md,
     },
   },
+
+  iconContainer: {
+    marginLeft: '10px',
+    marginRight: '10px',
+  },
 }));
