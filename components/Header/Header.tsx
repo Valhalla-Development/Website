@@ -51,11 +51,11 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
     ));
 
     const icons = (
-        <Paper style={{ display: 'flex', justifyContent: 'flex-end', padding: '25px 0', alignItems: 'center' }}>
-            <Link href="https://discord.gg/Q3ZhdRJ" style={{ marginRight: '20px' }}>
+        <Paper className={classes.icons}>
+            <Link href="https://discord.gg/Q3ZhdRJ">
                 <IconBrandDiscord size="1.8rem" stroke={1.2} color={iconColor} />
             </Link>
-            <Link href="https://github.com/Valhalla-Development" style={{ marginRight: '10px' }}>
+            <Link href="https://github.com/Valhalla-Development">
                 <IconBrandGithub size="1.8rem" stroke={1.2} color={iconColor} />
             </Link>
             <ColorSchemeToggle />
@@ -68,12 +68,14 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
             onClose={toggle}
             padding={20}
             position="right"
-            size="xs"
-            style={{ display: 'flex', flexDirection: 'column' }}
+            size={100}
         >
-            {mainItems}
-            <Box style={{ flexGrow: 1 }} />
-            {icons}
+            <div className={classes.mobileNavigation}>
+                <div className={classes.tabs}>
+                  {mainItems}
+                </div>
+                {icons}
+            </div>
         </Drawer>
     );
 

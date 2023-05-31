@@ -56,4 +56,26 @@ export default createStyles((theme) => ({
     marginLeft: '10px',
     marginRight: '10px',
   },
+
+  icons: {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '25px 10px',
+    alignItems: 'center',
+    flexFlow: "wrap",
+    gap: 5
+  },
+
+  mobileNavigation: {
+    height: 'calc(100vh - 100px)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+
+  tabs: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexFlow: 'wrap',
+  },
 }));
