@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
@@ -19,6 +19,12 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
   const mainLinksArray = [{ label: 'Home', link: '/' }, { label: 'About', link: '/about' }];
   const footerLinksArray = [{ label: 'Contact', link: '/contact' }, { label: 'Team', link: '/team' }, { label: 'Blog', link: '/blog' }, { label: 'Privacy', link: '/privacy' }, { label: 'Terms', link: '/terms ' }];
+
+  useEffect(() => {
+    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const initialColorScheme = darkModeQuery.matches ? 'dark' : 'light';
+    setColorScheme(initialColorScheme);
+  }, []);
 
   return (
       <>
