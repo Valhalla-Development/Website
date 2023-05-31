@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Header, Container, Anchor, Group, Burger, rem, Image, useMantineColorScheme, Tooltip,
-    ActionIcon, ActionIconProps } from '@mantine/core';
+    ActionIcon, ActionIconProps, Drawer, Paper, Box } from '@mantine/core';
 import useStyles, { headerHeight } from "./Header.styles";
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
@@ -53,6 +53,34 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
       </Anchor>
   ));
 
+
+    const icons = (
+        <Paper style={{ display: 'flex', justifyContent: 'flex-end', padding: '25px 0', alignItems: 'center' }}>
+            <Link href="https://discord.gg/Q3ZhdRJ" style={{ marginRight: '20px' }}>
+                <IconBrandDiscord size="1.8rem" stroke={1.2} color={iconColor} />
+            </Link>
+            <Link href="https://github.com/Valhalla-Development" style={{ marginRight: '10px' }}>
+                <IconBrandGithub size="1.8rem" stroke={1.2} color={iconColor} />
+            </Link>
+            <ColorSchemeToggle />
+        </Paper>
+    );
+
+    const mobileNavigation = (
+        <Drawer
+            opened={opened}
+            onClose={toggle}
+            padding={20}
+            position="right"
+            size="xs"
+            style={{ display: 'flex', flexDirection: 'column' }}
+        >
+            {mainItems}
+            <Box style={{ flexGrow: 1 }} />
+            {icons}
+        </Drawer>
+    );
+
   return (
       <Header height={headerHeight} mb={120}>
         <Container className={classes.inner}>
@@ -73,6 +101,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
           </div>
           <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
         </Container>
+          {mobileNavigation}
       </Header>
   );
 }
