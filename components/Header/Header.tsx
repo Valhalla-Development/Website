@@ -5,6 +5,7 @@ import useStyles, { headerHeight } from "./Header.styles";
 import { useDisclosure } from '@mantine/hooks';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
+import Link from "next/link";
 
 interface IconProps extends ActionIconProps {
   label: string;
@@ -55,7 +56,9 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
   return (
       <Header height={headerHeight} mb={120}>
         <Container className={classes.inner}>
-          <Image src='./favicon.svg' width='28' />
+          <Link href="/">
+            <Image src='./favicon.svg' width='28' />
+          </Link>
           <div className={classes.links}>
             <Group spacing={10} position="right" className={classes.mainLinks}>
               {mainItems}
