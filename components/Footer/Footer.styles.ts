@@ -31,4 +31,20 @@ export default createStyles((theme) => ({
     marginLeft: '10px',
     marginRight: '10px',
   },
+
+  anchor: {
+    lineHeight: 1,
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[6],
+    fontWeight: 700,
+    transition: 'border-color 100ms ease, color 100ms ease',
+    '&:hover': {
+      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+      textDecoration: 'none',
+    },
+  },
+
+  mainLinkActive: {
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    borderBottomColor: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 5 : 6],
+  },
 }));
