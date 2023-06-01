@@ -4,6 +4,7 @@ import useStyles from "./Footer.styles";
 import Link from 'next/link';
 import { Image } from '@mantine/core';
 import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
+import { useRouter } from "next/router";
 
 interface IconProps extends ActionIconProps {
   label: string;
@@ -26,16 +27,16 @@ const Icon = ({ label, icon, href, ...others }: IconProps) => (
 );
 
 export function Footer({ footerLinks }: FooterProps) {
-  const { classes } = useStyles();
-    const { colorScheme } = useMantineColorScheme();
-    const iconColor = colorScheme === 'dark' ? 'white' : 'black';
+  const router = useRouter();
+  const { classes, cx } = useStyles();
+  const { colorScheme } = useMantineColorScheme();
+  const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
   const items = footerLinks.map((link) => (
       <Anchor<'a'>
-          color="dimmed"
+          className={cx(classes.anchor, { [classes.mainLinkActive]: router.pathname === link.link })}
           key={link.label}
           href={link.link}
-          sx={{ lineHeight: 1 }}
           size="sm"
       >
         {link.label}
