@@ -1,5 +1,4 @@
 import {
-  createStyles,
   Image,
   Accordion,
   Grid,
@@ -7,11 +6,7 @@ import {
   Container,
   Title,
 } from "@mantine/core";
-import image from "./faq.svg";
 import useStyles from "./FAQ.styles";
-
-const placeholder =
-  "It can’t help but hear a pin drop from over half a mile away, so it lives deep in the mountains where there aren’t many people or Pokémon.";
 
 export function FaqWithImage() {
   const { classes } = useStyles();
@@ -20,7 +15,7 @@ export function FaqWithImage() {
       <Container size="lg">
         <Grid id="faq-grid" gutter={50}>
           <Col span={12} md={6}>
-            <Image src={image.src} alt="Frequently Asked Questions" />
+            <Image src='./faq.svg' alt="Frequently Asked Questions" />
           </Col>
           <Col span={12} md={6}>
             <Title order={2} ta="left" className={classes.title}>
