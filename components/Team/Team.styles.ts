@@ -16,4 +16,9 @@ export default createStyles((theme) => ({
     paddingLeft: rem(54),
     paddingTop: theme.spacing.sm,
   },
+
+  container: {
+    marginBottom: theme.spacing.xl,
+    marginTop: theme.spacing.xl,
+  },
 }));

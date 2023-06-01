@@ -7,8 +7,7 @@ const child = <Skeleton height={140} radius="md" animate={false} />;
 export default function Team() {
   const { classes, cx } = useStyles();
   return (
-    <Container>
-      <br />
+    <Container className={classes.container}>
       <Grid>
         <Grid.Col xs={4}>
           <UserInfoAction
