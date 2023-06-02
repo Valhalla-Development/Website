@@ -64,7 +64,9 @@ export function UserInfoAction({
       <Text ta="center" fz="lg" weight={500} mt="md">
         {name}
       </Text>
-      <Text ta="center" c="dimmed" fz="sm">
+      <Text ta="center" c="dimmed" fz="sm" style={{
+        overflowWrap: "break-word"
+      }}>
         {email} • {job}
       </Text>
 
