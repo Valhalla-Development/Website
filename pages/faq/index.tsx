@@ -8,7 +8,15 @@ import {
 } from "@mantine/core";
 import useStyles from "./FAQ.styles";
 
-export default function Faq() {
+import { GetServerSideProps, InferGetServerSidePropsType } from "next"
+
+type Question = {
+  question: string;
+  answer: string;
+  id: string;
+}
+
+export default function Faq({ questions }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { classes } = useStyles();
   return (
     <div className={classes.wrapper}>
@@ -27,34 +35,46 @@ export default function Faq() {
               defaultValue="reset-password"
               variant="separated"
             >
-              <Accordion.Item className={classes.item} value="reset-password">
-                <Accordion.Control>Are the bots open source?</Accordion.Control>
-                <Accordion.Panel>
-                  The Seer, Wilbur and the API are open source but we also host
-                  them for you so you can use them!
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item className={classes.item} value="another-account">
-                <Accordion.Control>
-                  How can I get access to the API?
-                </Accordion.Control>
-                <Accordion.Panel>
-                  If you want to get access to our API please join our Discord
-                  Server and open a ticket so we can create a API key for you!
-                </Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item className={classes.item} value="newsletter">
-                <Accordion.Control>
-                  Are costs involved with using the API?
-                </Accordion.Control>
-                <Accordion.Panel>No, the API is free to use!</Accordion.Panel>
-              </Accordion.Item>
+              {
+                questions.map((question, index) => {
+                  return (
+                    <Accordion.Item className={classes.item} value={question.id}>
+                      <Accordion.Control>{question.question}</Accordion.Control>
+                      <Accordion.Panel>{question.answer}</Accordion.Panel>
+                    </Accordion.Item>
+                  )
+                })
+              }
             </Accordion>
           </Col>
         </Grid>
       </Container>
     </div>
   );
+}
+
+export const getServerSideProps: GetServerSideProps<{
+  questions: Question[]
+}> = async (context) => {
+  return {
+      props: {
+          questions: [
+            {
+              question: "Are the bots open source?",
+              answer: "The Seer, Wilbur and the API are open source but we also host them for you so you can use them!",
+              id: "open-source"
+            },
+            {
+              question: "How can I get access to the API?",
+              answer: "If you want to get access to our API please join our Discord Server and open a ticket so we can create a API key for you!",
+              id: "api-access"
+            },
+            {
+              question: "Are costs involved with using the API?",
+              answer: "No, the API is free to usessssss!",
+              id: "api-costs"
+            }
+          ]
+      }
+  }
 }
