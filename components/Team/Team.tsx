@@ -84,11 +84,11 @@ export function UserInfoAction({
             Get in touch
           </Title>
 
-          <SimpleGrid
+          {/* <SimpleGrid
             cols={2}
             mt="xl"
             breakpoints={[{ maxWidth: "sm", cols: 1 }]}
-          >
+          > */}
             <TextInput
               label="Name"
               placeholder="Your name"
@@ -103,7 +103,7 @@ export function UserInfoAction({
               variant="filled"
               {...form.getInputProps("email")}
             /> */}
-          </SimpleGrid>
+          {/* </SimpleGrid> */}
 
           <TextInput
             label="Subject"
