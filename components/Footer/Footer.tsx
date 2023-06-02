@@ -1,10 +1,8 @@
-"use client"
-
 import { Container, Group, ActionIcon, Tooltip, ActionIconProps, useMantineColorScheme, Anchor } from '@mantine/core';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import useStyles from "./Footer.styles";
 import Link from 'next/link';
-// import { Image } from '@mantine/core';
+import { Image } from '@mantine/core';
 import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
 import { useRouter } from "next/router";
 

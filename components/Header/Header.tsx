@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect } from 'react';
 import { Header, Container, Anchor, Group, Burger, Image, useMantineColorScheme, Tooltip,
     ActionIcon, ActionIconProps, Drawer, Paper } from '@mantine/core';

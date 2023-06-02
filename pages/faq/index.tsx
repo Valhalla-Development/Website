@@ -1,18 +1,15 @@
 import {
-  Container,
-  Title,
-} from "@mantine/core";
-
-import {
+  Image,
   Accordion,
   Grid,
   Col,
-  Image,
-} from "@mantine/next";
-
-import classes from "./FAQ.module.css";
+  Container,
+  Title,
+} from "@mantine/core";
+import useStyles from "./FAQ.styles";
 
 export default function Faq() {
+  const { classes } = useStyles();
   return (
     <div className={classes.wrapper}>
       <Container size="lg">
