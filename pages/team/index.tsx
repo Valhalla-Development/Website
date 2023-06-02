@@ -87,6 +87,13 @@ export const getServerSideProps: GetServerSideProps<{
               pfp: "https://cdn.discordapp.com/avatars/1018927667174723615/9cbf220816cd2b4000249a099c1809ce.webp?size=2048",
               position: "System Administrator"
             },
+            {
+              name: "iMidnight",
+              email: "mohaidarus@gmail.com",
+              description: "Uhh I'm a developer and I like to code stuff i guess idk",
+              pfp: "https://cdn.discordapp.com/avatars/427534456169955352/8673047500385ce6c63f16471aaf0b39.webp?size=128",
+              position: "Rookie Web Dev",
+            }
           ]
       }
   }
