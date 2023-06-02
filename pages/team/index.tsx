@@ -1,6 +1,6 @@
-import { UserInfoAction } from "../components/Team/Team";
+import { UserInfoAction } from "../../components/Team/Team";
 import { Grid, Skeleton, Container, Group, Text } from "@mantine/core";
-import useStyles from "../components/Team/Team.styles";
+import useStyles from "../../components/Team/Team.styles";
 
 const child = <Skeleton height={140} radius="md" animate={false} />;
 

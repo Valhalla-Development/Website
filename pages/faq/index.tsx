@@ -8,7 +8,7 @@ import {
 } from "@mantine/core";
 import useStyles from "./FAQ.styles";
 
-export function FaqWithImage() {
+export default function Faq() {
   const { classes } = useStyles();
   return (
     <div className={classes.wrapper}>

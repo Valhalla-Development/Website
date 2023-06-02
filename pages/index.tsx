@@ -1,9 +1,9 @@
 import { Maintenance } from '../components/Maintenance/Maintenance';
 
+const maintenance = true
+
 export default function HomePage() {
   return (
-    <>
-      <Maintenance />
-    </>
+      maintenance ? <Maintenance /> : <></>
   );
 }
