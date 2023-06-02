@@ -20,6 +20,15 @@ interface UserInfoActionProps {
   job: string;
 }
 
+function generateMailTo({ name, email, subject, message }: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) {
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
+}
+
 export function UserInfoAction({
   avatar,
   name,
@@ -30,7 +39,7 @@ export function UserInfoAction({
   const form = useForm({
     initialValues: {
       name: "",
-      email: "",
+      email: email,
       subject: "",
       message: "",
     },
@@ -60,7 +69,9 @@ export function UserInfoAction({
       </Text>
 
       <Modal opened={opened} onClose={close}>
-        <form onSubmit={form.onSubmit(() => {})}>
+        <form onSubmit={form.onSubmit((data) => {
+          window.location.href = generateMailTo(data)
+        })}>
           <Title
             order={2}
             size="h1"
@@ -85,13 +96,13 @@ export function UserInfoAction({
               variant="filled"
               {...form.getInputProps("name")}
             />
-            <TextInput
+            {/* <TextInput
               label="Email"
               placeholder="Your email"
               name="email"
               variant="filled"
               {...form.getInputProps("email")}
-            />
+            /> */}
           </SimpleGrid>
 
           <TextInput
