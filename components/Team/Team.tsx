@@ -20,6 +20,15 @@ interface UserInfoActionProps {
   job: string;
 }
 
+function generateMailTo({ name, email, subject, message }: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) {
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
+}
+
 export function UserInfoAction({
   avatar,
   name,
@@ -30,7 +39,7 @@ export function UserInfoAction({
   const form = useForm({
     initialValues: {
       name: "",
-      email: "",
+      email: email,
       subject: "",
       message: "",
     },
@@ -55,12 +64,16 @@ export function UserInfoAction({
       <Text ta="center" fz="lg" weight={500} mt="md">
         {name}
       </Text>
-      <Text ta="center" c="dimmed" fz="sm">
+      <Text ta="center" c="dimmed" fz="sm" style={{
+        overflowWrap: "break-word"
+      }}>
         {email} • {job}
       </Text>
 
       <Modal opened={opened} onClose={close}>
-        <form onSubmit={form.onSubmit(() => {})}>
+        <form onSubmit={form.onSubmit((data) => {
+          window.location.href = generateMailTo(data)
+        })}>
           <Title
             order={2}
             size="h1"
@@ -73,11 +86,11 @@ export function UserInfoAction({
             Get in touch
           </Title>
 
-          <SimpleGrid
+          {/* <SimpleGrid
             cols={2}
             mt="xl"
             breakpoints={[{ maxWidth: "sm", cols: 1 }]}
-          >
+          > */}
             <TextInput
               label="Name"
               placeholder="Your name"
@@ -85,14 +98,14 @@ export function UserInfoAction({
               variant="filled"
               {...form.getInputProps("name")}
             />
-            <TextInput
+            {/* <TextInput
               label="Email"
               placeholder="Your email"
               name="email"
               variant="filled"
               {...form.getInputProps("email")}
-            />
-          </SimpleGrid>
+            /> */}
+          {/* </SimpleGrid> */}
 
           <TextInput
             label="Subject"
