@@ -2,6 +2,9 @@ import { UserInfoAction } from "../../components/Team/Team";
 import { Grid, Skeleton, Container, Group, Text } from "@mantine/core";
 import useStyles from "../../components/Team/Team.styles";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import React, { useEffect, useState } from "react";
+
+import { rem } from "@mantine/core";
 
 const child = <Skeleton height={140} radius="md" animate={false} />;
 
@@ -13,14 +16,25 @@ type StaffMember = {
   position: string;
 }
 
+const useWidth = () => {
+  const [width, setWidth] = useState(0);
+  const handleResize = () => setWidth(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [width]);
+  return width === 0 ? 1000 : width;
+};
+
 export default function Team({ staffMembers }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const windowWidth = useWidth();
   const { classes, cx } = useStyles();
   return (
     <Container className={classes.container}>
       <Grid>
       {staffMembers.map((staffMember, index) => (
-        index % 2 === 1 ? (
-          <>
+        index % 2 === 1 && windowWidth > 575 ? (
+          <React.Fragment key={index}>
             <Grid.Col xs={4}>
               <UserInfoAction
                 avatar={staffMember.pfp}
@@ -34,10 +48,10 @@ export default function Team({ staffMembers }: InferGetServerSidePropsType<typeo
               <Text className={classes.body} size="sm">
                 {staffMember.description}
               </Text>
-            </Grid.Col>
-          </>
+           </Grid.Col>
+          </React.Fragment>
         ) : (
-          <>
+          <React.Fragment key={index}>
             <Grid.Col xs={8}>
               <Text className={classes.body} size="sm">
                 {staffMember.description}
@@ -52,7 +66,7 @@ export default function Team({ staffMembers }: InferGetServerSidePropsType<typeo
                 key={staffMember.name.toLowerCase() + "Team"}
               />
             </Grid.Col>
-          </>
+          </React.Fragment>
         )
       ))}
       </Grid>
