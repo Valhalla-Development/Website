@@ -4,10 +4,6 @@ import useStyles from "../../components/Team/Team.styles";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import React, { useEffect, useState } from "react";
 
-import { rem } from "@mantine/core";
-
-const child = <Skeleton height={140} radius="md" animate={false} />;
-
 type StaffMember = {
   name: string;
   email: string;
