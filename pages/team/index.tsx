@@ -2,7 +2,7 @@ import { UserInfoAction } from "../../components/Team/Team";
 import { Grid, Skeleton, Container, Group, Text } from "@mantine/core";
 import useStyles from "../../components/Team/Team.styles";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 type StaffMember = {
   name: string;
@@ -12,24 +12,41 @@ type StaffMember = {
   position: string;
 }
 
-const useWidth = () => {
-  const [width, setWidth] = useState(0);
-  const handleResize = () => setWidth(window.innerWidth);
+const useMediaQuery = (width: any) => {
+  const [targetReached, setTargetReached] = useState(false);
+
+  const updateTarget = useCallback((e: { matches: any; }) => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [width]);
-  return width === 0 ? 1000 : width;
+    const media = window.matchMedia(`(max-width: ${width}px)`);
+    media.addListener(updateTarget);
+
+    // Check on mount (callback is not called until a change occurs)
+    if (media.matches) {
+      setTargetReached(true);
+    }
+
+    return () => media.removeListener(updateTarget);
+  }, []);
+
+  return targetReached;
 };
 
 export default function Team({ staffMembers }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const windowWidth = useWidth();
+  const isBreakpoint = !useMediaQuery(575);
   const { classes, cx } = useStyles();
+  
   return (
     <Container className={classes.container}>
       <Grid>
       {staffMembers.map((staffMember, index) => (
-        index % 2 === 1 && windowWidth > 575 ? (
+        index % 2 === 1 && isBreakpoint ? (
           <React.Fragment key={index}>
             <Grid.Col xs={4}>
               <UserInfoAction
