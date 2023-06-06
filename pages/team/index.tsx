@@ -2,8 +2,7 @@ import { UserInfoAction } from "../../components/Team/Team";
 import { Grid, Skeleton, Container, Group, Text } from "@mantine/core";
 import useStyles from "../../components/Team/Team.styles";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-
-const child = <Skeleton height={140} radius="md" animate={false} />;
+import React, { useEffect, useState, useCallback } from "react";
 
 type StaffMember = {
   name: string;
@@ -13,14 +12,42 @@ type StaffMember = {
   position: string;
 }
 
+const useMediaQuery = (width: any) => {
+  const [targetReached, setTargetReached] = useState(false);
+
+  const updateTarget = useCallback((e: { matches: any; }) => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${width}px)`);
+    media.addListener(updateTarget);
+
+    // Check on mount (callback is not called until a change occurs)
+    if (media.matches) {
+      setTargetReached(true);
+    }
+
+    return () => media.removeListener(updateTarget);
+  }, []);
+
+  return targetReached;
+};
+
 export default function Team({ staffMembers }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const isBreakpoint = !useMediaQuery(575);
   const { classes, cx } = useStyles();
+  
   return (
     <Container className={classes.container}>
       <Grid>
       {staffMembers.map((staffMember, index) => (
-        index % 2 === 1 ? (
-          <>
+        index % 2 === 1 && isBreakpoint ? (
+          <React.Fragment key={index}>
             <Grid.Col xs={4}>
               <UserInfoAction
                 avatar={staffMember.pfp}
@@ -34,10 +61,10 @@ export default function Team({ staffMembers }: InferGetServerSidePropsType<typeo
               <Text className={classes.body} size="sm">
                 {staffMember.description}
               </Text>
-            </Grid.Col>
-          </>
+           </Grid.Col>
+          </React.Fragment>
         ) : (
-          <>
+          <React.Fragment key={index}>
             <Grid.Col xs={8}>
               <Text className={classes.body} size="sm">
                 {staffMember.description}
@@ -52,7 +79,7 @@ export default function Team({ staffMembers }: InferGetServerSidePropsType<typeo
                 key={staffMember.name.toLowerCase() + "Team"}
               />
             </Grid.Col>
-          </>
+          </React.Fragment>
         )
       ))}
       </Grid>

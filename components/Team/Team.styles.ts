@@ -13,7 +13,6 @@ export default createStyles((theme) => ({
   },
 
   body: {
-    paddingLeft: rem(54),
     paddingTop: theme.spacing.sm,
   },
 
