@@ -31,27 +31,12 @@ export default function FeaturesCards({ features }: InferGetServerSidePropsType<
 
     return (
         <>
-            <div
-                style={{
-                    backgroundImage: "url(/bg.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    height: "20vh"
-                }}
-            ></div>
+            <div className={classes.backgroundImage}></div>
             <Head>
                 <title>About Us</title>
             </Head>
             <Container size="lg" py="xl" mt={-170}>
-                <div
-                    style={{
-                        background: "#25262b",
-                        padding: "50px",
-                        borderRadius: "10px",
-                        border: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]}`
-                    }}
-                >
+                <div className={classes.mainContainer}>
                     <Group position="center">
                         <Badge variant="filled" size="lg">
                             About us
@@ -63,9 +48,6 @@ export default function FeaturesCards({ features }: InferGetServerSidePropsType<
                         className={classes.title}
                         ta="center"
                         mt="sm"
-                        style={{
-                            wordBreak: "break-word"
-                        }}
                     >
                         Valhalla Development
                     </Title>
