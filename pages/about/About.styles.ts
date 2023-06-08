@@ -51,7 +51,7 @@ export default createStyles((theme) => ({
     },
 
     mainContainer: {
-        background: "#25262b",
+        background: theme.colorScheme === "dark" ? theme.colors.dark[6] : '#ffffff',
         padding: "50px",
         borderRadius: "10px",
         border: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]}`
