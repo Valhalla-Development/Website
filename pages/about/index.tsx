@@ -1,5 +1,6 @@
 import { createStyles, Badge, Group, Title, Text, Card, SimpleGrid, Container, rem } from "@mantine/core";
 import { IconServer, IconUser, IconGlobe, TablerIconsProps } from "@tabler/icons-react";
+import Head from "next/head";
 
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
@@ -39,6 +40,9 @@ export default function FeaturesCards({ features }: InferGetServerSidePropsType<
                     height: "20vh"
                 }}
             ></div>
+            <Head>
+                <title>About Us</title>
+            </Head>
             <Container size="lg" py="xl" mt={-170}>
                 <div
                     style={{
