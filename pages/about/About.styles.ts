@@ -4,6 +4,7 @@ export default createStyles((theme) => ({
     title: {
         fontSize: rem(34),
         fontWeight: 900,
+        wordBreak: "break-word",
 
         [theme.fn.smallerThan("sm")]: {
             fontSize: rem(24)
@@ -39,5 +40,12 @@ export default createStyles((theme) => ({
             height: rem(2),
             marginTop: theme.spacing.sm
         }
+    },
+
+    mainContainer: {
+        background: theme.colorScheme === "dark" ? theme.colors.dark[6] : "#ffffff",
+        padding: "50px",
+        borderRadius: "10px",
+        border: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]}`
     }
 }));
