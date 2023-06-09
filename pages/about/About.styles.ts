@@ -42,18 +42,10 @@ export default createStyles((theme) => ({
         }
     },
 
-    backgroundImage: {
-        backgroundImage: "url(/bg.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        height: "20vh"
-    },
-
     mainContainer: {
-        background: theme.colorScheme === "dark" ? theme.colors.dark[6] : '#ffffff',
+        background: theme.colorScheme === "dark" ? theme.colors.dark[6] : "#ffffff",
         padding: "50px",
         borderRadius: "10px",
         border: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]}`
-    },
+    }
 }));
