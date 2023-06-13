@@ -1,5 +1,5 @@
 import { UserInfoAction } from "../../components/Team/Team";
-import { Grid, Skeleton, Container, Group, Text } from "@mantine/core";
+import { Grid, Container, Text } from "@mantine/core";
 import useStyles from "../../components/Team/Team.styles";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import React, { useEffect, useState, useCallback } from "react";

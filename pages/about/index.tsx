@@ -1,4 +1,4 @@
-import { createStyles, Badge, Group, Title, Text, Card, SimpleGrid, Container, rem } from "@mantine/core";
+import { Badge, Group, Title, Text, Card, SimpleGrid, Container, rem } from "@mantine/core";
 import { IconServer, IconUser, IconGlobe, TablerIconsProps } from "@tabler/icons-react";
 import Head from "next/head";
 

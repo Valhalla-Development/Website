@@ -6,7 +6,6 @@ import {
   Button,
   Group,
   Title,
-  SimpleGrid,
   TextInput,
   Textarea,
 } from "@mantine/core";
