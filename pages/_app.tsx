@@ -90,12 +90,11 @@ App.getInitialProps = async (appContext: AppContext) => {
   if (cookieColorScheme) {
     colorScheme = cookieColorScheme;
   } else {
-    const darkModeQuery = appContext.ctx.req?.headers["user-agent"]?.includes(
-      "DarkMode"
+    colorScheme = appContext.ctx.req?.headers["user-agent"]?.includes(
+        "DarkMode"
     )
       ? "dark"
       : "light";
-    colorScheme = darkModeQuery;
   }
 
   return {
