@@ -65,7 +65,12 @@ export function UserInfoAction({
       <Text ta="center" c="dimmed" fz="sm" style={{
         overflowWrap: "break-word"
       }}>
-        {email} • {job}
+        {job}
+      </Text>
+      <Text ta="center" c="dimmed" fz="sm" style={{
+        overflowWrap: "break-word"
+      }}>
+        {email}
       </Text>
 
       <Modal opened={opened} onClose={close}>
