@@ -28,7 +28,9 @@ export default function Faq({ questions }: InferGetServerSidePropsType<typeof ge
                                 return (
                                     <Accordion.Item className={classes.item} value={question.id} key={index}>
                                         <Accordion.Control>{question.question}</Accordion.Control>
-                                        <Accordion.Panel>{question.answer}</Accordion.Panel>
+                                        <Accordion.Panel>
+                                            <div dangerouslySetInnerHTML={{ __html: question.answer }} />
+                                        </Accordion.Panel>
                                     </Accordion.Item>
                                 );
                             })}
@@ -53,7 +55,7 @@ export const getServerSideProps: GetServerSideProps<{
                 },
                 {
                     question: "How do I gain access to the API?",
-                    answer: "To gain access to our API, please join our Discord Server and raise a ticket. We will assist you in creating an API key.",
+                    answer: `To gain access to our API, please join our <a href="https://discord.gg/Q3ZhdRJ" target="_blank" rel="noopener noreferrer">Discord Server</a> and raise a ticket. We will assist you in creating an API key.`,
                     id: "api-access"
                 },
                 {
