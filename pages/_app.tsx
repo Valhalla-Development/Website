@@ -33,6 +33,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     { label: "FAQ", link: "/faq" },
   ];
   const footerLinksArray = [
+    { label: "Status", link: "https://status.valhalladev.org" },
     { label: "Contact", link: "/contact" },
     { label: "Team", link: "/team" },
     { label: "Blog", link: "/blog" },
