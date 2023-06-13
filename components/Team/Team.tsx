@@ -19,8 +19,7 @@ interface UserInfoActionProps {
   job: string;
 }
 
-function generateMailTo({ name, email, subject, message }: {
-  name: string;
+function generateMailTo({ email, subject, message }: {
   email: string;
   subject: string;
   message: string;

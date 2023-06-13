@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps<{
         description: string;
         icon: string;
     }[];
-}> = async (context) => {
+}> = async () => {
     return {
         props: {
             features: [

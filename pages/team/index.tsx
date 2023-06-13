@@ -40,7 +40,7 @@ const useMediaQuery = (width: any) => {
 
 export default function Team({ staffMembers }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const isBreakpoint = !useMediaQuery(575);
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   
   return (
     <Container className={classes.container}>
@@ -89,7 +89,7 @@ export default function Team({ staffMembers }: InferGetServerSidePropsType<typeo
 
 export const getServerSideProps: GetServerSideProps<{
   staffMembers: StaffMember[]
-}> = async (context) => {
+}> = async () => {
   return {
       props: {
         staffMembers: [

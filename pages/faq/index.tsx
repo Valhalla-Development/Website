@@ -42,7 +42,7 @@ export default function Faq({ questions }: InferGetServerSidePropsType<typeof ge
 
 export const getServerSideProps: GetServerSideProps<{
     questions: Question[];
-}> = async (context) => {
+}> = async () => {
     return {
         props: {
             questions: [

@@ -40,7 +40,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
   const { colorScheme } = useMantineColorScheme();
   const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
-  const mainItems = mainLinks.map((item, index) => (
+  const mainItems = mainLinks.map((item) => (
         <Anchor<'a'>
             href={item.link}
             key={item.label}
