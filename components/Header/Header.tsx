@@ -6,11 +6,12 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import { useRouter } from 'next/router';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
+import { ReactNode } from "react";
 import Link from "next/link";
 
 interface IconProps extends ActionIconProps {
   label: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   href: string;
 }
 

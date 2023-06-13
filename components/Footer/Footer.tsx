@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { Image } from '@mantine/core';
 import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
 import { useRouter } from "next/router";
+import { ReactNode} from "react";
 
 interface IconProps extends ActionIconProps {
   label: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   href: string;
 }
 

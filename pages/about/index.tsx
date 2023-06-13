@@ -1,7 +1,7 @@
 import { Badge, Group, Title, Text, Card, SimpleGrid, Container, rem } from "@mantine/core";
 import { IconServer, IconUser, IconGlobe, TablerIconsProps } from "@tabler/icons-react";
 import Head from "next/head";
-
+import { ComponentType } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 import useStyles from "./About.styles";
@@ -15,7 +15,7 @@ const Icons = {
 export default function FeaturesCards({ features }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes, theme } = useStyles();
     const feature = features.map((feature) => {
-        const Icon = Icons[feature.icon as keyof typeof Icons] as React.ComponentType<TablerIconsProps>;
+        const Icon = Icons[feature.icon as keyof typeof Icons] as ComponentType<TablerIconsProps>;
         return (
             <Card key={feature.title} shadow="md" radius="md" className={classes.card} padding="xl">
                 <Icon size={rem(50)} stroke={2} color={theme.fn.primaryColor()} />
