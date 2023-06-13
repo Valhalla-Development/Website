@@ -111,14 +111,14 @@ export const getServerSideProps: GetServerSideProps<{
               name: "DanelSonic123",
               email: "danelsonic123@serverargentina.com",
               description: `"no about" - DanelSonic123 when asked for an 'About Me' description.`,
-              pfp: "https://cdn.discordapp.com/avatars/1018927667174723615/9cbf220816cd2b4000249a099c1809ce.webp?size=2048",
+              pfp: "https://cdn.discordapp.com/avatars/1018927667174723615/438a4b6ac24a9ea966bf4ba8d47c6bc0.webp?size=2048",
               position: "System Administrator"
             },
             {
               name: "iMidnight",
               email: "mohaidarus@gmail.com",
               description: "Uhh I'm a developer and I like to code stuff i guess idk",
-              pfp: "https://cdn.discordapp.com/avatars/427534456169955352/8673047500385ce6c63f16471aaf0b39.webp?size=128",
+              pfp: "https://cdn.discordapp.com/avatars/427534456169955352/fa2b09ac444227fc4a68dbbf18bfb3f8.webp?size=2048",
               position: "Rookie Web Dev",
             }
           ]
