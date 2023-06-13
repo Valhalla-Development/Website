@@ -47,18 +47,18 @@ export const getServerSideProps: GetServerSideProps<{
         props: {
             questions: [
                 {
-                    question: "Are the bots open source?",
-                    answer: "The Seer, Wilbur and the API are open source but we also host them for you so you can use them!",
+                    question: "Are your bots open source?",
+                    answer: "Yes, both Seer and Wilbur are open source. We also provide hosting services for these bots for your convenience!",
                     id: "open-source"
                 },
                 {
-                    question: "How can I get access to the API?",
-                    answer: "If you want to get access to our API please join our Discord Server and open a ticket so we can create a API key for you!",
+                    question: "How do I gain access to the API?",
+                    answer: "To gain access to our API, please join our Discord Server and raise a ticket. We will assist you in creating an API key.",
                     id: "api-access"
                 },
                 {
-                    question: "Are costs involved with using the API?",
-                    answer: "No, the API is free to usessssss!",
+                    question: "Does using the API incur any costs?",
+                    answer: "No, our API is completely free to use!",
                     id: "api-costs"
                 }
             ]
