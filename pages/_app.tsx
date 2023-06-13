@@ -33,6 +33,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     { label: "FAQ", link: "/faq" },
   ];
   const footerLinksArray = [
+    { label: "Status", link: "https://status.valhalladev.org" },
     { label: "Contact", link: "/contact" },
     { label: "Team", link: "/team" },
     { label: "Blog", link: "/blog" },
@@ -89,12 +90,11 @@ App.getInitialProps = async (appContext: AppContext) => {
   if (cookieColorScheme) {
     colorScheme = cookieColorScheme;
   } else {
-    const darkModeQuery = appContext.ctx.req?.headers["user-agent"]?.includes(
-      "DarkMode"
+    colorScheme = appContext.ctx.req?.headers["user-agent"]?.includes(
+        "DarkMode"
     )
       ? "dark"
       : "light";
-    colorScheme = darkModeQuery;
   }
 
   return {
