@@ -25,7 +25,7 @@ import {
 } from "@mantine/core";
 import useStyles, { headerHeight } from "./Header.styles";
 import { useDisclosure } from "@mantine/hooks";
-import { IconBook, IconBrandDiscord, IconBrandGithub, IconChartPie3, IconChevronDown, IconCode, IconCoin, IconFingerprint, IconNotification, IconWebhook } from "@tabler/icons-react";
+import { IconUser, IconBrandDiscord, IconBrandGithub, IconFileCode, IconChevronDown, IconServer } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
 import { ReactNode } from "react";
@@ -56,23 +56,35 @@ interface CustomHeaderProps {
     mainLinks: LinkProps[];
 }
 
-const mockdata = [
+const data = [
     {
-        icon: IconCode,
-        title: "Paste Code",
-        description: "Ragnars hastebin",
-        link: "https://paste.valhalladev.org/"
-    },
-    {
-        icon: IconWebhook,
+        icon: IconServer,
         title: "API",
-        description: "Valhalla api",
+        description: "Valhalla Development API",
         link: "https://api.valhalladev.org/"
     },
     {
-        icon: IconBook,
-        title: "Dashboard",
-        description: "Valhalla dashboard",
+        icon: IconFileCode,
+        title: "Paste",
+        description: "Hastebin clone.",
+        link: "https://paste.valhalladev.org/"
+    },
+    {
+        icon: IconUser,
+        title: "Ragnarok",
+        description: "Multi-purpose Discord Bot",
+        link: "https://ragnarok.valhalladev.org/"
+    },
+    {
+        icon: IconUser,
+        title: "Wilbur",
+        description: "Fun Discord Bot",
+        link: "https://ragnarok.valhalladev.org/"
+    },
+    {
+        icon: IconUser,
+        title: "The Seer",
+        description: "A Discord Bot that monitors other Bots",
         link: "https://ragnarok.valhalladev.org/"
     }
 ];
@@ -90,7 +102,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
         </Anchor>
     ));
 
-    const links = mockdata.map((item) => (
+    const links = data.map((item) => (
         <Anchor<"a"> href={item.link} key={item.title} className={classes.link}>
             <UnstyledButton className={classes.subLink} key={item.title}>
                 <Group noWrap align="flex-start">
@@ -156,7 +168,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                         {mainItems}
                         <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
                             <HoverCard.Target>
-                                <a href="#" className={classes.link}>
+                                <a href="" className={classes.link}>
                                     <Center inline>
                                         <Box component="span" mr={5} className={cx(classes.mainLink)}>
                                             Services
