@@ -83,8 +83,6 @@ export default createStyles((theme) => ({
         display: "flex",
         alignItems: "center",
         height: "100%",
-        paddingLeft: theme.spacing.md,
-        paddingRight: theme.spacing.md,
         textDecoration: "none",
         color: theme.colorScheme === "dark" ? theme.white : theme.black,
         fontWeight: 500,

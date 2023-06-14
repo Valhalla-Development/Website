@@ -176,20 +176,6 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                                 <SimpleGrid cols={2} spacing={0}>
                                     {links}
                                 </SimpleGrid>
-
-                                {/* <div className={classes.dropdownFooter}>
-                                    <Group position="apart">
-                                        <div>
-                                            <Text fw={500} fz="sm">
-                                                Get started
-                                            </Text>
-                                            <Text size="xs" color="dimmed">
-                                                Their food sources have decreased, and their numbers
-                                            </Text>
-                                        </div>
-                                        <Button variant="default">Get started</Button>
-                                    </Group>
-                                </div> */}
                             </HoverCard.Dropdown>
                         </HoverCard>
                         <div className={classes.iconContainer}>
