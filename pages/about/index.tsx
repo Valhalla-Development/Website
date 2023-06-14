@@ -1,20 +1,21 @@
-import { createStyles, Badge, Group, Title, Text, Card, SimpleGrid, Container, rem } from "@mantine/core";
-import { IconGauge, IconUser, IconCookie, TablerIconsProps } from "@tabler/icons-react";
-
+import { Badge, Group, Title, Text, Card, SimpleGrid, Container, rem } from "@mantine/core";
+import { IconServer, IconUser, IconGlobe, TablerIconsProps } from "@tabler/icons-react";
+import Head from "next/head";
+import { ComponentType } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 import useStyles from "./About.styles";
 
 const Icons = {
-    IconGauge,
+    IconServer,
     IconUser,
-    IconCookie
+    IconGlobe
 };
 
 export default function FeaturesCards({ features }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes, theme } = useStyles();
     const feature = features.map((feature) => {
-        const Icon = Icons[feature.icon as keyof typeof Icons] as React.ComponentType<TablerIconsProps>;
+        const Icon = Icons[feature.icon as keyof typeof Icons] as ComponentType<TablerIconsProps>;
         return (
             <Card key={feature.title} shadow="md" radius="md" className={classes.card} padding="xl">
                 <Icon size={rem(50)} stroke={2} color={theme.fn.primaryColor()} />
@@ -30,44 +31,25 @@ export default function FeaturesCards({ features }: InferGetServerSidePropsType<
 
     return (
         <>
-            <div
-                style={{
-                    backgroundImage: "url(/bg.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    height: "20vh"
-                }}
-            ></div>
-            <Container size="lg" py="xl" mt={-170}>
-                <div
-                    style={{
-                        background: "#25262b",
-                        padding: "50px",
-                        borderRadius: "10px",
-                        border: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]}`
-                    }}
-                >
+            <Head>
+                <title>About Us</title>
+            </Head>
+            <Container size="lg" py="xl">
+                <div className={classes.mainContainer}>
                     <Group position="center">
                         <Badge variant="filled" size="lg">
                             About us
                         </Badge>
                     </Group>
 
-                    <Title
-                        order={2}
-                        className={classes.title}
-                        ta="center"
-                        mt="sm"
-                        style={{
-                            wordBreak: "break-word"
-                        }}
-                    >
-                        Ragnarok Development
+                    <Title order={2} className={classes.title} ta="center" mt="sm">
+                        Valhalla Development
                     </Title>
 
                     <Text c="dimmed" className={classes.description} ta="center" mt="md">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi at ex modi architecto laudantium natus est repellendus?
+                        Valhalla Development began as a simple idea - to create tools that empower individuals and communities online. We understood the potential of a connected world and took it upon
+                        ourselves to craft solutions that bridge the gap between technology and user. Today, we continue our journey with the same spirit, constantly evolving and striving to make the
+                        internet a better place.
                     </Text>
                 </div>
 
@@ -85,24 +67,27 @@ export const getServerSideProps: GetServerSideProps<{
         description: string;
         icon: string;
     }[];
-}> = async (context) => {
+}> = async () => {
     return {
         props: {
             features: [
                 {
-                    title: "Extreme performance",
-                    description: "This dust is actually a powerful poison that will even make a pro wrestler sick, Regice cloaks itself with frigid air of -328 degrees Fahrenheit",
-                    icon: "IconGauge"
+                    title: "API",
+                    description:
+                        "Our robust API serves as the backbone of our services, enabling seamless integration and interaction across platforms. It has been designed to be both flexible and scalable, accommodating the needs of a wide range of applications.",
+                    icon: "IconServer"
                 },
                 {
-                    title: "Privacy focused",
-                    description: "People say it can run at the same speed as lightning striking, Its icy body is so cold, it will not melt even if it is immersed in magma",
+                    title: "Discord Bots",
+                    description:
+                        "Built with the community in mind, our Discord Bots enhances user experience on Discord servers. They provide a range of features and functionalities that help server administrators manage their communities more effectively.",
                     icon: "IconUser"
                 },
                 {
-                    title: "No third parties",
-                    description: "They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves",
-                    icon: "IconCookie"
+                    title: "Website",
+                    description:
+                        "Our website is the gateway to our services and products. It's designed to be user-friendly and informative, offering visitors an insight into our operations, our team, and our commitment to excellence.",
+                    icon: "IconGlobe"
                 }
             ]
         }

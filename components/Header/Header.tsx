@@ -6,11 +6,12 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import { useRouter } from 'next/router';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
+import { ReactNode } from "react";
 import Link from "next/link";
 
 interface IconProps extends ActionIconProps {
   label: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   href: string;
 }
 
@@ -40,7 +41,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
   const { colorScheme } = useMantineColorScheme();
   const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
-  const mainItems = mainLinks.map((item, index) => (
+  const mainItems = mainLinks.map((item) => (
         <Anchor<'a'>
             href={item.link}
             key={item.label}

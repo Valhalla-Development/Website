@@ -6,7 +6,6 @@ import {
   Button,
   Group,
   Title,
-  SimpleGrid,
   TextInput,
   Textarea,
 } from "@mantine/core";
@@ -20,8 +19,7 @@ interface UserInfoActionProps {
   job: string;
 }
 
-function generateMailTo({ name, email, subject, message }: {
-  name: string;
+function generateMailTo({ email, subject, message }: {
   email: string;
   subject: string;
   message: string;
@@ -67,7 +65,12 @@ export function UserInfoAction({
       <Text ta="center" c="dimmed" fz="sm" style={{
         overflowWrap: "break-word"
       }}>
-        {email} • {job}
+        {job}
+      </Text>
+      <Text ta="center" c="dimmed" fz="sm" style={{
+        overflowWrap: "break-word"
+      }}>
+        {email}
       </Text>
 
       <Modal opened={opened} onClose={close}>

@@ -1,4 +1,4 @@
-import { Title, Text, Button, Container, Group, rem } from '@mantine/core';
+import { Title, Text, Button, Container, Group } from '@mantine/core';
 import Link from 'next/link';
 import Head from 'next/head';
 import useStyles from "./Error404.styles";
