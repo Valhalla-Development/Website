@@ -37,7 +37,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     { label: "Contact", link: "/contact" },
     { label: "Team", link: "/team" },
     { label: "Blog", link: "/blog" },
-    { label: "Privacy", link: "/privacy" },
+    { label: "Privacy", link: "/privacy-policy" },
     { label: "Terms", link: "/terms " },
   ];
 
