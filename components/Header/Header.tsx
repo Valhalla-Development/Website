@@ -18,7 +18,6 @@ import {
     Text,
     Divider,
     SimpleGrid,
-    Button,
     UnstyledButton,
     ThemeIcon,
     rem
