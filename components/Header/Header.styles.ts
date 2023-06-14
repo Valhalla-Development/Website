@@ -93,6 +93,10 @@ export default createStyles((theme) => ({
             display: "flex",
             alignItems: "center",
             width: "100%"
+        },
+
+        "&:hover": {
+            textDecoration: "none"
         }
 
         // ...theme.fn.hover({
