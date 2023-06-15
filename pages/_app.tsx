@@ -38,7 +38,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     { label: "Team", link: "/team" },
     { label: "Blog", link: "/blog" },
     { label: "Privacy", link: "/privacy-policy" },
-    { label: "Terms", link: "/terms " },
+    { label: "Terms", link: "/terms-of-service " },
   ];
 
   useEffect(() => {
