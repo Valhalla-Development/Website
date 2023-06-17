@@ -88,8 +88,8 @@ export const getServerSideProps: GetServerSideProps<{
     blog: APIResponse;
 }> = async (context) => {
     const host = context.req.headers.host;
-
-    let url = host === "localhost:3000" ? "http://localhost:3000/api/blog" : `https://${host}/api/blog`;
+    const protocol = host?.includes("localhost") ? "http" : "https";
+    const url = `${protocol}://${host}/api/blog`;
 
     const data: APIResponse = await fetch(url)
         .then(async (res) => {
