@@ -1,12 +1,4 @@
-import {
-    Grid,
-    Container,
-    TextInput,
-    TextInputProps,
-    ActionIcon,
-    useMantineTheme,
-    Pagination
-} from "@mantine/core";
+import { Grid, Container, TextInput, TextInputProps, ActionIcon, useMantineTheme, Pagination } from "@mantine/core";
 import { IconSearch, IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
 import useStyles from "./Blog.styles";
 
@@ -98,14 +90,21 @@ type APIResponse = {
 
 export const getServerSideProps: GetServerSideProps<{
     blog: APIResponse;
-}> = async () => {
-    const data: APIResponse = await fetch(`http://localhost:3000/api/blog`)
+}> = async (context) => {
+    console.log(context);
+
+    // get host from context
+    const host = context.req.headers.host;
+
+    let url = host === "localhost:3000" ? "http://localhost:3000/api/blog" : `https://${host}/api/blog`;
+
+    console.log(host);
+
+    const data: APIResponse = await fetch(url)
         .then(async (res) => {
             return res.json();
         })
         .catch((err) => console.log(err));
-
-    console.log(data);
 
     return {
         props: {
