@@ -72,19 +72,19 @@ const data = [
         icon: IconUser,
         title: "Ragnarok",
         description: "Multi-purpose Discord Bot",
-        link: "https://ragnarok.valhalladev.org/"
+        link: "/ragnarok"
     },
     {
         icon: IconUser,
         title: "Wilbur",
         description: "Fun Discord Bot",
-        link: "https://ragnarok.valhalladev.org/"
+        link: "/wilbur"
     },
     {
         icon: IconUser,
         title: "The Seer",
         description: "A Discord Bot that monitors other Bots",
-        link: "https://ragnarok.valhalladev.org/"
+        link: "/seer"
     }
 ];
 
