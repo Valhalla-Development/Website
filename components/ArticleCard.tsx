@@ -64,7 +64,6 @@ export function ArticleCard({ className, image, link, title, description, author
     const linkProps = { href: link, target: "_blank", rel: "noopener noreferrer" };
 
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
-    const url = "placeholder";
 
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
@@ -105,7 +104,7 @@ export function ArticleCard({ className, image, link, title, description, author
                             <div className={classes.iconButtonContainer}>
                                 <Button
                                     component="a"
-                                    href={`https://twitter.com/intent/tweet?text=${url}`}
+                                    href={`https://twitter.com/intent/tweet?text=${link}`}
                                     variant="outline"
                                     className={classes.iconButton}
                                     target="_blank"
@@ -115,7 +114,7 @@ export function ArticleCard({ className, image, link, title, description, author
                                 </Button>
                                 <Button
                                     component="a"
-                                    href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${link}`}
                                     variant="outline"
                                     className={classes.iconButton}
                                     target="_blank"
