@@ -1,7 +1,8 @@
-import { IconShare, IconBrandFacebook, IconBrandTwitter, IconCopy } from "@tabler/icons-react";
+import { IconShare, IconBrandFacebook, IconBrandTwitter, IconCopy, IconCheck } from "@tabler/icons-react";
 import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover, Button } from "@mantine/core";
 import { useState } from "react";
 import { useClipboard } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -128,7 +129,17 @@ export function ArticleCard({ className, image, link, title, description, author
                                     variant="outline"
                                     className={classes.iconButton}
                                     color={clipboard.copied ? 'teal' : 'blue'}
-                                    onClick={() => clipboard.copy(link)}
+                                    onClick={() => {
+                                        clipboard.copy(link)
+
+                                        notifications.show({
+                                            title: 'Copied to clipboard',
+                                            message: '',
+                                            color: 'teal',
+                                            icon: <IconCheck size="1rem" />,
+                                            autoClose: 1500
+                                        })
+                                    }}
                                 >
                                     <IconCopy size="1.25rem" />
                                 </Button>
