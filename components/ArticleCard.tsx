@@ -1,5 +1,5 @@
-import { IconShare } from "@tabler/icons-react";
-import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover } from "@mantine/core";
+import { IconShare, IconBrandFacebook, IconBrandTwitter } from "@tabler/icons-react";
+import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover, Button } from "@mantine/core";
 import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
@@ -28,6 +28,20 @@ const useStyles = createStyles((theme) => ({
         })
     },
 
+    iconButtonContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+
+    iconButton: {
+        width: 30,
+        height: 30,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: '0 10px',
+    },
+
     footer: {
         marginTop: theme.spacing.md
     }
@@ -50,6 +64,7 @@ export function ArticleCard({ className, image, link, title, description, author
     const linkProps = { href: link, target: "_blank", rel: "noopener noreferrer" };
 
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
+    const url = "placeholder";
 
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
@@ -87,7 +102,28 @@ export function ArticleCard({ className, image, link, title, description, author
                             </ActionIcon>
                         </Popover.Target>
                         <Popover.Dropdown>
-                            <Text size="sm">todo: share options</Text>
+                            <div className={classes.iconButtonContainer}>
+                                <Button
+                                    component="a"
+                                    href={`https://twitter.com/intent/tweet?text=${url}`}
+                                    variant="outline"
+                                    className={classes.iconButton}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <IconBrandTwitter size="1.25rem" />
+                                </Button>
+                                <Button
+                                    component="a"
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+                                    variant="outline"
+                                    className={classes.iconButton}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <IconBrandFacebook size="1.25rem" />
+                                </Button>
+                            </div>
                         </Popover.Dropdown>
                     </Popover>
                 </Group>
