@@ -1,6 +1,7 @@
-import { IconShare, IconBrandFacebook, IconBrandTwitter } from "@tabler/icons-react";
+import { IconShare, IconBrandFacebook, IconBrandTwitter, IconCopy } from "@tabler/icons-react";
 import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover, Button } from "@mantine/core";
 import { useState } from "react";
+import { useClipboard } from '@mantine/hooks';
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -62,6 +63,7 @@ interface ArticleCardProps {
 export function ArticleCard({ className, image, link, title, description, author, rating, ...others }: ArticleCardProps & Omit<React.ComponentPropsWithoutRef<"div">, keyof ArticleCardProps>) {
     const { classes, cx, theme } = useStyles();
     const linkProps = { href: link, target: "_blank", rel: "noopener noreferrer" };
+    const clipboard = useClipboard({ timeout: 500 });
 
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
 
@@ -121,6 +123,14 @@ export function ArticleCard({ className, image, link, title, description, author
                                     rel="noopener noreferrer"
                                 >
                                     <IconBrandFacebook size="1.25rem" />
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    className={classes.iconButton}
+                                    color={clipboard.copied ? 'teal' : 'blue'}
+                                    onClick={() => clipboard.copy(link)}
+                                >
+                                    <IconCopy size="1.25rem" />
                                 </Button>
                             </div>
                         </Popover.Dropdown>
