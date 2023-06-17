@@ -1,5 +1,6 @@
-import { IconBookmark, IconHeart, IconShare } from "@tabler/icons-react";
-import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem } from "@mantine/core";
+import { IconShare } from "@tabler/icons-react";
+import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover } from "@mantine/core";
+import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -48,6 +49,8 @@ export function ArticleCard({ className, image, link, title, description, author
     const { classes, cx, theme } = useStyles();
     const linkProps = { href: link, target: "_blank", rel: "noopener noreferrer" };
 
+    const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
+
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
             <Card.Section>
@@ -77,15 +80,16 @@ export function ArticleCard({ className, image, link, title, description, author
                 </Center>
 
                 <Group spacing={8} mr={0}>
-                    <ActionIcon className={classes.action}>
-                        <IconHeart size="1rem" color={theme.colors.red[6]} />
-                    </ActionIcon>
-                    <ActionIcon className={classes.action}>
-                        <IconBookmark size="1rem" color={theme.colors.yellow[7]} />
-                    </ActionIcon>
-                    <ActionIcon className={classes.action}>
-                        <IconShare size="1rem" />
-                    </ActionIcon>
+                    <Popover opened={sharePopoverOpened} onChange={setSharePopoverOpened}>
+                        <Popover.Target>
+                            <ActionIcon className={classes.action} onClick={() => setSharePopoverOpened((o) => !o)}>
+                                <IconShare size="1rem" />
+                            </ActionIcon>
+                        </Popover.Target>
+                        <Popover.Dropdown>
+                            <Text size="sm">todo: share options</Text>
+                        </Popover.Dropdown>
+                    </Popover>
                 </Group>
             </Group>
         </Card>
