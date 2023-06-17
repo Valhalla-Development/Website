@@ -34,14 +34,13 @@ export function Footer({ footerLinks }: FooterProps) {
   const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
   const items = footerLinks.map((link) => (
-      <Anchor<'a'>
+      <Link
           className={cx(classes.anchor, { [classes.mainLinkActive]: router.pathname === link.link })}
           key={link.label}
           href={link.link}
-          size="sm"
       >
         {link.label}
-      </Anchor>
+      </Link>
   ));
 
     return (

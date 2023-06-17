@@ -36,6 +36,8 @@ export default createStyles((theme) => ({
     lineHeight: 1,
     color: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[6],
     fontWeight: 700,
+    fontSize: '14px',
+    textDecoration: "none",
     transition: 'border-color 100ms ease, color 100ms ease',
     '&:hover': {
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,

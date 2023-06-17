@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import NextApp, { AppProps, AppContext } from "next/app";
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next"
 import Head from "next/head";
 import {
   MantineProvider,
@@ -11,21 +11,30 @@ import {
 import { Notifications } from "@mantine/notifications";
 import { Footer } from "../components/Footer/Footer";
 import { CustomHeader } from "../components/Header/Header";
+import { RouterTransition } from "../components/RouterTransition";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
-  const [colorScheme, setColorScheme] = useState<ColorScheme>(
-    props.colorScheme
-  );
+  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
 
-  const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme =
-      value || (colorScheme === "dark" ? "light" : "dark");
+  const toggleColorScheme = () => {
+    const nextColorScheme = colorScheme === "dark" ? "light" : "dark";
     setColorScheme(nextColorScheme);
     setCookie("valhalla-color-scheme", nextColorScheme, {
       maxAge: 60 * 60 * 24 * 30,
     });
   };
+
+  useEffect(() => {
+    const cookieColorScheme = getCookie("valhalla-color-scheme");
+
+    if (cookieColorScheme) {
+      setColorScheme(cookieColorScheme as ColorScheme);
+    } else {
+      const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      setColorScheme(darkModeQuery.matches ? "dark" : "light");
+    }
+  }, []);
 
   const mainLinksArray = [
     { label: "Home", link: "/" },
@@ -68,6 +77,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           withGlobalStyles
           withNormalizeCSS
         >
+          <RouterTransition />
           <AppShell
             header={<CustomHeader mainLinks={mainLinksArray} />}
             footer={<Footer footerLinks={footerLinksArray} />}
@@ -82,23 +92,3 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   );
 }
 
-App.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await NextApp.getInitialProps(appContext);
-  const cookieColorScheme = getCookie("valhalla-color-scheme", appContext.ctx);
-  let colorScheme;
-
-  if (cookieColorScheme) {
-    colorScheme = cookieColorScheme;
-  } else {
-    colorScheme = appContext.ctx.req?.headers["user-agent"]?.includes(
-        "DarkMode"
-    )
-      ? "dark"
-      : "light";
-  }
-
-  return {
-    ...appProps,
-    colorScheme,
-  };
-};
