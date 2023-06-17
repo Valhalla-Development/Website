@@ -211,13 +211,7 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
         }
     ];
 
-    const info = {
-        items: posts.length
-        // pages:
-    };
-
     res.status(200).json({
-        posts,
-        ...info
+        posts
     });
 }
