@@ -32,7 +32,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                     }}
                 >
                     {currentChunk.map((post, index) => (
-                        <Grid.Col xs={4} key={index}>
+                        <Grid.Col xs={3} key={index}>
                             <ArticleCard image={post.image} link={post.link} title={post.title} description={post.description} author={post.author} rating={post.rating} />
                         </Grid.Col>
                     ))}
