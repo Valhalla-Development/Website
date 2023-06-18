@@ -6,8 +6,39 @@ import { ModalsProvider } from '@mantine/modals';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useState } from 'react';
 import useStyles from './Blog.styles';
-
 import { ArticleCard } from '../../components/ArticleCard';
+
+type APIResponse = {
+    posts: {
+        image: string;
+        link: string;
+        title: string;
+        description: string;
+        author: {
+            name: string;
+            image: string;
+        };
+        rating: string;
+    }[];
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    blog: APIResponse;
+}> = async (context) => {
+    const { host } = context.req.headers;
+    const protocol = host?.includes('localhost') ? 'http' : 'https';
+    const url = `${protocol}://${host}/api/blog`;
+
+    const data: APIResponse = await fetch(url)
+        .then(async (res) => res.json())
+        .catch((err) => console.log(err));
+
+    return {
+        props: {
+            blog: data,
+        },
+    };
+};
 
 export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
@@ -122,35 +153,3 @@ function InputWithButton(props: TextInputProps) {
         />
     );
 }
-
-type APIResponse = {
-    posts: {
-        image: string;
-        link: string;
-        title: string;
-        description: string;
-        author: {
-            name: string;
-            image: string;
-        };
-        rating: string;
-    }[];
-};
-
-export const getServerSideProps: GetServerSideProps<{
-    blog: APIResponse;
-}> = async (context) => {
-    const { host } = context.req.headers;
-    const protocol = host?.includes('localhost') ? 'http' : 'https';
-    const url = `${protocol}://${host}/api/blog`;
-
-    const data: APIResponse = await fetch(url)
-        .then(async (res) => res.json())
-        .catch((err) => console.log(err));
-
-    return {
-        props: {
-            blog: data,
-        },
-    };
-};
