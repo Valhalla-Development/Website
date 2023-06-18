@@ -16,6 +16,37 @@ const Icons = {
     IconGlobe,
 };
 
+export const getServerSideProps: GetServerSideProps<{
+    features: {
+        title: string;
+        description: string;
+        icon: string;
+    }[];
+}> = async () => ({
+    props: {
+        features: [
+            {
+                title: 'API',
+                description:
+                    'Our robust API serves as the backbone of our services, enabling seamless integration and interaction across platforms. It has been designed to be both flexible and scalable, accommodating the needs of a wide range of applications.',
+                icon: 'IconServer',
+            },
+            {
+                title: 'Discord Bots',
+                description:
+                    'Built with the community in mind, our Discord Bots enhances user experience on Discord servers. They provide a range of features and functionalities that help server administrators manage their communities more effectively.',
+                icon: 'IconUser',
+            },
+            {
+                title: 'Website',
+                description:
+                    'Our website is the gateway to our services and products. It\'s designed to be user-friendly and informative, offering visitors an insight into our operations, our team, and our commitment to excellence.',
+                icon: 'IconGlobe',
+            },
+        ],
+    },
+});
+
 export default function FeaturesCards({ features }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes, theme } = useStyles();
     const feature = features.map((feat) => {
@@ -64,34 +95,3 @@ export default function FeaturesCards({ features }: InferGetServerSidePropsType<
         </>
     );
 }
-
-export const getServerSideProps: GetServerSideProps<{
-    features: {
-        title: string;
-        description: string;
-        icon: string;
-    }[];
-}> = async () => ({
-    props: {
-        features: [
-            {
-                title: 'API',
-                description:
-                        'Our robust API serves as the backbone of our services, enabling seamless integration and interaction across platforms. It has been designed to be both flexible and scalable, accommodating the needs of a wide range of applications.',
-                icon: 'IconServer',
-            },
-            {
-                title: 'Discord Bots',
-                description:
-                        'Built with the community in mind, our Discord Bots enhances user experience on Discord servers. They provide a range of features and functionalities that help server administrators manage their communities more effectively.',
-                icon: 'IconUser',
-            },
-            {
-                title: 'Website',
-                description:
-                        'Our website is the gateway to our services and products. It\'s designed to be user-friendly and informative, offering visitors an insight into our operations, our team, and our commitment to excellence.',
-                icon: 'IconGlobe',
-            },
-        ],
-    },
-});
