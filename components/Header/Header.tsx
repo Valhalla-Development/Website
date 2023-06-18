@@ -96,13 +96,13 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
     const iconColor = colorScheme === "dark" ? "white" : "black";
 
     const mainItems = mainLinks.map((item) => (
-        <Anchor<"a"> href={item.link} key={item.label} className={cx(classes.mainLink, { [classes.mainLinkActive]: router.pathname === item.link })}>
+        <Link href={item.link} key={item.label} className={cx(classes.mainLink, { [classes.mainLinkActive]: router.pathname === item.link })}>
             {item.label}
-        </Anchor>
+        </Link>
     ));
 
     const links = data.map((item) => (
-        <Anchor<"a"> href={item.link} key={item.title} className={classes.link}>
+        <Link href={item.link} key={item.title} className={classes.link}>
             <UnstyledButton className={classes.subLink} key={item.title}>
                 <Group noWrap align="flex-start">
                     <ThemeIcon size={34} variant="default" radius="md">
@@ -118,7 +118,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                     </div>
                 </Group>
             </UnstyledButton>
-        </Anchor>
+        </Link>
     ));
 
     const icons = (

@@ -40,6 +40,7 @@ export default createStyles((theme) => ({
         fontWeight: 700,
         borderBottom: `${rem(2)} solid transparent`,
         transition: "border-color 100ms ease, color 100ms ease",
+        textDecoration: "none",
 
         "&:hover": {
             color: theme.colorScheme === "dark" ? theme.white : theme.black,
