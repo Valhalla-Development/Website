@@ -18,16 +18,16 @@ const Icons = {
 
 export default function FeaturesCards({ features }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes, theme } = useStyles();
-    const feature = features.map((feature) => {
-        const Icon = Icons[feature.icon as keyof typeof Icons] as ComponentType<TablerIconsProps>;
+    const feature = features.map((feat) => {
+        const Icon = Icons[feat.icon as keyof typeof Icons] as ComponentType<TablerIconsProps>;
         return (
-            <Card key={feature.title} shadow="md" radius="md" className={classes.card} padding="xl">
+            <Card key={feat.title} shadow="md" radius="md" className={classes.card} padding="xl">
                 <Icon size={rem(50)} stroke={2} color={theme.fn.primaryColor()} />
                 <Text fz="lg" fw={500} className={classes.cardTitle} mt="md">
-                    {feature.title}
+                    {feat.title}
                 </Text>
                 <Text fz="sm" c="dimmed" mt="sm">
-                    {feature.description}
+                    {feat.description}
                 </Text>
             </Card>
         );
