@@ -22,6 +22,18 @@ type APIResponse = {
     }[];
 };
 
+type Post = {
+    image: string;
+    link: string;
+    title: string;
+    description: string;
+    author: {
+        name: string;
+        image: string;
+    };
+    rating: string;
+};
+
 export const getServerSideProps: GetServerSideProps<{
     blog: APIResponse;
 }> = async (context) => {
@@ -63,7 +75,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
     const [posts, setPosts] = useState(blog.posts);
     const [activePage, setPage] = useState(1);
 
-    const chunk = (arr: any[], size: number) => Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
+    const chunk = (arr: Post[], size: number) => Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
     const arrChunks = chunk(posts, 4);
 
     const currentChunk = arrChunks[activePage - 1];
