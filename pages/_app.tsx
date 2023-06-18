@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { AppProps } from 'next/app';
+import { useState } from 'react';
+import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import {
@@ -15,7 +15,7 @@ import { RouterTransition } from '../components/RouterTransition';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const { Component, pageProps } = props;
-    const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+    const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
     const toggleColorScheme = () => {
         const nextColorScheme = colorScheme === 'dark' ? 'light' : 'dark';
@@ -24,17 +24,6 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             maxAge: 60 * 60 * 24 * 30,
         });
     };
-
-    useEffect(() => {
-        const cookieColorScheme = getCookie('valhalla-color-scheme');
-
-        if (cookieColorScheme) {
-            setColorScheme(cookieColorScheme as ColorScheme);
-        } else {
-            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            setColorScheme(darkModeQuery.matches ? 'dark' : 'light');
-        }
-    }, []);
 
     const mainLinksArray = [
         { label: 'Home', link: '/' },
@@ -49,14 +38,6 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         { label: 'Privacy', link: '/privacy-policy' },
         { label: 'Terms', link: '/terms-of-service ' },
     ];
-
-    useEffect(() => {
-        if (!getCookie('valhalla-color-scheme')) {
-            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            const initialColorScheme = darkModeQuery.matches ? 'dark' : 'light';
-            setColorScheme(initialColorScheme);
-        }
-    }, []);
 
     return (
         <>
@@ -91,3 +72,20 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         </>
     );
 }
+
+App.getInitialProps = async (appContext: AppContext) => {
+    const appProps = await NextApp.getInitialProps(appContext);
+    const cookieColorScheme = getCookie('valhalla-color-scheme', appContext.ctx);
+    let colorScheme;
+
+    if (cookieColorScheme) {
+        colorScheme = cookieColorScheme;
+    } else {
+        colorScheme = 'dark';
+    }
+
+    return {
+        ...appProps,
+        colorScheme,
+    };
+};
