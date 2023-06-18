@@ -40,6 +40,24 @@ export const getServerSideProps: GetServerSideProps<{
     };
 };
 
+function InputWithButton(props: TextInputProps) {
+    return (
+        <TextInput
+            icon={<IconSearch size="1.1rem" stroke={1.5} />}
+            radius="xl"
+            size="md"
+            // rightSection={
+            //     <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
+            //         {theme.dir === "ltr" ? <IconArrowRight size="1.1rem" stroke={1.5} /> : <IconArrowLeft size="1.1rem" stroke={1.5} />}
+            //     </ActionIcon>
+            // }
+            placeholder="Search questions"
+            rightSectionWidth={42}
+            {...props}
+        />
+    );
+}
+
 export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
     const [posts, setPosts] = useState(blog.posts);
@@ -133,23 +151,5 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                 />
             </Container>
         </div>
-    );
-}
-
-function InputWithButton(props: TextInputProps) {
-    return (
-        <TextInput
-            icon={<IconSearch size="1.1rem" stroke={1.5} />}
-            radius="xl"
-            size="md"
-            // rightSection={
-            //     <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
-            //         {theme.dir === "ltr" ? <IconArrowRight size="1.1rem" stroke={1.5} /> : <IconArrowLeft size="1.1rem" stroke={1.5} />}
-            //     </ActionIcon>
-            // }
-            placeholder="Search questions"
-            rightSectionWidth={42}
-            {...props}
-        />
     );
 }
