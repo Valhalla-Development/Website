@@ -1,6 +1,8 @@
-import { Title, Text, Grid, Col, rem, Container } from "@mantine/core";
+import {
+    Title, Text, Grid, Col, rem, Container,
+} from '@mantine/core';
 
-import useStyles from "./Terms-of-Service.styles";
+import useStyles from './Terms-of-Service.styles';
 
 export default function termsOfService() {
     const { classes } = useStyles();

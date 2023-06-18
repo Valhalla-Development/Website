@@ -1,12 +1,13 @@
-import { Grid, Container, TextInput, TextInputProps, ActionIcon, useMantineTheme, Pagination } from "@mantine/core";
-import { IconSearch, IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
-import { ModalsProvider } from "@mantine/modals";
-import useStyles from "./Blog.styles";
+import {
+    Grid, Container, TextInput, TextInputProps, ActionIcon, useMantineTheme, Pagination,
+} from '@mantine/core';
+import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
+import { ModalsProvider } from '@mantine/modals';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { useState } from 'react';
+import useStyles from './Blog.styles';
 
-import { ArticleCard } from "../../components/ArticleCard";
-
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useState } from "react";
+import { ArticleCard } from '../../components/ArticleCard';
 
 export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
@@ -25,7 +26,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                     <InputWithButton
                         placeholder="Search articles"
                         style={{
-                            justifyContent: "center"
+                            justifyContent: 'center',
                         }}
                         onChange={(event) => {
                             setPage(1);
@@ -55,11 +56,11 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                                 // Sort by highest match
                                 if (titleMatchA !== titleMatchB) {
                                     return titleMatchB ? 1 : -1;
-                                } else if (descriptionMatchA !== descriptionMatchB) {
+                                } if (descriptionMatchA !== descriptionMatchB) {
                                     return descriptionMatchB ? 1 : -1;
-                                } else if (authorMatchA !== authorMatchB) {
+                                } if (authorMatchA !== authorMatchB) {
                                     return authorMatchB ? 1 : -1;
-                                } else if (reviewMatchA !== reviewMatchB) {
+                                } if (reviewMatchA !== reviewMatchB) {
                                     return reviewMatchB ? 1 : -1;
                                 }
 
@@ -72,22 +73,22 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                     />
                 </Container>
                 <ModalsProvider>
-                <Grid
-                    mt={40}
-                    style={{
-                        justifyContent: "center"
-                    }}
-                >
-                    {currentChunk?.length ? (
-                        currentChunk.map((post, index) => (
-                            <Grid.Col xs={3} key={index}>
-                                <ArticleCard image={post.image} link={post.link} title={post.title} description={post.description} author={post.author} rating={post.rating} />
-                            </Grid.Col>
-                        ))
-                    ) : (
-                        <p>No results found</p>
-                    )}
-                </Grid>
+                    <Grid
+                        mt={40}
+                        style={{
+                            justifyContent: 'center',
+                        }}
+                    >
+                        {currentChunk?.length ? (
+                            currentChunk.map((post, index) => (
+                                <Grid.Col xs={3} key={index}>
+                                    <ArticleCard image={post.image} link={post.link} title={post.title} description={post.description} author={post.author} rating={post.rating} />
+                                </Grid.Col>
+                            ))
+                        ) : (
+                            <p>No results found</p>
+                        )}
+                    </Grid>
                 </ModalsProvider>
                 <Pagination
                     mt={50}
@@ -96,7 +97,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                     total={Math.floor(posts.length / 4) + 1}
                     align="center"
                     style={{
-                        justifyContent: "center"
+                        justifyContent: 'center',
                     }}
                 />
             </Container>
@@ -141,19 +142,17 @@ type APIResponse = {
 export const getServerSideProps: GetServerSideProps<{
     blog: APIResponse;
 }> = async (context) => {
-    const host = context.req.headers.host;
-    const protocol = host?.includes("localhost") ? "http" : "https";
+    const { host } = context.req.headers;
+    const protocol = host?.includes('localhost') ? 'http' : 'https';
     const url = `${protocol}://${host}/api/blog`;
 
     const data: APIResponse = await fetch(url)
-        .then(async (res) => {
-            return res.json();
-        })
+        .then(async (res) => res.json())
         .catch((err) => console.log(err));
 
     return {
         props: {
-            blog: data
-        }
+            blog: data,
+        },
     };
 };

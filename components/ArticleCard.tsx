@@ -1,34 +1,38 @@
-import { IconShare, IconBrandFacebook, IconBrandTwitter, IconCopy, IconCheck } from "@tabler/icons-react";
-import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover, Button } from "@mantine/core";
-import { useState } from "react";
-import { useClipboard } from "@mantine/hooks";
-import { notifications } from "@mantine/notifications";
+import {
+    IconShare, IconBrandFacebook, IconBrandTwitter, IconCopy, IconCheck,
+} from '@tabler/icons-react';
+import {
+    Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover, Button,
+} from '@mantine/core';
+import { useState } from 'react';
+import { useClipboard } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
 import { modals } from '@mantine/modals';
 
 const useStyles = createStyles((theme) => ({
     card: {
-        position: "relative",
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white
+        position: 'relative',
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
     },
 
     rating: {
-        position: "absolute",
+        position: 'absolute',
         top: theme.spacing.xs,
         right: rem(12),
-        pointerEvents: "none"
+        pointerEvents: 'none',
     },
 
     title: {
-        display: "block",
+        display: 'block',
         marginTop: theme.spacing.md,
-        marginBottom: rem(5)
+        marginBottom: rem(5),
     },
 
     action: {
-        backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
         ...theme.fn.hover({
-            backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]
-        })
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
+        }),
     },
 
     iconButtonContainer: {
@@ -46,8 +50,8 @@ const useStyles = createStyles((theme) => ({
     },
 
     footer: {
-        marginTop: theme.spacing.md
-    }
+        marginTop: theme.spacing.md,
+    },
 }));
 
 interface ArticleCardProps {
@@ -62,15 +66,17 @@ interface ArticleCardProps {
     };
 }
 
-export function ArticleCard({ className, image, link, title, description, author, rating, ...others }: ArticleCardProps & Omit<React.ComponentPropsWithoutRef<"div">, keyof ArticleCardProps>) {
+export function ArticleCard({
+    className, image, link, title, description, author, rating, ...others
+}: ArticleCardProps & Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const { classes, cx, theme } = useStyles();
-    const linkProps = { href: link, target: "_blank", rel: "noopener noreferrer" };
+    const linkProps = { href: link, target: '_blank', rel: 'noopener noreferrer' };
     const clipboard = useClipboard({ timeout: 500 });
 
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
 
     const openModal = (platform: string) => modals.openConfirmModal({
-        title: "Are you sure?",
+        title: 'Are you sure?',
         children: (
             <Text size="sm">
                 This action will open a new tab to {platform}.
@@ -78,7 +84,7 @@ export function ArticleCard({ className, image, link, title, description, author
         ),
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => window.open(`https://twitter.com/intent/tweet?text=${link}`),
-    })
+    });
 
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
@@ -88,7 +94,7 @@ export function ArticleCard({ className, image, link, title, description, author
                 </a>
             </Card.Section>
 
-            <Badge className={classes.rating} variant="gradient" gradient={{ from: "yellow", to: "red" }}>
+            <Badge className={classes.rating} variant="gradient" gradient={{ from: 'yellow', to: 'red' }}>
                 {rating}
             </Badge>
 
@@ -136,15 +142,15 @@ export function ArticleCard({ className, image, link, title, description, author
                                     className={classes.iconButton}
                                     color={clipboard.copied ? 'teal' : 'blue'}
                                     onClick={() => {
-                                        clipboard.copy(link)
+                                        clipboard.copy(link);
 
                                         notifications.show({
                                             title: 'Copied to clipboard',
                                             message: '',
                                             color: 'teal',
                                             icon: <IconCheck size="1rem" />,
-                                            autoClose: 1500
-                                        })
+                                            autoClose: 1500,
+                                        });
                                     }}
                                 >
                                     <IconCopy size="1.25rem" />

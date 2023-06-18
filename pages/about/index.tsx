@@ -1,15 +1,19 @@
-import { Badge, Group, Title, Text, Card, SimpleGrid, Container, rem } from "@mantine/core";
-import { IconServer, IconUser, IconGlobe, TablerIconsProps } from "@tabler/icons-react";
-import Head from "next/head";
-import { ComponentType } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import {
+    Badge, Group, Title, Text, Card, SimpleGrid, Container, rem,
+} from '@mantine/core';
+import {
+    IconServer, IconUser, IconGlobe, TablerIconsProps,
+} from '@tabler/icons-react';
+import Head from 'next/head';
+import { ComponentType } from 'react';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import useStyles from "./About.styles";
+import useStyles from './About.styles';
 
 const Icons = {
     IconServer,
     IconUser,
-    IconGlobe
+    IconGlobe,
 };
 
 export default function FeaturesCards({ features }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -53,7 +57,7 @@ export default function FeaturesCards({ features }: InferGetServerSidePropsType<
                     </Text>
                 </div>
 
-                <SimpleGrid cols={3} spacing="xl" mt={50} breakpoints={[{ maxWidth: "md", cols: 1 }]}>
+                <SimpleGrid cols={3} spacing="xl" mt={50} breakpoints={[{ maxWidth: 'md', cols: 1 }]}>
                     {feature}
                 </SimpleGrid>
             </Container>
@@ -67,29 +71,27 @@ export const getServerSideProps: GetServerSideProps<{
         description: string;
         icon: string;
     }[];
-}> = async () => {
-    return {
-        props: {
-            features: [
-                {
-                    title: "API",
-                    description:
-                        "Our robust API serves as the backbone of our services, enabling seamless integration and interaction across platforms. It has been designed to be both flexible and scalable, accommodating the needs of a wide range of applications.",
-                    icon: "IconServer"
-                },
-                {
-                    title: "Discord Bots",
-                    description:
-                        "Built with the community in mind, our Discord Bots enhances user experience on Discord servers. They provide a range of features and functionalities that help server administrators manage their communities more effectively.",
-                    icon: "IconUser"
-                },
-                {
-                    title: "Website",
-                    description:
-                        "Our website is the gateway to our services and products. It's designed to be user-friendly and informative, offering visitors an insight into our operations, our team, and our commitment to excellence.",
-                    icon: "IconGlobe"
-                }
-            ]
-        }
-    };
-};
+}> = async () => ({
+    props: {
+        features: [
+            {
+                title: 'API',
+                description:
+                        'Our robust API serves as the backbone of our services, enabling seamless integration and interaction across platforms. It has been designed to be both flexible and scalable, accommodating the needs of a wide range of applications.',
+                icon: 'IconServer',
+            },
+            {
+                title: 'Discord Bots',
+                description:
+                        'Built with the community in mind, our Discord Bots enhances user experience on Discord servers. They provide a range of features and functionalities that help server administrators manage their communities more effectively.',
+                icon: 'IconUser',
+            },
+            {
+                title: 'Website',
+                description:
+                        'Our website is the gateway to our services and products. It\'s designed to be user-friendly and informative, offering visitors an insight into our operations, our team, and our commitment to excellence.',
+                icon: 'IconGlobe',
+            },
+        ],
+    },
+});

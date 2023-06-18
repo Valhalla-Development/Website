@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, ReactNode } from 'react';
 import {
     Header,
     Container,
@@ -20,15 +20,16 @@ import {
     SimpleGrid,
     UnstyledButton,
     ThemeIcon,
-    rem
-} from "@mantine/core";
-import useStyles, { headerHeight } from "./Header.styles";
-import { useDisclosure } from "@mantine/hooks";
-import { IconUser, IconBrandDiscord, IconBrandGithub, IconFileCode, IconChevronDown, IconServer } from "@tabler/icons-react";
-import { useRouter } from "next/router";
-import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
-import { ReactNode } from "react";
-import Link from "next/link";
+    rem,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import {
+    IconUser, IconBrandDiscord, IconBrandGithub, IconFileCode, IconChevronDown, IconServer,
+} from '@tabler/icons-react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
+import useStyles, { headerHeight } from './Header.styles';
 
 interface IconProps extends ActionIconProps {
     label: string;
@@ -36,7 +37,9 @@ interface IconProps extends ActionIconProps {
     href: string;
 }
 
-const Icon = ({ label, icon, href, ...others }: IconProps) => (
+const Icon = ({
+    label, icon, href, ...others
+}: IconProps) => (
     <Tooltip label={label}>
         <ActionIcon variant="transparent" {...others}>
             <a href={href} target="_blank" rel="noreferrer">
@@ -58,34 +61,34 @@ interface CustomHeaderProps {
 const data = [
     {
         icon: IconServer,
-        title: "API",
-        description: "Valhalla Development API",
-        link: "https://api.valhalladev.org/"
+        title: 'API',
+        description: 'Valhalla Development API',
+        link: 'https://api.valhalladev.org/',
     },
     {
         icon: IconFileCode,
-        title: "Paste",
-        description: "Hastebin clone.",
-        link: "https://paste.valhalladev.org/"
+        title: 'Paste',
+        description: 'Hastebin clone.',
+        link: 'https://paste.valhalladev.org/',
     },
     {
         icon: IconUser,
-        title: "Ragnarok",
-        description: "Multi-purpose Discord Bot",
-        link: "/ragnarok"
+        title: 'Ragnarok',
+        description: 'Multi-purpose Discord Bot',
+        link: '/ragnarok',
     },
     {
         icon: IconUser,
-        title: "Wilbur",
-        description: "Fun Discord Bot",
-        link: "/wilbur"
+        title: 'Wilbur',
+        description: 'Fun Discord Bot',
+        link: '/wilbur',
     },
     {
         icon: IconUser,
-        title: "The Seer",
-        description: "A Discord Bot that monitors other Bots",
-        link: "/seer"
-    }
+        title: 'The Seer',
+        description: 'A Discord Bot that monitors other Bots',
+        link: '/seer',
+    },
 ];
 
 export function CustomHeader({ mainLinks }: CustomHeaderProps) {
@@ -93,7 +96,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
     const [opened, { toggle }] = useDisclosure(false);
     const { classes, cx, theme } = useStyles();
     const { colorScheme } = useMantineColorScheme();
-    const iconColor = colorScheme === "dark" ? "white" : "black";
+    const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
     const mainItems = mainLinks.map((item) => (
         <Link href={item.link} key={item.label} className={cx(classes.mainLink, { [classes.mainLinkActive]: router.pathname === item.link })}>
@@ -149,10 +152,10 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
             }
         };
 
-        window.addEventListener("resize", handleResize);
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            window.removeEventListener("resize", handleResize);
+            window.removeEventListener('resize', handleResize);
         };
     }, [opened, toggle]);
 
@@ -177,12 +180,12 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                                 </a>
                             </HoverCard.Target>
 
-                            <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
+                            <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
                                 <Group position="apart" px="md">
                                     <Text>Services</Text>
                                 </Group>
 
-                                <Divider my="sm" mx="-md" color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"} />
+                                <Divider my="sm" mx="-md" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
                                 <SimpleGrid cols={2} spacing={0}>
                                     {links}
