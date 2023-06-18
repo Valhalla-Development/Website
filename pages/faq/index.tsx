@@ -10,6 +10,30 @@ type Question = {
     id: string;
 };
 
+export const getServerSideProps: GetServerSideProps<{
+    questions: Question[];
+}> = async () => ({
+    props: {
+        questions: [
+            {
+                question: 'Are your bots open source?',
+                answer: 'Yes, both Seer and Wilbur are open source. We also provide hosting services for these bots for your convenience!',
+                id: 'open-source',
+            },
+            {
+                question: 'How do I gain access to the API?',
+                answer: 'To gain access to our API, please join our <a href="https://discord.gg/Q3ZhdRJ" target="_blank" rel="noopener noreferrer">Discord Server</a> and raise a ticket. We will assist you in creating an API key.',
+                id: 'api-access',
+            },
+            {
+                question: 'Does using the API incur any costs?',
+                answer: 'No, our API is completely free to use!',
+                id: 'api-costs',
+            },
+        ],
+    },
+});
+
 export default function Faq({ questions }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
     return (
@@ -40,27 +64,3 @@ export default function Faq({ questions }: InferGetServerSidePropsType<typeof ge
         </div>
     );
 }
-
-export const getServerSideProps: GetServerSideProps<{
-    questions: Question[];
-}> = async () => ({
-    props: {
-        questions: [
-            {
-                question: 'Are your bots open source?',
-                answer: 'Yes, both Seer and Wilbur are open source. We also provide hosting services for these bots for your convenience!',
-                id: 'open-source',
-            },
-            {
-                question: 'How do I gain access to the API?',
-                answer: 'To gain access to our API, please join our <a href="https://discord.gg/Q3ZhdRJ" target="_blank" rel="noopener noreferrer">Discord Server</a> and raise a ticket. We will assist you in creating an API key.',
-                id: 'api-access',
-            },
-            {
-                question: 'Does using the API incur any costs?',
-                answer: 'No, our API is completely free to use!',
-                id: 'api-costs',
-            },
-        ],
-    },
-});
