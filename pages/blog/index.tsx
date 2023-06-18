@@ -1,7 +1,7 @@
 import {
-    Grid, Container, TextInput, TextInputProps, ActionIcon, useMantineTheme, Pagination,
+    Grid, Container, TextInput, TextInputProps, Pagination,
 } from '@mantine/core';
-import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
+import { IconSearch } from '@tabler/icons-react';
 import { ModalsProvider } from '@mantine/modals';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useState } from 'react';
@@ -106,8 +106,6 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
 }
 
 function InputWithButton(props: TextInputProps) {
-    const theme = useMantineTheme();
-
     return (
         <TextInput
             icon={<IconSearch size="1.1rem" stroke={1.5} />}

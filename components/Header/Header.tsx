@@ -2,7 +2,6 @@ import { useEffect, ReactNode } from 'react';
 import {
     Header,
     Container,
-    Anchor,
     Group,
     Burger,
     Image,

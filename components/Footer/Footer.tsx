@@ -1,6 +1,5 @@
 import {
-    Container, Group, ActionIcon, Tooltip, ActionIconProps, useMantineColorScheme, Anchor,
-    Image,
+    Container, Group, ActionIcon, Tooltip, ActionIconProps, useMantineColorScheme, Image,
 } from '@mantine/core';
 import { IconBrandDiscord, IconBrandGithub } from '@tabler/icons-react';
 import Link from 'next/link';

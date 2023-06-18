@@ -4,7 +4,7 @@ import {
 import {
     Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover, Button,
 } from '@mantine/core';
-import { useState } from 'react';
+import { useState, ComponentPropsWithoutRef } from 'react';
 import { useClipboard } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { modals } from '@mantine/modals';
@@ -68,8 +68,8 @@ interface ArticleCardProps {
 
 export function ArticleCard({
     className, image, link, title, description, author, rating, ...others
-}: ArticleCardProps & Omit<React.ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
-    const { classes, cx, theme } = useStyles();
+}: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
+    const { classes, cx } = useStyles();
     const linkProps = { href: link, target: '_blank', rel: 'noopener noreferrer' };
     const clipboard = useClipboard({ timeout: 500 });
 

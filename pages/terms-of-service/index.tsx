@@ -1,5 +1,5 @@
 import {
-    Title, Text, Grid, Col, rem, Container,
+    Title, Text, Grid, Col, Container,
 } from '@mantine/core';
 
 import useStyles from './Terms-of-Service.styles';

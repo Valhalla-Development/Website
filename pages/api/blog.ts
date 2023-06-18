@@ -1,17 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-interface ArticleCardProps {
-    image: string;
-    link: string;
-    title: string;
-    description: string;
-    rating: string;
-    author: {
-        name: string;
-        image: string;
-    };
-}
-
 export default function hander(req: NextApiRequest, res: NextApiResponse) {
     const posts = [
         {
