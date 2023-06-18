@@ -1,5 +1,6 @@
 import { Grid, Container, TextInput, TextInputProps, ActionIcon, useMantineTheme, Pagination } from "@mantine/core";
 import { IconSearch, IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
+import { ModalsProvider } from "@mantine/modals";
 import useStyles from "./Blog.styles";
 
 import { ArticleCard } from "../../components/ArticleCard";
@@ -70,6 +71,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                         }}
                     />
                 </Container>
+                <ModalsProvider>
                 <Grid
                     mt={40}
                     style={{
@@ -86,6 +88,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                         <p>No results found</p>
                     )}
                 </Grid>
+                </ModalsProvider>
                 <Pagination
                     mt={50}
                     value={activePage}

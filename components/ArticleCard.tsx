@@ -1,8 +1,9 @@
 import { IconShare, IconBrandFacebook, IconBrandTwitter, IconCopy, IconCheck } from "@tabler/icons-react";
 import { Card, Image, Text, ActionIcon, Badge, Group, Center, Avatar, createStyles, rem, Popover, Button } from "@mantine/core";
 import { useState } from "react";
-import { useClipboard } from '@mantine/hooks';
-import { notifications } from '@mantine/notifications';
+import { useClipboard } from "@mantine/hooks";
+import { notifications } from "@mantine/notifications";
+import { modals } from '@mantine/modals';
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -68,6 +69,17 @@ export function ArticleCard({ className, image, link, title, description, author
 
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
 
+    const openModal = (platform: string) => modals.openConfirmModal({
+        title: "Are you sure?",
+        children: (
+            <Text size="sm">
+                This action will open a new tab to {platform}.
+            </Text>
+        ),
+        labels: { confirm: 'Confirm', cancel: 'Cancel' },
+        onConfirm: () => window.open(`https://twitter.com/intent/tweet?text=${link}`),
+    })
+
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
             <Card.Section>
@@ -106,22 +118,16 @@ export function ArticleCard({ className, image, link, title, description, author
                         <Popover.Dropdown>
                             <div className={classes.iconButtonContainer}>
                                 <Button
-                                    component="a"
-                                    href={`https://twitter.com/intent/tweet?text=${link}`}
                                     variant="outline"
                                     className={classes.iconButton}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    onClick={() => openModal('Twitter')}
                                 >
                                     <IconBrandTwitter size="1.25rem" />
                                 </Button>
                                 <Button
-                                    component="a"
-                                    href={`https://www.facebook.com/sharer/sharer.php?u=${link}`}
                                     variant="outline"
                                     className={classes.iconButton}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    onClick={() => openModal('Facebook')}
                                 >
                                     <IconBrandFacebook size="1.25rem" />
                                 </Button>
