@@ -1,26 +1,10 @@
-import {
-    Grid, Container, TextInput, TextInputProps, Pagination,
-} from '@mantine/core';
-import { IconSearch } from '@tabler/icons-react';
-import { ModalsProvider } from '@mantine/modals';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useState } from 'react';
-import useStyles from './Blog.styles';
-import { ArticleCard } from '../../components/ArticleCard';
-
-type APIResponse = {
-    posts: {
-        image: string;
-        link: string;
-        title: string;
-        description: string;
-        author: {
-            name: string;
-            image: string;
-        };
-        rating: string;
-    }[];
-};
+import { Grid, Container, TextInput, TextInputProps, Pagination } from "@mantine/core";
+import { IconSearch } from "@tabler/icons-react";
+import { ModalsProvider } from "@mantine/modals";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { useState } from "react";
+import useStyles from "./Blog.styles";
+import { ArticleCard } from "../../components/ArticleCard";
 
 type Post = {
     image: string;
@@ -34,11 +18,15 @@ type Post = {
     rating: string;
 };
 
+type APIResponse = {
+    posts: Post[];
+};
+
 export const getServerSideProps: GetServerSideProps<{
     blog: APIResponse;
 }> = async (context) => {
     const { host } = context.req.headers;
-    const protocol = host?.includes('localhost') ? 'http' : 'https';
+    const protocol = host?.includes("localhost") ? "http" : "https";
     const url = `${protocol}://${host}/api/blog`;
 
     const data: APIResponse = await fetch(url)
@@ -47,8 +35,8 @@ export const getServerSideProps: GetServerSideProps<{
 
     return {
         props: {
-            blog: data,
-        },
+            blog: data
+        }
     };
 };
 
@@ -87,7 +75,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                     <InputWithButton
                         placeholder="Search articles"
                         style={{
-                            justifyContent: 'center',
+                            justifyContent: "center"
                         }}
                         onChange={(event) => {
                             setPage(1);
@@ -117,11 +105,14 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                                 // Sort by highest match
                                 if (titleMatchA !== titleMatchB) {
                                     return titleMatchB ? 1 : -1;
-                                } if (descriptionMatchA !== descriptionMatchB) {
+                                }
+                                if (descriptionMatchA !== descriptionMatchB) {
                                     return descriptionMatchB ? 1 : -1;
-                                } if (authorMatchA !== authorMatchB) {
+                                }
+                                if (authorMatchA !== authorMatchB) {
                                     return authorMatchB ? 1 : -1;
-                                } if (reviewMatchA !== reviewMatchB) {
+                                }
+                                if (reviewMatchA !== reviewMatchB) {
                                     return reviewMatchB ? 1 : -1;
                                 }
 
@@ -137,7 +128,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                     <Grid
                         mt={40}
                         style={{
-                            justifyContent: 'center',
+                            justifyContent: "center"
                         }}
                     >
                         {currentChunk?.length ? (
@@ -158,7 +149,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                     total={Math.floor(posts.length / 4) + 1}
                     align="center"
                     style={{
-                        justifyContent: 'center',
+                        justifyContent: "center"
                     }}
                 />
             </Container>
