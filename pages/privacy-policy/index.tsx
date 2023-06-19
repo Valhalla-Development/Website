@@ -1,6 +1,8 @@
-import { Title, Text, Grid, Col, rem, Container } from "@mantine/core";
+import {
+    Title, Text, Grid, Col, Container,
+} from '@mantine/core';
 
-import useStyles from "./Privacy-Policy.styles";
+import useStyles from './Privacy-Policy.styles';
 
 export default function privacyPolicy() {
     const { classes } = useStyles();

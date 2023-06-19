@@ -1,16 +1,16 @@
 import {
-  Avatar,
-  Text,
-  Paper,
-  Modal,
-  Button,
-  Group,
-  Title,
-  TextInput,
-  Textarea,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import { useForm } from "@mantine/form";
+    Avatar,
+    Text,
+    Paper,
+    Modal,
+    Button,
+    Group,
+    Title,
+    TextInput,
+    Textarea,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { useForm } from '@mantine/form';
 
 interface UserInfoActionProps {
   avatar: string;
@@ -24,123 +24,123 @@ function generateMailTo({ email, subject, message }: {
   subject: string;
   message: string;
 }) {
-  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
+    return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
 }
 
 export function UserInfoAction({
-  avatar,
-  name,
-  email,
-  job,
+    avatar,
+    name,
+    email,
+    job,
 }: UserInfoActionProps) {
-  const [opened, { open, close }] = useDisclosure(false);
-  const form = useForm({
-    initialValues: {
-      name: "",
-      email: email,
-      subject: "",
-      message: "",
-    },
-    validate: {
-      name: (value) => value.trim().length < 2,
-      email: (value) => !/^\S+@\S+$/.test(value),
-      subject: (value) => value.trim().length === 0,
-    },
-  });
+    const [opened, { open, close }] = useDisclosure(false);
+    const form = useForm({
+        initialValues: {
+            name: '',
+            email,
+            subject: '',
+            message: '',
+        },
+        validate: {
+            name: (value) => value.trim().length < 2,
+            email: (value) => !/^\S+@\S+$/.test(value),
+            subject: (value) => value.trim().length === 0,
+        },
+    });
 
-  return (
-    <Paper
-      radius="md"
-      withBorder
-      p="lg"
-      sx={(theme) => ({
-        backgroundColor:
-          theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
-      })}
-    >
-      <Avatar src={avatar} size={120} radius={120} mx="auto" />
-      <Text ta="center" fz="lg" weight={500} mt="md">
-        {name}
-      </Text>
-      <Text ta="center" c="dimmed" fz="sm" style={{
-        overflowWrap: "break-word"
-      }}>
-        {job}
-      </Text>
-      <Text ta="center" c="dimmed" fz="sm" style={{
-        overflowWrap: "break-word"
-      }}>
-        {email}
-      </Text>
-
-      <Modal opened={opened} onClose={close}>
-        <form onSubmit={form.onSubmit((data) => {
-          window.location.href = generateMailTo(data)
-        })}>
-          <Title
-            order={2}
-            size="h1"
+    return (
+        <Paper
+            radius="md"
+            withBorder
+            p="lg"
             sx={(theme) => ({
-              fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+                backgroundColor:
+          theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
             })}
-            weight={900}
-            align="center"
-          >
-            Get in touch
-          </Title>
+        >
+            <Avatar src={avatar} size={120} radius={120} mx="auto" />
+            <Text ta="center" fz="lg" weight={500} mt="md">
+                {name}
+            </Text>
+            <Text ta="center" c="dimmed" fz="sm" style={{
+                overflowWrap: 'break-word',
+            }}>
+                {job}
+            </Text>
+            <Text ta="center" c="dimmed" fz="sm" style={{
+                overflowWrap: 'break-word',
+            }}>
+                {email}
+            </Text>
 
-          {/* <SimpleGrid
+            <Modal opened={opened} onClose={close}>
+                <form onSubmit={form.onSubmit((data) => {
+                    window.location.href = generateMailTo(data);
+                })}>
+                    <Title
+                        order={2}
+                        size="h1"
+                        sx={(theme) => ({
+                            fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+                        })}
+                        weight={900}
+                        align="center"
+                    >
+            Get in touch
+                    </Title>
+
+                    {/* <SimpleGrid
             cols={2}
             mt="xl"
             breakpoints={[{ maxWidth: "sm", cols: 1 }]}
           > */}
-            <TextInput
-              label="Name"
-              placeholder="Your name"
-              name="name"
-              variant="filled"
-              {...form.getInputProps("name")}
-            />
-            {/* <TextInput
+                    <TextInput
+                        label="Name"
+                        placeholder="Your name"
+                        name="name"
+                        variant="filled"
+                        {...form.getInputProps('name')}
+                    />
+                    {/* <TextInput
               label="Email"
               placeholder="Your email"
               name="email"
               variant="filled"
               {...form.getInputProps("email")}
             /> */}
-          {/* </SimpleGrid> */}
+                    {/* </SimpleGrid> */}
 
-          <TextInput
-            label="Subject"
-            placeholder="Subject"
-            mt="md"
-            name="subject"
-            variant="filled"
-            {...form.getInputProps("subject")}
-          />
-          <Textarea
-            mt="md"
-            label="Message"
-            placeholder="Your message"
-            maxRows={10}
-            minRows={5}
-            autosize
-            name="message"
-            variant="filled"
-            {...form.getInputProps("message")}
-          />
+                    <TextInput
+                        label="Subject"
+                        placeholder="Subject"
+                        mt="md"
+                        name="subject"
+                        variant="filled"
+                        {...form.getInputProps('subject')}
+                    />
+                    <Textarea
+                        mt="md"
+                        label="Message"
+                        placeholder="Your message"
+                        maxRows={10}
+                        minRows={5}
+                        autosize
+                        name="message"
+                        variant="filled"
+                        {...form.getInputProps('message')}
+                    />
 
-          <Group position="center" mt="xl">
-            <Button type="submit" size="md">
+                    <Group position="center" mt="xl">
+                        <Button type="submit" size="md">
               Send message
-            </Button>
-          </Group>
-        </form>
-      </Modal>
+                        </Button>
+                    </Group>
+                </form>
+            </Modal>
 
-      <Button onClick={open} variant="default" fullWidth mt="md">
+            <Button onClick={open} variant="default" fullWidth mt="md">
         Send message
-      </Button>
-    </Paper>
-  );
+            </Button>
+        </Paper>
+    );
 }
