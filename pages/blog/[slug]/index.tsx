@@ -22,6 +22,13 @@ type APIResponse = {
     post: Post;
 };
 
+const displayDateTime = (() => new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+}).format(new Date()))();
+
 export const getServerSideProps: GetServerSideProps<{
     post: Post;
 }> = async (context) => {
@@ -68,13 +75,13 @@ export default function Blog({ post }: InferGetServerSidePropsType<typeof getSer
             <div className={classes.wrapper}>
                 <Grid gutter={80}>
                     <Col span={12} md={5}>
-                        <Image src={post.image} alt={post.title} />
+                        <Image src={post.image} alt={post.title} radius={10} />
                         <Grid
                             style={{
                                 alignItems: "center"
                             }}
                         >
-                            <Grid.Col xs={8}>
+                            <Grid.Col xs={6}>
                                 <div
                                     style={{
                                         display: "flex",
@@ -89,23 +96,24 @@ export default function Blog({ post }: InferGetServerSidePropsType<typeof getSer
                                 </div>
                             </Grid.Col>
                             <Grid.Col
-                                xs={4}
+                                xs={6}
                                 style={{
                                     textAlign: "right"
                                 }}
                             >
-                                Time
+                                {displayDateTime}
                             </Grid.Col>
                         </Grid>
                         <Grid
                             style={{
                                 justifyContent: "flex-end"
                             }}
+                            mt={10}
                         >
                             <Button variant="outline" className={classes.iconButton} onClick={() => openModal("Twitter")}>
                                 <IconBrandTwitter size="1.25rem" />
                             </Button>
-                            <Button variant="outline" className={classes.iconButton} onClick={() => openModal("Facebook")}>
+                            <Button ml={0} variant="outline" className={classes.iconButton} onClick={() => openModal("Facebook")}>
                                 <IconBrandFacebook size="1.25rem" />
                             </Button>
                         </Grid>
