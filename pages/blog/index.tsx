@@ -18,6 +18,7 @@ type Post = {
         image: string;
     };
     rating: string;
+    slug: string;
 };
 
 type APIResponse = {
@@ -136,7 +137,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                         {currentChunk?.length ? (
                             currentChunk.map((post, index) => (
                                 <Grid.Col xs={3} key={index}>
-                                    <ArticleCard image={post.image} link={post.link} title={post.title} description={post.description} author={post.author} rating={post.rating} />
+                                    <ArticleCard image={post.image} link={post.link} title={post.title} description={post.description} author={post.author} rating={post.rating} slug={post.slug} />
                                 </Grid.Col>
                             ))
                         ) : (

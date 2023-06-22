@@ -78,8 +78,8 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => {
             const url = platform === 'Twitter'
-                ? `https://twitter.com/intent/tweet?text=${blogUrl}`
-                : `https://www.facebook.com/sharer/sharer.php?u=${blogUrl}`;
+                ? `https://twitter.com/intent/tweet?text=${post.title} (${blogUrl})`
+                : `https://www.facebook.com/sharer/sharer.php?u=${post.title} (${blogUrl})`;
             window.open(url);
         },
     });

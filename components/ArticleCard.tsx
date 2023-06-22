@@ -64,13 +64,14 @@ interface ArticleCardProps {
         name: string;
         image: string;
     };
+    slug: string;
 }
 
 export function ArticleCard({
-    className, image, link, title, description, author, rating, ...others
+    className, image, link, title, description, author, rating, slug, ...others
 }: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const { classes, cx } = useStyles();
-    const linkProps = { href: link, target: '_blank', rel: 'noopener noreferrer' };
+    const linkProps = { href: `/blog/${slug}`, target: '_blank', rel: 'noopener noreferrer' };
     const clipboard = useClipboard({ timeout: 500 });
 
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
@@ -81,8 +82,8 @@ export function ArticleCard({
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => {
             const url = platform === 'Twitter'
-                ? `https://twitter.com/intent/tweet?text=${link}`
-                : `https://www.facebook.com/sharer/sharer.php?u=${link}`;
+                ? `https://twitter.com/intent/tweet?text=${title}`
+                : `https://www.facebook.com/sharer/sharer.php?u=${title}`;
             window.open(url);
         },
     });
