@@ -1,11 +1,13 @@
 import {
-    Col, Container, Grid, Title, Text, Image, Center, Avatar, Button,
+    Col, Container, Grid, Title, Text, Image, Avatar, Button,
 } from '@mantine/core';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-
-import { IconBrandFacebook, IconBrandTwitter } from '@tabler/icons-react';
-import { useState } from 'react';
-import { modals } from '@mantine/modals';
+import { ModalsProvider, modals } from '@mantine/modals';
+import {
+    IconBrandFacebook, IconBrandTwitter, IconCheck, IconCopy,
+} from '@tabler/icons-react';
+import { notifications } from '@mantine/notifications';
+import { useClipboard } from '@mantine/hooks';
 import useStyles from './Blog.styles';
 
 type Post = {
@@ -33,6 +35,7 @@ const displayDateTime = (() => new Intl.DateTimeFormat('en-US', {
 
 export const getServerSideProps: GetServerSideProps<{
     post: Post;
+    blogUrl: string;
 }> = async (context) => {
     const { host } = context.req.headers;
 
@@ -47,6 +50,8 @@ export const getServerSideProps: GetServerSideProps<{
 
     console.log(data);
 
+    const blogUrl = `${protocol}://${host}/blog/${slug}`;
+
     if (!data?.post?.title) {
         return {
             notFound: true,
@@ -56,20 +61,20 @@ export const getServerSideProps: GetServerSideProps<{
     return {
         props: {
             post: data.post,
+            blogUrl,
         },
     };
 };
 
-export default function Blog({ post }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Blog({ post, blogUrl }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
-
-    const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
+    const clipboard = useClipboard({ timeout: 500 });
 
     const openModal = (platform: string) => modals.openConfirmModal({
         title: 'Are you sure?',
         children: <Text size="sm">This action will open a new tab to {platform}.</Text>,
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
-        onConfirm: () => window.open(`https://twitter.com/intent/tweet?text=${'Hello'}`),
+        onConfirm: () => window.open(`https://twitter.com/intent/tweet?text=${blogUrl}`),
     });
 
     return (
@@ -106,19 +111,39 @@ export default function Blog({ post }: InferGetServerSidePropsType<typeof getSer
                                 {displayDateTime}
                             </Grid.Col>
                         </Grid>
-                        <Grid
-                            style={{
-                                justifyContent: 'flex-end',
-                            }}
-                            mt={10}
-                        >
-                            <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Twitter')}>
-                                <IconBrandTwitter size="1.25rem" />
-                            </Button>
-                            <Button ml={0} variant="outline" className={classes.iconButton} onClick={() => openModal('Facebook')}>
-                                <IconBrandFacebook size="1.25rem" />
-                            </Button>
-                        </Grid>
+                        <ModalsProvider>
+                            <Grid
+                                style={{
+                                    justifyContent: 'flex-end',
+                                }}
+                                mt={10}
+                            >
+                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Twitter')}>
+                                    <IconBrandTwitter size="1.25rem" />
+                                </Button>
+                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Facebook')}>
+                                    <IconBrandFacebook size="1.25rem" />
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    className={classes.iconButton}
+                                    color={clipboard.copied ? 'teal' : 'blue'}
+                                    onClick={() => {
+                                        clipboard.copy(blogUrl);
+
+                                        notifications.show({
+                                            title: 'Copied to clipboard',
+                                            message: '',
+                                            color: 'teal',
+                                            icon: <IconCheck size="1rem" />,
+                                            autoClose: 1500,
+                                        });
+                                    }}
+                                >
+                                    <IconCopy size="1.25rem" />
+                                </Button>
+                            </Grid>
+                        </ModalsProvider>
                     </Col>
                     <Col span={12} md={7}>
                         <Title className={classes.title} order={2}>
