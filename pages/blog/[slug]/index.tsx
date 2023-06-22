@@ -26,16 +26,10 @@ type APIResponse = {
     post: Post;
 };
 
-const displayDateTime = (() => new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-}).format(new Date()))();
-
 export const getServerSideProps: GetServerSideProps<{
     post: Post;
     blogUrl: string;
+    displayDateTime: string;
 }> = async (context) => {
     const { host } = context.req.headers;
 
@@ -58,15 +52,23 @@ export const getServerSideProps: GetServerSideProps<{
         };
     }
 
+    const displayDateTime = (() => new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+    }).format(new Date()))();
+
     return {
         props: {
             post: data.post,
             blogUrl,
+            displayDateTime,
         },
     };
 };
 
-export default function Blog({ post, blogUrl }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
     const clipboard = useClipboard({ timeout: 500 });
 
