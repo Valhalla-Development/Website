@@ -79,7 +79,12 @@ export function ArticleCard({
         title: 'Are you sure?',
         children: <Text size="sm">This action will open a new tab to {platform}.</Text>,
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
-        onConfirm: () => window.open(`https://twitter.com/intent/tweet?text=${link}`),
+        onConfirm: () => {
+            const url = platform === 'Twitter'
+                ? `https://twitter.com/intent/tweet?text=${link}`
+                : `https://www.facebook.com/sharer/sharer.php?u=${link}`;
+            window.open(url);
+        },
     });
 
     return (
