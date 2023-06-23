@@ -83,8 +83,8 @@ export function ArticleCard({
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => {
             const url = platform === 'Twitter'
-                ? `https://twitter.com/intent/tweet?text=${title} (${blogUrl}${slug})`
-                : `https://www.facebook.com/sharer/sharer.php?u=${title} (${blogUrl}${slug})`;
+                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${title} (${blogUrl}${slug})`)}`
+                : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl + slug)}`;
             window.open(url);
         },
     });
