@@ -88,7 +88,7 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
         <Container size="lg" className={classes.wrapper}>
             <div className={classes.wrapper}>
                 <Grid gutter={80}>
-                    <Col span={12} md={5}>
+                    <Col span={12} md={5} className={classes.grid}>
                         <Image src={post.image} alt={post.title} radius={10} />
                         <Grid
                             style={{
@@ -115,7 +115,18 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                                     textAlign: 'right',
                                 }}
                             >
+                                                                <div
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        marginTop: 8,
+                                        justifyContent: 'flex-end'
+                                    }}
+                                >
+                                    <Text fz="sm" inline>
                                 {displayDateTime}
+                                    </Text>
+                                </div>
                             </Grid.Col>
                         </Grid>
                         <ModalsProvider>
@@ -153,13 +164,18 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                         </ModalsProvider>
                     </Col>
                     <Col span={12} md={7}>
-                        <Title className={classes.title} order={2}>
+                        <Title className={classes.title} order={2} style={{
+                            width: 'fit-content'
+                        }}>
                             {post.title}
+                            <hr />
                         </Title>
                         {post.description.split('\n').map((paragraph, index) => (
-                            <Text key={index} size="lg" className={classes.paragraph}>
-                                {paragraph}
-                            </Text>
+                            <Text key={index} size="lg" className={classes.paragraph}
+                                dangerouslySetInnerHTML={{
+                                    __html: paragraph
+                                }}
+                            ></Text>
                         ))}
                     </Col>
                 </Grid>

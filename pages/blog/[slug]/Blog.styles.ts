@@ -2,12 +2,13 @@ import { createStyles, rem } from '@mantine/core';
 
 export default createStyles((theme) => ({
     wrapper: {
-        padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
+        // padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
+        paddingTop: 50,
     },
 
     iconButton: {
-        width: 40,
-        height: 40,
+        width: 35,
+        height: 35,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -19,6 +20,16 @@ export default createStyles((theme) => ({
 
     paragraph: {
         marginBottom: theme.spacing.md,
+    },
+
+    grid: {
+        [theme.fn.largerThan('md')]: {
+            borderRight: "2px solid"
+        }
+    },
+
+    rating: {
+        marginBottom: 10,
     },
 
     title: {
