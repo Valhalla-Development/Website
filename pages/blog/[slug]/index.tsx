@@ -1,5 +1,5 @@
 import {
-    Col, Container, Grid, Title, Text, Image, Avatar, Button,
+    Col, Container, Grid, Title, Text, Image, Avatar, Button, Badge,
 } from '@mantine/core';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { ModalsProvider, modals } from '@mantine/modals';
@@ -115,16 +115,16 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                                     textAlign: 'right',
                                 }}
                             >
-                                                                <div
+                                <div
                                     style={{
                                         display: 'flex',
                                         alignItems: 'center',
                                         marginTop: 8,
-                                        justifyContent: 'flex-end'
+                                        justifyContent: 'flex-end',
                                     }}
                                 >
                                     <Text fz="sm" inline>
-                                {displayDateTime}
+                                        {displayDateTime}
                                     </Text>
                                 </div>
                             </Grid.Col>
@@ -164,20 +164,28 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                         </ModalsProvider>
                     </Col>
                     <Col span={12} md={7}>
-                        <Title className={classes.title} order={2} style={{
-                            width: 'fit-content'
-                        }}>
-                            {post.title}
-                            <hr />
-                        </Title>
+                        <div style={{ position: 'relative' }}>
+                            <div className={classes.rating}>
+                                <Badge className={classes.rating} variant="gradient" gradient={{ from: 'yellow', to: 'red' }}>
+                                    {post.rating}
+                                </Badge>
+                            </div>
+                            <Title className={classes.title} order={2} style={{
+                                width: 'fit-content',
+                            }}>
+                                {post.title}
+                                <hr />
+                            </Title>
+                        </div>
                         {post.description.split('\n').map((paragraph, index) => (
                             <Text key={index} size="lg" className={classes.paragraph}
                                 dangerouslySetInnerHTML={{
-                                    __html: paragraph
+                                    __html: paragraph,
                                 }}
                             ></Text>
                         ))}
                     </Col>
+
                 </Grid>
             </div>
         </Container>

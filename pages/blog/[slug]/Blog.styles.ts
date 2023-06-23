@@ -24,12 +24,15 @@ export default createStyles((theme) => ({
 
     grid: {
         [theme.fn.largerThan('md')]: {
-            borderRight: "2px solid"
-        }
+            borderRight: '1px solid',
+        },
     },
 
     rating: {
-        marginBottom: 10,
+        position: 'absolute',
+        top: -12,
+        left: 0,
+        pointerEvents: 'none',
     },
 
     title: {
