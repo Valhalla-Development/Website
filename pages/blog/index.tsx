@@ -19,6 +19,7 @@ type Post = {
     };
     rating: string;
     slug: string;
+    blogUrl: string;
 };
 
 type APIResponse = {
@@ -27,6 +28,7 @@ type APIResponse = {
 
 export const getServerSideProps: GetServerSideProps<{
     blog: APIResponse;
+    blogUrl: string;
 }> = async (context) => {
     const { host } = context.req.headers;
     const protocol = host?.includes('localhost') ? 'http' : 'https';
@@ -36,9 +38,12 @@ export const getServerSideProps: GetServerSideProps<{
         .then(async (res) => res.json())
         .catch((err) => console.log(err));
 
+    const blogUrl = `${protocol}://${host}/blog/`;
+
     return {
         props: {
             blog: data,
+            blogUrl,
         },
     };
 };
@@ -61,7 +66,7 @@ function InputWithButton(props: TextInputProps) {
     );
 }
 
-export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Faq({ blog, blogUrl }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
     const [posts, setPosts] = useState(blog.posts);
     const [activePage, setPage] = useState(1);
@@ -137,7 +142,16 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                         {currentChunk?.length ? (
                             currentChunk.map((post, index) => (
                                 <Grid.Col xs={3} key={index}>
-                                    <ArticleCard image={post.image} link={post.link} title={post.title} description={post.description} author={post.author} rating={post.rating} slug={post.slug} />
+                                    <ArticleCard
+                                        image={post.image}
+                                        link={post.link}
+                                        title={post.title}
+                                        description={post.description}
+                                        author={post.author}
+                                        rating={post.rating}
+                                        slug={post.slug}
+                                        blogUrl={blogUrl}
+                                    />
                                 </Grid.Col>
                             ))
                         ) : (

@@ -65,10 +65,11 @@ interface ArticleCardProps {
         image: string;
     };
     slug: string;
+    blogUrl: string;
 }
 
 export function ArticleCard({
-    className, image, link, title, description, author, rating, slug, ...others
+    className, image, link, title, description, author, rating, slug, blogUrl, ...others
 }: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const { classes, cx } = useStyles();
     const linkProps = { href: `/blog/${slug}`, target: '_blank', rel: 'noopener noreferrer' };
@@ -82,8 +83,8 @@ export function ArticleCard({
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => {
             const url = platform === 'Twitter'
-                ? `https://twitter.com/intent/tweet?text=${title}`
-                : `https://www.facebook.com/sharer/sharer.php?u=${title}`;
+                ? `https://twitter.com/intent/tweet?text=${title} (${blogUrl}${slug})`
+                : `https://www.facebook.com/sharer/sharer.php?u=${title} (${blogUrl}${slug})`;
             window.open(url);
         },
     });
@@ -136,7 +137,7 @@ export function ArticleCard({
                                     className={classes.iconButton}
                                     color={clipboard.copied ? 'teal' : 'blue'}
                                     onClick={() => {
-                                        clipboard.copy(link);
+                                        clipboard.copy(`${blogUrl}${slug}`);
 
                                         notifications.show({
                                             title: 'Copied to clipboard',
