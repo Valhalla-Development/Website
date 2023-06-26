@@ -78,7 +78,7 @@ interface GradientMap {
 }
 
 export function ArticleCard({
-    className, image, link, title, description, author, project, slug, blogUrl, ...others
+    className, image, title, description, author, project, slug, blogUrl, ...others
 }: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const { classes, cx } = useStyles();
     const linkProps = { href: `/blog/${slug}`, target: '_blank', rel: 'noopener noreferrer' };
