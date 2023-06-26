@@ -121,7 +121,7 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
             <div className={classes.wrapper}>
                 <Grid gutter={80}>
                     <Col span={12} md={5} className={classes.grid}>
-                        <Image src={post.image} alt={post.title} radius={10} />
+                        <Image src={post.image} alt={post.title} radius={20} />
                         <Grid
                             style={{
                                 alignItems: 'center',
