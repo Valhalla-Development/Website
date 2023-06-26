@@ -50,7 +50,7 @@ export function Footer({ footerLinks }: FooterProps) {
         <div className={classes.footer}>
             <Container className={classes.inner}>
                 <Link href="/">
-                    <Image src='./favicon.svg' width='28' />
+                    <Image src='/favicon.svg' width='28' />
                 </Link>
                 <Group className={classes.links}>{items}</Group>
                 <Group spacing={0} className={classes.links} position="right" noWrap>

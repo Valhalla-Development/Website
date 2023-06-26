@@ -162,7 +162,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
         <Header height={headerHeight} mb={120}>
             <Container className={classes.inner}>
                 <Link href="/">
-                    <Image src="./favicon.svg" width="28" />
+                    <Image src="/favicon.svg" width="28" />
                 </Link>
                 <div className={classes.links}>
                     <Group spacing={10} position="right" className={classes.mainLinks}>
