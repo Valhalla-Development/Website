@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
     },
 
-    rating: {
+    project: {
         position: 'absolute',
         top: theme.spacing.xs,
         right: rem(12),
@@ -59,32 +59,54 @@ interface ArticleCardProps {
     link: string;
     title: string;
     description: string;
-    rating: string;
+    project: string;
     author: {
         name: string;
         image: string;
     };
+    slug: string;
+    blogUrl: string;
+}
+
+interface Gradient {
+    from: string;
+    to: string;
+}
+
+interface GradientMap {
+    [key: string]: Gradient;
 }
 
 export function ArticleCard({
-    className, image, link, title, description, author, rating, ...others
+    className, image, title, description, author, project, slug, blogUrl, ...others
 }: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const { classes, cx } = useStyles();
-    const linkProps = { href: link, target: '_blank', rel: 'noopener noreferrer' };
+    const linkProps = { href: `/blog/${slug}`, target: '_blank', rel: 'noopener noreferrer' };
     const clipboard = useClipboard({ timeout: 500 });
-
+    const stripHtmlRegex = description.replace(/<[^<]+?>/g, ' ');
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
 
     const openModal = (platform: string) => modals.openConfirmModal({
         title: 'Are you sure?',
-        children: (
-            <Text size="sm">
-                This action will open a new tab to {platform}.
-            </Text>
-        ),
+        children: <Text size="sm">This action will open a new tab to {platform}.</Text>,
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
-        onConfirm: () => window.open(`https://twitter.com/intent/tweet?text=${link}`),
+        onConfirm: () => {
+            const url = platform === 'Twitter'
+                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${title} (${blogUrl}${slug})`)}`
+                : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl + slug)}`;
+            window.open(url);
+        },
     });
+
+    const gradients: GradientMap & { default: Gradient } = {
+        website: { from: 'blue', to: 'gray' },
+        ragnarok: { from: 'red', to: 'blue' },
+        wilbur: { from: 'blue', to: 'red' },
+        theseer: { from: 'green', to: 'gray' },
+        default: { from: 'yellow', to: 'red' },
+    };
+
+    const gradient = gradients[project.toLowerCase()] || gradients.default;
 
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
@@ -94,8 +116,8 @@ export function ArticleCard({
                 </a>
             </Card.Section>
 
-            <Badge className={classes.rating} variant="gradient" gradient={{ from: 'yellow', to: 'red' }}>
-                {rating}
+            <Badge className={classes.project} variant="gradient" gradient={gradient}>
+                {project}
             </Badge>
 
             <Text className={classes.title} fw={500} component="a" {...linkProps}>
@@ -103,7 +125,7 @@ export function ArticleCard({
             </Text>
 
             <Text fz="sm" color="dimmed" lineClamp={4}>
-                {description}
+                {stripHtmlRegex}
             </Text>
 
             <Group position="apart" className={classes.footer}>
@@ -123,18 +145,10 @@ export function ArticleCard({
                         </Popover.Target>
                         <Popover.Dropdown>
                             <div className={classes.iconButtonContainer}>
-                                <Button
-                                    variant="outline"
-                                    className={classes.iconButton}
-                                    onClick={() => openModal('Twitter')}
-                                >
+                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Twitter')}>
                                     <IconBrandTwitter size="1.25rem" />
                                 </Button>
-                                <Button
-                                    variant="outline"
-                                    className={classes.iconButton}
-                                    onClick={() => openModal('Facebook')}
-                                >
+                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Facebook')}>
                                     <IconBrandFacebook size="1.25rem" />
                                 </Button>
                                 <Button
@@ -142,7 +156,7 @@ export function ArticleCard({
                                     className={classes.iconButton}
                                     color={clipboard.copied ? 'teal' : 'blue'}
                                     onClick={() => {
-                                        clipboard.copy(link);
+                                        clipboard.copy(`${blogUrl}${slug}`);
 
                                         notifications.show({
                                             title: 'Copied to clipboard',

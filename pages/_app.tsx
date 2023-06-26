@@ -28,13 +28,13 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const mainLinksArray = [
         { label: 'Home', link: '/' },
         { label: 'About', link: '/about' },
+        { label: 'Blog', link: '/blog' },
         { label: 'FAQ', link: '/faq' },
     ];
     const footerLinksArray = [
         { label: 'Status', link: 'https://status.valhalladev.org' },
         { label: 'Contact', link: '/contact' },
         { label: 'Team', link: '/team' },
-        { label: 'Blog', link: '/blog' },
         { label: 'Privacy', link: '/privacy-policy' },
         { label: 'Terms', link: '/terms-of-service ' },
     ];

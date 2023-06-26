@@ -8,20 +8,6 @@ import { useState } from 'react';
 import useStyles from './Blog.styles';
 import { ArticleCard } from '../../components/ArticleCard';
 
-type APIResponse = {
-    posts: {
-        image: string;
-        link: string;
-        title: string;
-        description: string;
-        author: {
-            name: string;
-            image: string;
-        };
-        rating: string;
-    }[];
-};
-
 type Post = {
     image: string;
     link: string;
@@ -31,11 +17,18 @@ type Post = {
         name: string;
         image: string;
     };
-    rating: string;
+    project: string;
+    slug: string;
+    blogUrl: string;
+};
+
+type APIResponse = {
+    posts: Post[];
 };
 
 export const getServerSideProps: GetServerSideProps<{
     blog: APIResponse;
+    blogUrl: string;
 }> = async (context) => {
     const { host } = context.req.headers;
     const protocol = host?.includes('localhost') ? 'http' : 'https';
@@ -45,9 +38,12 @@ export const getServerSideProps: GetServerSideProps<{
         .then(async (res) => res.json())
         .catch((err) => console.log(err));
 
+    const blogUrl = `${protocol}://${host}/blog/`;
+
     return {
         props: {
             blog: data,
+            blogUrl,
         },
     };
 };
@@ -70,7 +66,7 @@ function InputWithButton(props: TextInputProps) {
     );
 }
 
-export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Faq({ blog, blogUrl }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
     const [posts, setPosts] = useState(blog.posts);
     const [activePage, setPage] = useState(1);
@@ -98,7 +94,7 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                                 const titleMatch = post.title.toLowerCase().includes(searchValue);
                                 const descriptionMatch = post.description.toLowerCase().includes(searchValue);
                                 const authorMatch = post.author.name.toLowerCase().includes(searchValue);
-                                const reviewMatch = post.rating.toLowerCase().includes(searchValue);
+                                const reviewMatch = post.project.toLowerCase().includes(searchValue);
 
                                 return titleMatch || descriptionMatch || authorMatch || reviewMatch;
                             });
@@ -111,17 +107,20 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                                 const descriptionMatchB = postB.description.toLowerCase().includes(searchValue);
                                 const authorMatchA = postA.author.name.toLowerCase().includes(searchValue);
                                 const authorMatchB = postB.author.name.toLowerCase().includes(searchValue);
-                                const reviewMatchA = postA.rating.toLowerCase().includes(searchValue);
-                                const reviewMatchB = postB.rating.toLowerCase().includes(searchValue);
+                                const reviewMatchA = postA.project.toLowerCase().includes(searchValue);
+                                const reviewMatchB = postB.project.toLowerCase().includes(searchValue);
 
                                 // Sort by highest match
                                 if (titleMatchA !== titleMatchB) {
                                     return titleMatchB ? 1 : -1;
-                                } if (descriptionMatchA !== descriptionMatchB) {
+                                }
+                                if (descriptionMatchA !== descriptionMatchB) {
                                     return descriptionMatchB ? 1 : -1;
-                                } if (authorMatchA !== authorMatchB) {
+                                }
+                                if (authorMatchA !== authorMatchB) {
                                     return authorMatchB ? 1 : -1;
-                                } if (reviewMatchA !== reviewMatchB) {
+                                }
+                                if (reviewMatchA !== reviewMatchB) {
                                     return reviewMatchB ? 1 : -1;
                                 }
 
@@ -143,7 +142,16 @@ export default function Faq({ blog }: InferGetServerSidePropsType<typeof getServ
                         {currentChunk?.length ? (
                             currentChunk.map((post, index) => (
                                 <Grid.Col xs={3} key={index}>
-                                    <ArticleCard image={post.image} link={post.link} title={post.title} description={post.description} author={post.author} rating={post.rating} />
+                                    <ArticleCard
+                                        image={post.image}
+                                        link={post.link}
+                                        title={post.title}
+                                        description={post.description}
+                                        author={post.author}
+                                        project={post.project}
+                                        slug={post.slug}
+                                        blogUrl={blogUrl}
+                                    />
                                 </Grid.Col>
                             ))
                         ) : (
