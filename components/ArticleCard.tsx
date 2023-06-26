@@ -74,7 +74,7 @@ export function ArticleCard({
     const { classes, cx } = useStyles();
     const linkProps = { href: `/blog/${slug}`, target: '_blank', rel: 'noopener noreferrer' };
     const clipboard = useClipboard({ timeout: 500 });
-
+    const stripHtmlRegex = description.replace(/<[^<]+?>/g, ' ');
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
 
     const openModal = (platform: string) => modals.openConfirmModal({
@@ -106,7 +106,7 @@ export function ArticleCard({
             </Text>
 
             <Text fz="sm" color="dimmed" lineClamp={4}>
-                {description}
+                {stripHtmlRegex}
             </Text>
 
             <Group position="apart" className={classes.footer}>
