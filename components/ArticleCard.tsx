@@ -68,6 +68,15 @@ interface ArticleCardProps {
     blogUrl: string;
 }
 
+interface Gradient {
+    from: string;
+    to: string;
+}
+
+interface GradientMap {
+    [key: string]: Gradient;
+}
+
 export function ArticleCard({
     className, image, link, title, description, author, rating, slug, blogUrl, ...others
 }: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
@@ -89,6 +98,16 @@ export function ArticleCard({
         },
     });
 
+    const gradients: GradientMap & { default: Gradient } = {
+        website: { from: 'blue', to: 'gray' },
+        ragnarok: { from: 'red', to: 'blue' },
+        wilbur: { from: 'blue', to: 'red' },
+        theseer: { from: 'green', to: 'gray' },
+        default: { from: 'yellow', to: 'red' },
+    };
+
+    const gradient = gradients[rating.toLowerCase()] || gradients.default;
+
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
             <Card.Section>
@@ -97,7 +116,7 @@ export function ArticleCard({
                 </a>
             </Card.Section>
 
-            <Badge className={classes.rating} variant="gradient" gradient={{ from: 'yellow', to: 'red' }}>
+            <Badge className={classes.rating} variant="gradient" gradient={gradient}>
                 {rating}
             </Badge>
 

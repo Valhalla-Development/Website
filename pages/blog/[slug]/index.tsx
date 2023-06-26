@@ -26,6 +26,15 @@ type APIResponse = {
     post: Post;
 };
 
+interface Gradient {
+    from: string;
+    to: string;
+}
+
+interface GradientMap {
+    [key: string]: Gradient;
+}
+
 export const getServerSideProps: GetServerSideProps<{
     post: Post;
     blogUrl: string;
@@ -83,6 +92,16 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
             window.open(url);
         },
     });
+
+    const gradients: GradientMap & { default: Gradient } = {
+        website: { from: 'blue', to: 'gray' },
+        ragnarok: { from: 'red', to: 'blue' },
+        wilbur: { from: 'blue', to: 'red' },
+        theseer: { from: 'green', to: 'gray' },
+        default: { from: 'yellow', to: 'red' },
+    };
+
+    const gradient = gradients[post.rating.toLowerCase()] || gradients.default;
 
     return (
         <Container size="lg" className={classes.wrapper}>
@@ -166,7 +185,7 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                     <Col span={12} md={7}>
                         <div style={{ position: 'relative' }}>
                             <div className={classes.rating}>
-                                <Badge className={classes.rating} variant="gradient" gradient={{ from: 'yellow', to: 'red' }}>
+                                <Badge className={classes.rating} variant="gradient" gradient={gradient}>
                                     {post.rating}
                                 </Badge>
                             </div>
