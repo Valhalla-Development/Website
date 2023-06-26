@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
     },
 
-    rating: {
+    project: {
         position: 'absolute',
         top: theme.spacing.xs,
         right: rem(12),
@@ -59,7 +59,7 @@ interface ArticleCardProps {
     link: string;
     title: string;
     description: string;
-    rating: string;
+    project: string;
     author: {
         name: string;
         image: string;
@@ -78,7 +78,7 @@ interface GradientMap {
 }
 
 export function ArticleCard({
-    className, image, link, title, description, author, rating, slug, blogUrl, ...others
+    className, image, link, title, description, author, project, slug, blogUrl, ...others
 }: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const { classes, cx } = useStyles();
     const linkProps = { href: `/blog/${slug}`, target: '_blank', rel: 'noopener noreferrer' };
@@ -106,7 +106,7 @@ export function ArticleCard({
         default: { from: 'yellow', to: 'red' },
     };
 
-    const gradient = gradients[rating.toLowerCase()] || gradients.default;
+    const gradient = gradients[project.toLowerCase()] || gradients.default;
 
     return (
         <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
@@ -116,8 +116,8 @@ export function ArticleCard({
                 </a>
             </Card.Section>
 
-            <Badge className={classes.rating} variant="gradient" gradient={gradient}>
-                {rating}
+            <Badge className={classes.project} variant="gradient" gradient={gradient}>
+                {project}
             </Badge>
 
             <Text className={classes.title} fw={500} component="a" {...linkProps}>

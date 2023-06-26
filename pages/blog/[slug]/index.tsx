@@ -19,7 +19,7 @@ type Post = {
         name: string;
         image: string;
     };
-    rating: string;
+    project: string;
 };
 
 type APIResponse = {
@@ -101,7 +101,7 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
         default: { from: 'yellow', to: 'red' },
     };
 
-    const gradient = gradients[post.rating.toLowerCase()] || gradients.default;
+    const gradient = gradients[post.project.toLowerCase()] || gradients.default;
 
     return (
         <Container size="lg" className={classes.wrapper}>
@@ -184,9 +184,9 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                     </Col>
                     <Col span={12} md={7}>
                         <div style={{ position: 'relative' }}>
-                            <div className={classes.rating}>
-                                <Badge className={classes.rating} variant="gradient" gradient={gradient}>
-                                    {post.rating}
+                            <div className={classes.project}>
+                                <Badge className={classes.project} variant="gradient" gradient={gradient}>
+                                    {post.project}
                                 </Badge>
                             </div>
                             <Title className={classes.title} order={2} style={{

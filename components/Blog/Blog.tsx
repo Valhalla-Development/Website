@@ -13,7 +13,7 @@ type PostProps = {
             name: string;
             image: string;
         };
-        rating: string;
+        project: string;
     };
 };
 
@@ -26,8 +26,8 @@ export function Blog({ post }: PostProps) {
                 <div className={classes.authorContainer}>
                     <Avatar className={classes.authorImage} size="md" src={post.author.image} alt={post.author.name} />
                     <Text>{post.author.name}</Text>
-                    <Badge variant="gradient" gradient={{ from: 'yellow', to: 'red' }} className={classes.rating}>
-                        {post.rating}
+                    <Badge variant="gradient" gradient={{ from: 'yellow', to: 'red' }} className={classes.project}>
+                        {post.project}
                     </Badge>
                 </div>
                 <div className={classes.heroImageWrapper}>

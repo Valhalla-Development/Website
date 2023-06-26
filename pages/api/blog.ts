@@ -39,7 +39,7 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
                 name: 'Ragnar Lotbrok',
                 image: 'https://cdn.discordapp.com/avatars/151516555757223936/e4f075a62b5e2719c356ef1be855fa9f.webp?size=2048',
             },
-            rating: 'website',
+            project: 'website',
             slug: 'valhalla-introduction',
         },
     ];

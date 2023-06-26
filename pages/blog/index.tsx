@@ -17,7 +17,7 @@ type Post = {
         name: string;
         image: string;
     };
-    rating: string;
+    project: string;
     slug: string;
     blogUrl: string;
 };
@@ -94,7 +94,7 @@ export default function Faq({ blog, blogUrl }: InferGetServerSidePropsType<typeo
                                 const titleMatch = post.title.toLowerCase().includes(searchValue);
                                 const descriptionMatch = post.description.toLowerCase().includes(searchValue);
                                 const authorMatch = post.author.name.toLowerCase().includes(searchValue);
-                                const reviewMatch = post.rating.toLowerCase().includes(searchValue);
+                                const reviewMatch = post.project.toLowerCase().includes(searchValue);
 
                                 return titleMatch || descriptionMatch || authorMatch || reviewMatch;
                             });
@@ -107,8 +107,8 @@ export default function Faq({ blog, blogUrl }: InferGetServerSidePropsType<typeo
                                 const descriptionMatchB = postB.description.toLowerCase().includes(searchValue);
                                 const authorMatchA = postA.author.name.toLowerCase().includes(searchValue);
                                 const authorMatchB = postB.author.name.toLowerCase().includes(searchValue);
-                                const reviewMatchA = postA.rating.toLowerCase().includes(searchValue);
-                                const reviewMatchB = postB.rating.toLowerCase().includes(searchValue);
+                                const reviewMatchA = postA.project.toLowerCase().includes(searchValue);
+                                const reviewMatchB = postB.project.toLowerCase().includes(searchValue);
 
                                 // Sort by highest match
                                 if (titleMatchA !== titleMatchB) {
@@ -148,7 +148,7 @@ export default function Faq({ blog, blogUrl }: InferGetServerSidePropsType<typeo
                                         title={post.title}
                                         description={post.description}
                                         author={post.author}
-                                        rating={post.rating}
+                                        project={post.project}
                                         slug={post.slug}
                                         blogUrl={blogUrl}
                                     />

@@ -47,7 +47,7 @@ export default createStyles((theme) => ({
         },
     },
 
-    rating: {
+    project: {
         position: 'absolute',
         top: -12,
         left: 0,

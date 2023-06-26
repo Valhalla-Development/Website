@@ -36,7 +36,7 @@ export default createStyles((theme) => ({
         marginRight: theme.spacing.md,
     },
 
-    rating: {
+    project: {
         position: 'absolute',
         top: theme.spacing.xs,
         left: rem(12),
