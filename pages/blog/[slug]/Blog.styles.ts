@@ -20,6 +20,7 @@ export default createStyles((theme) => ({
 
     paragraph: {
         marginBottom: theme.spacing.md,
+        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
 
     grid: {
