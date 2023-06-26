@@ -3,8 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default function hander(req: NextApiRequest, res: NextApiResponse) {
     const posts = [
         {
-            image: 'https://i.imgur.com/Cij5vdL.png',
-            title: 'Valhalla Development Introduction',
+            image: 'https://www.ragnarokbot.com/upload/files/Valhalla_1687797020.png',
+            title: 'Valhalla Introduction',
             description:
                 '<h2>Valhalla Development Introduction</h2>'
                 + '<section>'
@@ -22,12 +22,12 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
                 + '</section>'
                 + '<section>'
                 + '    <p>'
-                + '        Additionally, we offer an API available at <a href="https://api.valhalladev.org" aria-label="Link to Valhalla Development API" target="_blank" rel="noreferrer">https://api.valhalladev.org</a>, which provides various services to further enhance your experience.'
+                + '        Additionally, we offer an API available <a href="https://api.valhalladev.org" aria-label="Link to Valhalla Development API" target="_blank" rel="noreferrer">here</a>, which provides various services to further enhance your experience.'
                 + '    </p>'
                 + '</section>'
                 + '<section>'
                 + '    <p>'
-                + '        We invite you to join our community on Discord at <a href="https://discord.gg/Q3ZhdRJ" aria-label="Link to Valhalla Development Discord" target="_blank" rel="noreferrer">https://discord.gg/Q3ZhdRJ</a>. Your participation and feedback will help us to create more exciting projects and improve our current offerings.'
+                + '        We invite you to join our <a href="https://discord.gg/Q3ZhdRJ" aria-label="Link to Valhalla Development Discord" target="_blank" rel="noreferrer">community on Discord</a>. Your participation and feedback will help us to create more exciting projects and improve our current offerings.'
                 + '    </p>'
                 + '</section>'
                 + '<section>'
@@ -37,7 +37,7 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
                 + '</section>',
             author: {
                 name: 'Ragnar Lotbrok',
-                image: 'https://images.unsplash.com/photo-1593229874334-90d965f27c42?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80',
+                image: 'https://cdn.discordapp.com/avatars/151516555757223936/e4f075a62b5e2719c356ef1be855fa9f.webp?size=2048',
             },
             rating: 'website',
             slug: 'valhalla-introduction',
