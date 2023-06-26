@@ -49,6 +49,13 @@ export default createStyles((theme) => ({
         },
     },
 
+    image: {
+        /* [theme.fn.smallerThan('md')]: {
+             width: '0',
+        }, */
+        width: '-webkit-fill-available',
+    },
+
     project: {
         position: 'absolute',
         top: -12,
