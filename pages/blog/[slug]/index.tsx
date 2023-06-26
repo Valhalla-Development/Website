@@ -79,15 +79,30 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
     const { classes } = useStyles();
     const clipboard = useClipboard({ timeout: 500 });
 
+    const popupCenterScreen = (url: string, w: number, h: number, focus = true) => {
+        const top = (window.screen.height - h) / 4;
+        const left = (window.screen.width - w) / 2;
+        const popup = window.open(url, '', `scrollbars=yes,width=${w},height=${h},top=${top},left=${left}`);
+        if (focus && popup) {
+            popup.focus();
+        }
+        return popup;
+    };
+
     const openModal = (platform: string) => modals.openConfirmModal({
         title: 'Are you sure?',
         children: <Text size="sm">This action will open a new tab to {platform}.</Text>,
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => {
             const url = platform === 'Twitter'
-                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${post.title} (${blogUrl})`)}`
+                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${post.title} ${blogUrl}`)}`
                 : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`;
-            window.open(url);
+
+            popupCenterScreen(
+                url,
+                550,
+                450,
+            );
         },
     });
 
