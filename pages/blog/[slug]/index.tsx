@@ -51,8 +51,6 @@ export const getServerSideProps: GetServerSideProps<{
         .then(async (res) => res.json())
         .catch((err) => console.log(err));
 
-    console.log(data);
-
     const blogUrl = `${protocol}://${host}/blog/${slug}`;
 
     if (!data?.post?.title) {
