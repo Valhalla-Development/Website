@@ -14,8 +14,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run turbo
+      - run: yarn install --frozen-lockfile
+      - run: yarn run turbo
 
   merge-check:
     needs: build
@@ -27,8 +27,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run turbo
+      - run: yarn install --frozen-lockfile
+      - run: yarn run turbo
       - name: Check if build succeeded
         run: |
           if [ ${{ job.status }} == 'failure' ]; then
