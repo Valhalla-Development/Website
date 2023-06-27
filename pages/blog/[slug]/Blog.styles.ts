@@ -53,7 +53,8 @@ export default createStyles((theme) => ({
         /* [theme.fn.smallerThan('md')]: {
              width: '0',
         }, */
-        width: '-webkit-fill-available',
+        width: '100%',
+        height: 'auto',
     },
 
     project: {
