@@ -79,6 +79,7 @@ export const getServerSideProps: GetServerSideProps<{
 export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
     const clipboard = useClipboard({ timeout: 500 });
+    const stripHtmlRegex = post.description.replace(/<[^<]+?>/g, ' ');
 
     const popupCenterScreen = (url: string, w: number, h: number, focus = true) => {
         const top = (window.screen.height - h) / 4;
@@ -120,8 +121,11 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
         <>
             <Head>
                 <title>{`${post.title} · Blog`}</title>
-                <meta property="og:description" content={post.description} />
+                <meta property="og:title" content={post.title} />
+                <meta property="og:description" content={stripHtmlRegex} />
                 <meta property="og:image" content={post.image} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={blogUrl} />
             </Head>
             <Container size="lg" className={classes.wrapper}>
                 <div className={classes.wrapper}>
