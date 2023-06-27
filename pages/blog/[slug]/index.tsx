@@ -8,6 +8,7 @@ import {
 } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import { useClipboard } from '@mantine/hooks';
+import Head from 'next/head';
 import useStyles from './Blog.styles';
 
 type Post = {
@@ -115,113 +116,119 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
     };
 
     const gradient = gradients[post.project.toLowerCase()] || gradients.default;
-
     return (
-        <Container size="lg" className={classes.wrapper}>
-            <div className={classes.wrapper}>
-                <Grid gutter={80}>
-                    <Col span={12} md={5} className={classes.grid}>
-                        <div className={classes.image}>
-                            <Image src={post.image} alt={post.title} radius={20} />
-                        </div>
-                        <Grid
-                            style={{
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Grid.Col xs={6}>
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        marginTop: 8,
-                                    }}
-                                >
-                                    <Avatar src={post.author.image} size={24} radius="xl" mr="xs" />
-                                    <Text fz="sm" inline>
-                                        {post.author.name}
-                                    </Text>
-                                </div>
-                            </Grid.Col>
-                            <Grid.Col
-                                xs={6}
-                                style={{
-                                    textAlign: 'right',
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        marginTop: 8,
-                                        justifyContent: 'flex-end',
-                                    }}
-                                >
-                                    <Text fz="sm" inline>
-                                        {displayDateTime}
-                                    </Text>
-                                </div>
-                            </Grid.Col>
-                        </Grid>
-                        <ModalsProvider>
+        <>
+            <Head>
+                <title>{`${post.title} · Blog`}</title>
+                <meta property="og:description" content={post.description} />
+                <meta property="og:image" content={post.image} />
+            </Head>
+            <Container size="lg" className={classes.wrapper}>
+                <div className={classes.wrapper}>
+                    <Grid gutter={80}>
+                        <Col span={12} md={5} className={classes.grid}>
+                            <div className={classes.image}>
+                                <Image src={post.image} alt={post.title} radius={20} />
+                            </div>
                             <Grid
                                 style={{
-                                    justifyContent: 'flex-end',
+                                    alignItems: 'center',
                                 }}
-                                mt={10}
                             >
-                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Twitter')}>
-                                    <IconBrandTwitter size="1.25rem" />
-                                </Button>
-                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Facebook')}>
-                                    <IconBrandFacebook size="1.25rem" />
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    className={classes.iconButton}
-                                    color={clipboard.copied ? 'teal' : 'blue'}
-                                    onClick={() => {
-                                        clipboard.copy(blogUrl);
-
-                                        notifications.show({
-                                            title: 'Copied to clipboard',
-                                            message: '',
-                                            color: 'teal',
-                                            icon: <IconCheck size="1rem" />,
-                                            autoClose: 1500,
-                                        });
+                                <Grid.Col xs={6}>
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            marginTop: 8,
+                                        }}
+                                    >
+                                        <Avatar src={post.author.image} size={24} radius="xl" mr="xs" />
+                                        <Text fz="sm" inline>
+                                            {post.author.name}
+                                        </Text>
+                                    </div>
+                                </Grid.Col>
+                                <Grid.Col
+                                    xs={6}
+                                    style={{
+                                        textAlign: 'right',
                                     }}
                                 >
-                                    <IconCopy size="1.25rem" />
-                                </Button>
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            marginTop: 8,
+                                            justifyContent: 'flex-end',
+                                        }}
+                                    >
+                                        <Text fz="sm" inline>
+                                            {displayDateTime}
+                                        </Text>
+                                    </div>
+                                </Grid.Col>
                             </Grid>
-                        </ModalsProvider>
-                    </Col>
-                    <Col span={12} md={7}>
-                        <div style={{ position: 'relative' }}>
-                            <div className={classes.project}>
-                                <Badge className={classes.project} variant="gradient" gradient={gradient}>
-                                    {post.project}
-                                </Badge>
-                            </div>
-                            <Title className={classes.title} order={2} style={{
-                                width: 'fit-content',
-                            }}>
-                                {post.title}
-                                <hr />
-                            </Title>
-                        </div>
-                        {post.description.split('\n').map((paragraph, index) => (
-                            <Text key={index} size="lg" className={classes.paragraph}
-                                dangerouslySetInnerHTML={{
-                                    __html: paragraph,
-                                }}
-                            ></Text>
-                        ))}
-                    </Col>
+                            <ModalsProvider>
+                                <Grid
+                                    style={{
+                                        justifyContent: 'flex-end',
+                                    }}
+                                    mt={10}
+                                >
+                                    <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Twitter')}>
+                                        <IconBrandTwitter size="1.25rem" />
+                                    </Button>
+                                    <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Facebook')}>
+                                        <IconBrandFacebook size="1.25rem" />
+                                    </Button>
+                                    <Button
+                                        variant="outline"
+                                        className={classes.iconButton}
+                                        color={clipboard.copied ? 'teal' : 'blue'}
+                                        onClick={() => {
+                                            clipboard.copy(blogUrl);
 
-                </Grid>
-            </div>
-        </Container>
+                                            notifications.show({
+                                                title: 'Copied to clipboard',
+                                                message: '',
+                                                color: 'teal',
+                                                icon: <IconCheck size="1rem" />,
+                                                autoClose: 1500,
+                                            });
+                                        }}
+                                    >
+                                        <IconCopy size="1.25rem" />
+                                    </Button>
+                                </Grid>
+                            </ModalsProvider>
+                        </Col>
+                        <Col span={12} md={7}>
+                            <div style={{ position: 'relative' }}>
+                                <div className={classes.project}>
+                                    <Badge className={classes.project} variant="gradient" gradient={gradient}>
+                                        {post.project}
+                                    </Badge>
+                                </div>
+                                <Title className={classes.title} order={2} style={{
+                                    width: 'fit-content',
+                                }}>
+                                    {post.title}
+                                    <hr />
+                                </Title>
+                            </div>
+                            {post.description.split('\n').map((paragraph, index) => (
+                                <Text key={index} size="lg" className={classes.paragraph}
+                                    dangerouslySetInnerHTML={{
+                                        __html: paragraph,
+                                    }}
+                                ></Text>
+                            ))}
+                        </Col>
+
+                    </Grid>
+                </div>
+            </Container>
+        </>
     );
 }
