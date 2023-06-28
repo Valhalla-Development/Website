@@ -1,43 +1,66 @@
-import { createStyles, rem } from '@mantine/core';
+import { createStyles } from '@mantine/core';
 
-export default createStyles((theme) => ({
-    cardWrapper: {
-        width: '30vh',
-        padding: rem(10),
+export default createStyles(() => ({
+    container: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#2d2d2d',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        margin: '0px',
+        padding: '0px',
+        perspective: '1000px',
     },
-    cardContainer: {
-        borderRadius: '14px',
-        boxShadow: '0px 10px 24px rgba(0, 0, 0, 0.1), 0px 10px 24px rgba(0, 0, 0, 0.2)',
+    card: {
+        position: 'relative',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        color: '#eee',
+        borderRadius: '10px',
+        boxShadow: '0px 30px 60px rgba(0, 0, 0, 0.1), 0px 30px 60px rgba(0, 0, 0, 0.5)',
+        maxWidth: '300px',
+        backdropFilter: 'blur(10px)',
+        padding: '20px',
+        transformStyle: 'preserve-3d',
+        backfaceVisibility: 'hidden',
+        overflow: 'hidden',
+        transition: 'transform 0.1s ease, background-image 0.5s ease',
+    },
+    backgroundOverlay: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        borderRadius: '10px',
+        padding: '1px',
+        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+        WebkitMaskComposite: 'xor',
+        maskComposite: 'exclude',
+        backgroundBlendMode: 'overlay',
     },
     cardImage: {
-        width: '22vh',
-        display: 'block',
-        margin: '0 auto',
-        border:
-            theme.colorScheme === 'dark'
-                ? '0.5px solid rgba(255, 255, 255, 0.4)'
-                : '0.5px solid rgba(0, 0, 0, 0.6)',
-        borderRadius: '12px',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
     },
     cardTitle: {
-        fontWeight: 600,
-        fontSize: '18px',
+        fontStyle: 'normal',
+        fontWeight: 590,
+        fontSize: '17px',
         lineHeight: '20px',
         margin: '10px 0',
-        userSelect: 'none',
     },
     divider: {
         border: 'none',
         height: '1px',
-        background:
-            theme.colorScheme === 'dark'
-                ? 'linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)'
-                : 'linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%)',
     },
     cardText: {
+        fontStyle: 'normal',
         fontWeight: 400,
         fontSize: '13px',
-        lineHeight: '22px',
-        userSelect: 'none',
+        lineHeight: '24px',
+        color: 'rgba(255, 255, 255, 0.7)',
     },
 }));
