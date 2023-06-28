@@ -6,5 +6,6 @@ export default createStyles(() => ({
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
+        gap: '20px',
     },
 }));

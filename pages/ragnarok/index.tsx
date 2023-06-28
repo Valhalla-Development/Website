@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@mantine/core';
-import { ParallaxCard } from '../../components/ParallaxCard/ParallaxCard';
+import ParallaxCard from '../../components/ParallaxCard/ParallaxCard';
 import useStyles from './Ragnarok.styles';
 
 export default function Ragnarok() {
