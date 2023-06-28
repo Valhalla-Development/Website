@@ -14,7 +14,16 @@ export const ParallaxCard: FC<Data> = ({ title, description, image }) => {
 
     return (
         <div className={classes.cardWrapper}>
-            <Tilt>
+            <Tilt
+                tiltMaxAngleY={14}
+                tiltMaxAngleX={14}
+                glareEnable={true}
+                glareMaxOpacity={0.1}
+                glareColor='#C0C0C0'
+                glarePosition='all'
+                glareReverse={true}
+                scale={1.02}
+            >
                 <Card className={classes.cardContainer}>
                     <img src={image} alt={title} className={classes.cardImage} />
                     <h3 className={classes.cardTitle}>{title}</h3>
