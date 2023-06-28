@@ -13,6 +13,11 @@ export default createStyles((theme) => ({
         width: '22vh',
         display: 'block',
         margin: '0 auto',
+        border:
+            theme.colorScheme === 'dark'
+                ? '0.5px solid rgba(255, 255, 255, 0.4)'
+                : '0.5px solid rgba(0, 0, 0, 0.6)',
+        borderRadius: '12px',
     },
     cardTitle: {
         fontWeight: 600,
