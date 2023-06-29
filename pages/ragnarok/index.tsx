@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from '@mantine/core';
 import ParallaxCard from '../../components/ParallaxCard/ParallaxCard';
 import useStyles from './Ragnarok.styles';
+import { HeroHeader } from '../../components/HeroHeader/HeroHeader';
 
 export default function Ragnarok() {
     const { classes } = useStyles();
@@ -30,10 +31,14 @@ export default function Ragnarok() {
     ];
 
     return (
-        <Container size="xl" className={classes.cardContainer}>
-            {cards.map((card, index) => (
-                <ParallaxCard key={index} {...card} />
-            ))}
-        </Container>
+        <>
+            <HeroHeader/>
+            <Container id="features" size="xl" className={classes.cardContainer}>
+                {cards.map((card, index) => (
+                    <ParallaxCard key={index} {...card} />
+                ))}
+            </Container>
+
+        </>
     );
 }
