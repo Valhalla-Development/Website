@@ -34,7 +34,6 @@ export default function ParallaxCard({ title, description, image }: Props) {
 
     const handleMouseLeaveCard = useCallback(() => {
         setCardTransform('');
-        setShine({ x: 0, y: 0 });
         setTransitionStyle('transform 0.5s ease, backgroundImage 0.5s ease');
     }, []);
 
