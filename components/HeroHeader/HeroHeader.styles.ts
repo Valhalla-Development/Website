@@ -1,4 +1,5 @@
 import { createStyles, rem } from '@mantine/core';
+import { headerHeight } from '../Header/Header.styles';
 
 export default createStyles((theme) => ({
     hero: {
@@ -7,6 +8,7 @@ export default createStyles((theme) => ({
             'url(https://ragnarokbot.com/assets/img/header-bg.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        height: `calc(100vh - ${headerHeight})`,
     },
 
     container: {
