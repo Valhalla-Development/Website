@@ -1,12 +1,12 @@
 import { createStyles } from '@mantine/core';
 
-export default createStyles(() => ({
+export default createStyles((theme) => ({
     container: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: 'auto',
-        backgroundColor: '#2d2d2d',
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.white,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         margin: '0px',
