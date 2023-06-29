@@ -12,11 +12,12 @@ export default createStyles((theme) => ({
     },
 
     container: {
-        height: rem(700),
+        height: rem(850),
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-start',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
         paddingBottom: `calc(${theme.spacing.xl} * 6)`,
         zIndex: 1,
         position: 'relative',
