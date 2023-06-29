@@ -5,7 +5,7 @@ export default createStyles(() => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
+        height: 'auto',
         backgroundColor: '#2d2d2d',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
