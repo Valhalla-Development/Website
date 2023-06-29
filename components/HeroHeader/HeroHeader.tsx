@@ -22,7 +22,6 @@ export function HeroHeader() {
 
                 <div className={classes.buttonGroup}>
                     <Button
-                        variant="gradient"
                         size="xl"
                         radius="xl"
                         className={classes.control}

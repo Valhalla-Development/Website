@@ -54,7 +54,7 @@ export default createStyles((theme) => ({
 
     control: {
         marginTop: `calc(${theme.spacing.xl} * 1.5)`,
-
+        backgroundImage: `linear-gradient(to right, ${theme.colors[theme.primaryColor][6]}, ${theme.colors[theme.primaryColor][9]})`,
         [theme.fn.smallerThan('sm')]: {
             width: '100%',
         },
