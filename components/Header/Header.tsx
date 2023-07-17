@@ -155,7 +155,14 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
     }, [opened, toggle])
 
     return (
-        <Header height={headerHeight} mb={120}>
+        <Header
+            height={headerHeight}
+            mb={120}
+            bg={'#1a1b1ee3'}
+            style={{
+                backdropFilter: 'blur(12px)',
+            }}
+        >
             <Container className={classes.inner}>
                 <Link href="/">
                     <Image src="/favicon.svg" width="28" />
