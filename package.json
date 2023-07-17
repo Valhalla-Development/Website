@@ -4,7 +4,7 @@
   "license": "GPL-3.0-or-later",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "turbo": "turbo build",
     "audit": "npx eslint .",
