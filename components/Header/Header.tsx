@@ -1,4 +1,4 @@
-import { useEffect, ReactNode } from 'react';
+import { useEffect, ReactNode } from 'react'
 import {
     Header,
     Container,
@@ -20,25 +20,21 @@ import {
     UnstyledButton,
     ThemeIcon,
     rem,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import {
-    IconUser, IconBrandDiscord, IconBrandGithub, IconFileCode, IconChevronDown, IconServer,
-} from '@tabler/icons-react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
-import useStyles, { headerHeight } from './Header.styles';
+} from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import { IconUser, IconBrandDiscord, IconBrandGithub, IconFileCode, IconChevronDown, IconServer } from '@tabler/icons-react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle'
+import useStyles, { headerHeight } from './Header.styles'
 
 interface IconProps extends ActionIconProps {
-    label: string;
-    icon: ReactNode;
-    href: string;
+    label: string
+    icon: ReactNode
+    href: string
 }
 
-const Icon = ({
-    label, icon, href, ...others
-}: IconProps) => (
+const Icon = ({ label, icon, href, ...others }: IconProps) => (
     <Tooltip label={label}>
         <ActionIcon variant="transparent" {...others}>
             <a href={href} target="_blank" rel="noreferrer">
@@ -46,15 +42,15 @@ const Icon = ({
             </a>
         </ActionIcon>
     </Tooltip>
-);
+)
 
 interface LinkProps {
-    label: string;
-    link: string;
+    label: string
+    link: string
 }
 
 interface CustomHeaderProps {
-    mainLinks: LinkProps[];
+    mainLinks: LinkProps[]
 }
 
 const data = [
@@ -88,23 +84,23 @@ const data = [
         description: 'A Discord Bot that monitors other Bots',
         link: '/seer',
     },
-];
+]
 
 export function CustomHeader({ mainLinks }: CustomHeaderProps) {
-    const router = useRouter();
-    const [opened, { toggle }] = useDisclosure(false);
-    const { classes, cx, theme } = useStyles();
-    const { colorScheme } = useMantineColorScheme();
-    const iconColor = colorScheme === 'dark' ? 'white' : 'black';
+    const router = useRouter()
+    const [opened, { toggle }] = useDisclosure(false)
+    const { classes, cx, theme } = useStyles()
+    const { colorScheme } = useMantineColorScheme()
+    const iconColor = colorScheme === 'dark' ? 'white' : 'black'
 
     const mainItems = mainLinks.map((item) => (
         <Link href={item.link} key={item.label} className={cx(classes.mainLink, { [classes.mainLinkActive]: router.pathname === item.link })}>
             {item.label}
         </Link>
-    ));
+    ))
 
     const links = data.map((item) => (
-        <Link href={item.link} key={item.title} className={classes.link}>
+        <Link target={item.link.includes('http') ? '_blank' : ''} href={item.link} key={item.title} className={classes.link}>
             <UnstyledButton className={classes.subLink} key={item.title}>
                 <Group noWrap align="flex-start">
                     <ThemeIcon size={34} variant="default" radius="md">
@@ -121,19 +117,19 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                 </Group>
             </UnstyledButton>
         </Link>
-    ));
+    ))
 
     const icons = (
         <Paper className={classes.icons}>
-            <Link href="https://discord.gg/Q3ZhdRJ">
+            <Link target="_blank" href="https://discord.gg/Q3ZhdRJ">
                 <IconBrandDiscord size="1.8rem" stroke={1.2} color={iconColor} />
             </Link>
-            <Link href="https://github.com/Valhalla-Development">
+            <Link target="_blank" href="https://github.com/Valhalla-Development">
                 <IconBrandGithub size="1.8rem" stroke={1.2} color={iconColor} />
             </Link>
             <ColorSchemeToggle />
         </Paper>
-    );
+    )
 
     const mobileNavigation = (
         <Drawer opened={opened} onClose={toggle} padding={20} position="right" size={100}>
@@ -142,21 +138,21 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                 {icons}
             </div>
         </Drawer>
-    );
+    )
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 576 && opened) {
-                toggle();
+                toggle()
             }
-        };
+        }
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize)
 
         return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [opened, toggle]);
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [opened, toggle])
 
     return (
         <Header height={headerHeight} mb={120}>
@@ -192,10 +188,10 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                             </HoverCard.Dropdown>
                         </HoverCard>
                         <div className={classes.iconContainer}>
-                            <Icon label="Discord" href="https://discord.gg/Q3ZhdRJ" icon={<IconBrandDiscord size="1.8rem" stroke={1.2} color={iconColor} />} />
+                            <Icon label="Discord" target="_blank" href="https://discord.gg/Q3ZhdRJ" icon={<IconBrandDiscord size="1.8rem" stroke={1.2} color={iconColor} />} />
                         </div>
                         <div className={classes.iconContainer}>
-                            <Icon label="GitHub" href="https://github.com/Valhalla-Development" icon={<IconBrandGithub size="1.8rem" stroke={1.2} color={iconColor} />} />
+                            <Icon label="GitHub" target="_blank" href="https://github.com/Valhalla-Development" icon={<IconBrandGithub size="1.8rem" stroke={1.2} color={iconColor} />} />
                         </div>
                         <ColorSchemeToggle />
                     </Group>
@@ -204,5 +200,5 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
             </Container>
             {mobileNavigation}
         </Header>
-    );
+    )
 }
