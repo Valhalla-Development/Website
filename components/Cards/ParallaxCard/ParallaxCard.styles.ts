@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core'
+import { createStyles } from '@mantine/core';
 
 export default createStyles((theme) => ({
     container: {
@@ -63,4 +63,4 @@ export default createStyles((theme) => ({
         lineHeight: '24px',
         color: 'rgba(255, 255, 255, 0.7)',
     },
-}))
+}));

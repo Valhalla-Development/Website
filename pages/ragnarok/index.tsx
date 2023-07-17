@@ -1,11 +1,13 @@
-import React from 'react'
-import { Container } from '@mantine/core'
-import ParallaxCard from '../../components/Cards/ParallaxCard/ParallaxCard'
-import useStyles from './Ragnarok.styles'
-import { HeroHeader } from '../../components/HeroHeader/HeroHeader'
-import { createStyles, Badge, Group, Title, Text, Card, Grid, rem } from '@mantine/core'
+import React from 'react';
+import {
+    Container, Badge, Group, Title, Text, Grid, rem,
+} from '@mantine/core';
+import ParallaxCard from '../../components/Cards/ParallaxCard/ParallaxCard';
+import useStyles from './Ragnarok.styles';
+import { HeroHeader } from '../../components/HeroHeader/HeroHeader';
+
 export default function Ragnarok() {
-    const { classes } = useStyles()
+    const { classes } = useStyles();
 
     const cards = [
         {
@@ -28,7 +30,7 @@ export default function Ragnarok() {
             description: 'Commands to make moderation of users that much easier. Includes ban, kick, poll and other handy options.',
             image: 'https://www.ragnarokbot.com/assets/img/functions/eco.png',
         },
-    ]
+    ];
 
     return (
         <>
@@ -66,5 +68,5 @@ export default function Ragnarok() {
             </div>
             <Container id="features" size="xl" className={classes.cardContainer}></Container>
         </>
-    )
+    );
 }

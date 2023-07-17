@@ -1,11 +1,15 @@
-import { Col, Container, Grid, Title, Text, Image, Avatar, Button, Badge } from '@mantine/core'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { ModalsProvider, modals } from '@mantine/modals'
-import { IconBrandFacebook, IconBrandTwitter, IconCheck, IconCopy } from '@tabler/icons-react'
-import { notifications } from '@mantine/notifications'
-import { useClipboard } from '@mantine/hooks'
-import Head from 'next/head'
-import useStyles from './Blog.styles'
+import {
+    Col, Container, Grid, Title, Text, Image, Avatar, Button, Badge,
+} from '@mantine/core';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { ModalsProvider, modals } from '@mantine/modals';
+import {
+    IconBrandFacebook, IconBrandTwitter, IconCheck, IconCopy,
+} from '@tabler/icons-react';
+import { notifications } from '@mantine/notifications';
+import { useClipboard } from '@mantine/hooks';
+import Head from 'next/head';
+import useStyles from './Blog.styles';
 
 type Post = {
     image: string
@@ -37,32 +41,31 @@ export const getServerSideProps: GetServerSideProps<{
     blogUrl: string
     displayDateTime: string
 }> = async (context) => {
-    const { host } = context.req.headers
+    const { host } = context.req.headers;
 
-    const { slug } = context.params as { slug: string }
+    const { slug } = context.params as { slug: string };
 
-    const protocol = host?.includes('localhost') ? 'http' : 'https'
-    const url = `${protocol}://${host}/api/blog?slug=${slug}`
+    const protocol = host?.includes('localhost') ? 'http' : 'https';
+    const url = `${protocol}://${host}/api/blog?slug=${slug}`;
 
     const data: APIResponse = await fetch(url)
         .then(async (res) => res.json())
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
 
-    const blogUrl = `${protocol}://${host}/blog/${slug}`
+    const blogUrl = `${protocol}://${host}/blog/${slug}`;
 
     if (!data?.post?.title) {
         return {
             notFound: true,
-        }
+        };
     }
 
-    const displayDateTime = (() =>
-        new Intl.DateTimeFormat('en-US', {
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-        }).format(new Date()))()
+    const displayDateTime = (() => new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+    }).format(new Date()))();
 
     return {
         props: {
@@ -70,38 +73,36 @@ export const getServerSideProps: GetServerSideProps<{
             blogUrl,
             displayDateTime,
         },
-    }
-}
+    };
+};
 
 export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const { classes } = useStyles()
-    const clipboard = useClipboard({ timeout: 500 })
-    const stripHtmlRegex = post.description.replace(/<[^<]+?>/g, ' ')
+    const { classes } = useStyles();
+    const clipboard = useClipboard({ timeout: 500 });
+    const stripHtmlRegex = post.description.replace(/<[^<]+?>/g, ' ');
 
     const popupCenterScreen = (url: string, w: number, h: number, focus = true) => {
-        const top = (window.screen.height - h) / 4
-        const left = (window.screen.width - w) / 2
-        const popup = window.open(url, '', `scrollbars=yes,width=${w},height=${h},top=${top},left=${left}`)
+        const top = (window.screen.height - h) / 4;
+        const left = (window.screen.width - w) / 2;
+        const popup = window.open(url, '', `scrollbars=yes,width=${w},height=${h},top=${top},left=${left}`);
         if (focus && popup) {
-            popup.focus()
+            popup.focus();
         }
-        return popup
-    }
+        return popup;
+    };
 
-    const openModal = (platform: string) =>
-        modals.openConfirmModal({
-            title: 'Are you sure?',
-            children: <Text size="sm">This action will open a new tab to {platform}.</Text>,
-            labels: { confirm: 'Confirm', cancel: 'Cancel' },
-            onConfirm: () => {
-                const url =
-                    platform === 'Twitter'
-                        ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${post.title} ${blogUrl}`)}`
-                        : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`
+    const openModal = (platform: string) => modals.openConfirmModal({
+        title: 'Are you sure?',
+        children: <Text size="sm">This action will open a new tab to {platform}.</Text>,
+        labels: { confirm: 'Confirm', cancel: 'Cancel' },
+        onConfirm: () => {
+            const url = platform === 'Twitter'
+                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${post.title} ${blogUrl}`)}`
+                : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`;
 
-                popupCenterScreen(url, 550, 450)
-            },
-        })
+            popupCenterScreen(url, 550, 450);
+        },
+    });
 
     const gradients: GradientMap & { default: Gradient } = {
         website: { from: 'blue', to: 'gray' },
@@ -109,9 +110,9 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
         wilbur: { from: 'blue', to: 'red' },
         theseer: { from: 'green', to: 'gray' },
         default: { from: 'yellow', to: 'red' },
-    }
+    };
 
-    const gradient = gradients[post.project.toLowerCase()] || gradients.default
+    const gradient = gradients[post.project.toLowerCase()] || gradients.default;
     return (
         <>
             <Head>
@@ -180,7 +181,7 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                                                 className={classes.iconButton}
                                                 color={clipboard.copied ? 'teal' : 'blue'}
                                                 onClick={() => {
-                                                    clipboard.copy(blogUrl)
+                                                    clipboard.copy(blogUrl);
 
                                                     notifications.show({
                                                         title: 'Copied to clipboard',
@@ -188,7 +189,7 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                                                         color: 'teal',
                                                         icon: <IconCheck size="1rem" />,
                                                         autoClose: 1500,
-                                                    })
+                                                    });
                                                 }}
                                             >
                                                 <IconCopy size="1.25rem" />
@@ -231,5 +232,5 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                 </div>
             </Container>
         </>
-    )
+    );
 }

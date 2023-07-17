@@ -1,6 +1,8 @@
-import { Image, Accordion, Grid, Col, Container, Title } from '@mantine/core'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import useStyles from './FAQ.styles'
+import {
+    Image, Accordion, Grid, Col, Container, Title,
+} from '@mantine/core';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import useStyles from './FAQ.styles';
 
 type Question = {
     question: string
@@ -30,10 +32,10 @@ export const getServerSideProps: GetServerSideProps<{
             },
         ],
     },
-})
+});
 
 export default function Faq({ questions }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const { classes } = useStyles()
+    const { classes } = useStyles();
     return (
         <div className={classes.wrapper}>
             <Container size="lg">
@@ -60,5 +62,5 @@ export default function Faq({ questions }: InferGetServerSidePropsType<typeof ge
                 </Grid>
             </Container>
         </div>
-    )
+    );
 }
