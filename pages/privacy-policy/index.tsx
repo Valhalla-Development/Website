@@ -1,23 +1,28 @@
-import {
-    Title, Text, Grid, Col, Container,
-} from '@mantine/core';
+import { Title, Text, Grid, Col, Container } from '@mantine/core'
 
-import useStyles from './Privacy-Policy.styles';
+import useStyles from './Privacy-Policy.styles'
 
 export default function privacyPolicy() {
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     return (
         <Container size="lg" className={classes.wrapper}>
             <div className={classes.wrapper}>
                 <Grid gutter={80}>
                     <Col span={12} md={5}>
-                        <Title className={classes.title} order={2}>
-                            Comprehensive Privacy Policy
-                        </Title>
-                        <Text c="dimmed">
-                            We aim to be as transparent as possible with our users. This privacy policy is designed to help you understand what information we collect and how we use it.
-                        </Text>
+                        <div
+                            style={{
+                                position: 'sticky',
+                                top: '120px',
+                            }}
+                        >
+                            <Title className={classes.title} order={2}>
+                                Comprehensive Privacy Policy
+                            </Title>
+                            <Text c="dimmed">
+                                We aim to be as transparent as possible with our users. This privacy policy is designed to help you understand what information we collect and how we use it.
+                            </Text>
+                        </div>
                     </Col>
                     <Col span={12} md={7}>
                         <h1>Privacy Policy</h1>
@@ -57,5 +62,5 @@ export default function privacyPolicy() {
                 </Grid>
             </div>
         </Container>
-    );
+    )
 }
