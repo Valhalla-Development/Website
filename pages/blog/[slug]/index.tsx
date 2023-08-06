@@ -128,7 +128,10 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                     <Grid gutter={80} style={{
                         width: '100dvw',
                     }}>
-                        <Col span={12} md={5} className={classes.grid}>
+                        <Col span={12} md={5} className={classes.grid} style={{
+                            position: 'sticky',
+                            top: '75px',
+                        }}>
                             <div className={classes.image}>
                                 <Image src={post.image} alt={post.title} radius={20} />
                             </div>

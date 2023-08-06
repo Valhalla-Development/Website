@@ -12,12 +12,17 @@ export default function termsOfService() {
             <div className={classes.wrapper}>
                 <Grid gutter={80}>
                     <Col span={12} md={5}>
-                        <Title className={classes.title} order={2}>
-                            Terms of Service
-                        </Title>
-                        <Text c="dimmed">
-                            These terms govern your use of our website. Please read them carefully before using our services.
-                        </Text>
+                        <div style={{
+                            position: 'sticky',
+                            top: 120,
+                        }}>
+                            <Title className={classes.title} order={2}>
+                                Terms of Service
+                            </Title>
+                            <Text c="dimmed">
+                                These terms govern your use of our website. Please read them carefully before using our services.
+                            </Text>
+                        </div>
                     </Col>
                     <Col span={12} md={7}>
                         <h1>Terms of Service</h1>
