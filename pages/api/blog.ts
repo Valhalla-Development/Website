@@ -39,6 +39,7 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
                 image: 'https://avatars.githubusercontent.com/u/30740511',
             },
             project: 'website',
+            time: 1691340607,
             slug: 'valhalla-introduction',
         },
     ];
