@@ -44,14 +44,14 @@ export default function Ragnarok() {
                 <Container size="lg" py="xl">
                     <Group position="center">
                         <Badge variant="filled" size="lg">
-                            Best company ever
+                            Features
                         </Badge>
                     </Group>
                     <Title order={2} className={classes.title} ta="center" mt="sm">
-                        Integrate effortlessly with any technology stack
+                        Diverse Range of Functions
                     </Title>
                     <Text c="dimmed" className={classes.description} ta="center" mt="md">
-                        Every once in a while, you’ll see a Golbat that’s missing some fangs. This happens when hunger drives it to try biting a Steel-type Pokémon.
+                        Ragnarok is a versatile Discord bot with four main command categories, providing limitless capabilities!
                     </Text>
                 </Container>
                 <Grid
