@@ -21,6 +21,7 @@ type Post = {
         image: string
     }
     project: string
+    time: number
 }
 
 type APIResponse = {
@@ -60,18 +61,26 @@ export const getServerSideProps: GetServerSideProps<{
         };
     }
 
-    const displayDateTime = (() => new Intl.DateTimeFormat('en-US', {
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-    }).format(new Date()))();
+    const displayDateTime = (epoch: number) => {
+        const date = new Date(epoch * 1000);
+
+        const month = date.toLocaleString('en-US', { month: 'long' });
+        const day = date.getDate();
+        const year = date.getFullYear();
+        const time = date.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+
+        return `${month} ${day}${year !== new Date().getFullYear() ? ` ${year}` : ''} at ${time}`;
+    };
 
     return {
         props: {
             post: data.post,
             blogUrl,
-            displayDateTime,
+            displayDateTime: displayDateTime(data.post.time),
         },
     };
 };
