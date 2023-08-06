@@ -125,7 +125,9 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
             </Head>
             <Container size="lg" className={classes.wrapper}>
                 <div className={classes.wrapper}>
-                    <Grid gutter={80}>
+                    <Grid gutter={80} style={{
+                        width: '100dvw',
+                    }}>
                         <Col span={12} md={5} className={classes.grid}>
                             <div className={classes.image}>
                                 <Image src={post.image} alt={post.title} radius={20} />
@@ -179,7 +181,6 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                                             <Button
                                                 variant="outline"
                                                 className={classes.iconButton}
-                                                color={clipboard.copied ? 'teal' : 'blue'}
                                                 onClick={() => {
                                                     clipboard.copy(blogUrl);
 
