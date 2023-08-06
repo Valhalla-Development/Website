@@ -13,22 +13,32 @@ export default function Ragnarok() {
         {
             title: 'Economy',
             description: 'A complete economy, custom built from the ground up with features including crop growing, stealing & games!',
-            image: 'https://www.ragnarokbot.com/assets/img/functions/eco.png',
+            image: '/ragnarok/eco.png',
         },
         {
             title: 'Fun',
             description: 'A collection of commands that are fun and useful, from calculators to crypto, Trakt integration and more.',
-            image: 'https://www.ragnarokbot.com/assets/img/functions/eco.png',
+            image: '/ragnarok/fun.png',
         },
         {
             title: 'Informative',
             description: 'We provide a number of commands to support the user and provide them with stats on themselves and their usage.',
-            image: 'https://www.ragnarokbot.com/assets/img/functions/eco.png',
+            image: '/ragnarok/info.png',
         },
         {
             title: 'Moderation',
             description: 'Commands to make moderation of users that much easier. Includes ban, kick, poll and other handy options.',
-            image: 'https://www.ragnarokbot.com/assets/img/functions/eco.png',
+            image: '/ragnarok/moderation.png',
+        },
+        {
+            title: 'Generators',
+            description: 'Unleash your creativity with a variety of image generation commands providing users with fun interactions.',
+            image: '/ragnarok/generators.png',
+        },
+        {
+            title: 'Ticket',
+            description: 'Efficiently manage user inquiries and issues with our custom built ticketing system, with hosted ticket transcripts.',
+            image: '/ragnarok/ticket.png',
         },
     ];
 
