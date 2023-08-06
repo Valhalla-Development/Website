@@ -36,7 +36,7 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
                 + '</section>',
             author: {
                 name: 'Ragnar Lotbrok',
-                image: 'https://cdn.discordapp.com/avatars/151516555757223936/e4f075a62b5e2719c356ef1be855fa9f.webp?size=2048',
+                image: 'https://avatars.githubusercontent.com/u/30740511',
             },
             project: 'website',
             slug: 'valhalla-introduction',
