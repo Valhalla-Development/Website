@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps<{
 };
 
 export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const { classes } = useStyles();
+    const { classes, theme } = useStyles();
     const clipboard = useClipboard({ timeout: 500 });
     const stripHtmlRegex = post.description.replace(/<[^<]+?>/g, ' ');
 
@@ -125,13 +125,8 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
             </Head>
             <Container size="lg" className={classes.wrapper}>
                 <div className={classes.wrapper}>
-                    <Grid gutter={80} style={{
-                        width: '100dvw',
-                    }}>
-                        <Col span={12} md={5} className={classes.grid} style={{
-                            position: 'sticky',
-                            top: '75px',
-                        }}>
+                    <Grid gutter={80}>
+                        <Col span={12} md={5} className={classes.grid}>
                             <div className={classes.image}>
                                 <Image src={post.image} alt={post.title} radius={20} />
                             </div>

@@ -46,6 +46,8 @@ export default createStyles((theme) => ({
         [theme.fn.largerThan('md')]: {
             borderRight: '1px solid',
             height: '50vh',
+            position: 'sticky',
+            top: '75px',
         },
     },
 
