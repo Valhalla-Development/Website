@@ -1,4 +1,4 @@
-import { useEffect, ReactNode } from 'react'
+import { useEffect, ReactNode } from 'react';
 import {
     Header,
     Container,
@@ -20,13 +20,15 @@ import {
     UnstyledButton,
     ThemeIcon,
     rem,
-} from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
-import { IconUser, IconBrandDiscord, IconBrandGithub, IconFileCode, IconChevronDown, IconServer } from '@tabler/icons-react'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle'
-import useStyles, { headerHeight } from './Header.styles'
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import {
+    IconUser, IconBrandDiscord, IconBrandGithub, IconFileCode, IconChevronDown, IconServer,
+} from '@tabler/icons-react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
+import useStyles, { headerHeight } from './Header.styles';
 
 interface IconProps extends ActionIconProps {
     label: string
@@ -34,7 +36,9 @@ interface IconProps extends ActionIconProps {
     href: string
 }
 
-const Icon = ({ label, icon, href, ...others }: IconProps) => (
+const Icon = ({
+    label, icon, href, ...others
+}: IconProps) => (
     <Tooltip label={label}>
         <ActionIcon variant="transparent" {...others}>
             <a href={href} target="_blank" rel="noreferrer">
@@ -42,7 +46,7 @@ const Icon = ({ label, icon, href, ...others }: IconProps) => (
             </a>
         </ActionIcon>
     </Tooltip>
-)
+);
 
 interface LinkProps {
     label: string
@@ -84,20 +88,20 @@ const data = [
         description: 'A Discord Bot that monitors other Bots',
         link: '/seer',
     },
-]
+];
 
 export function CustomHeader({ mainLinks }: CustomHeaderProps) {
-    const router = useRouter()
-    const [opened, { toggle }] = useDisclosure(false)
-    const { classes, cx, theme } = useStyles()
-    const { colorScheme } = useMantineColorScheme()
-    const iconColor = colorScheme === 'dark' ? 'white' : 'black'
+    const router = useRouter();
+    const [opened, { toggle }] = useDisclosure(false);
+    const { classes, cx, theme } = useStyles();
+    const { colorScheme } = useMantineColorScheme();
+    const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
     const mainItems = mainLinks.map((item) => (
         <Link href={item.link} key={item.label} className={cx(classes.mainLink, { [classes.mainLinkActive]: router.pathname === item.link })}>
             {item.label}
         </Link>
-    ))
+    ));
 
     const links = data.map((item) => (
         <Link target={item.link.includes('http') ? '_blank' : ''} href={item.link} key={item.title} className={classes.link}>
@@ -117,7 +121,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                 </Group>
             </UnstyledButton>
         </Link>
-    ))
+    ));
 
     const icons = (
         <Paper className={classes.icons}>
@@ -129,7 +133,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
             </Link>
             <ColorSchemeToggle />
         </Paper>
-    )
+    );
 
     const mobileNavigation = (
         <Drawer opened={opened} onClose={toggle} padding={20} position="right" size={100}>
@@ -138,21 +142,21 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
                 {icons}
             </div>
         </Drawer>
-    )
+    );
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 576 && opened) {
-                toggle()
+                toggle();
             }
-        }
+        };
 
-        window.addEventListener('resize', handleResize)
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [opened, toggle])
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [opened, toggle]);
 
     return (
         <Header
@@ -207,5 +211,5 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
             </Container>
             {mobileNavigation}
         </Header>
-    )
+    );
 }

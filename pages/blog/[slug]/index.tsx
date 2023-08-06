@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps<{
 };
 
 export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const { classes, theme } = useStyles();
+    const { classes } = useStyles();
     const clipboard = useClipboard({ timeout: 500 });
     const stripHtmlRegex = post.description.replace(/<[^<]+?>/g, ' ');
 

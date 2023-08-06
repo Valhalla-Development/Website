@@ -1,9 +1,11 @@
-import { Title, Text, Grid, Col, Container } from '@mantine/core'
+import {
+    Title, Text, Grid, Col, Container,
+} from '@mantine/core';
 
-import useStyles from './Privacy-Policy.styles'
+import useStyles from './Privacy-Policy.styles';
 
 export default function privacyPolicy() {
-    const { classes } = useStyles()
+    const { classes } = useStyles();
 
     return (
         <Container size="lg" className={classes.wrapper}>
@@ -62,5 +64,5 @@ export default function privacyPolicy() {
                 </Grid>
             </div>
         </Container>
-    )
+    );
 }
