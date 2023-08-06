@@ -179,6 +179,7 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                                             <Button
                                                 variant="outline"
                                                 className={classes.iconButton}
+                                                color={clipboard.copied ? 'teal' : 'pink'}
                                                 onClick={() => {
                                                     clipboard.copy(blogUrl);
 
