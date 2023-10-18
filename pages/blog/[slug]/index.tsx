@@ -8,37 +8,39 @@ import {
 } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import { useClipboard } from '@mantine/hooks';
+import Head from 'next/head';
 import useStyles from './Blog.styles';
 
 type Post = {
-    image: string;
-    link: string;
-    title: string;
-    description: string;
+    image: string
+    link: string
+    title: string
+    description: string
     author: {
-        name: string;
-        image: string;
-    };
-    project: string;
-};
+        name: string
+        image: string
+    }
+    project: string
+    time: number
+}
 
 type APIResponse = {
-    post: Post;
-};
+    post: Post
+}
 
 interface Gradient {
-    from: string;
-    to: string;
+    from: string
+    to: string
 }
 
 interface GradientMap {
-    [key: string]: Gradient;
+    [key: string]: Gradient
 }
 
 export const getServerSideProps: GetServerSideProps<{
-    post: Post;
-    blogUrl: string;
-    displayDateTime: string;
+    post: Post
+    blogUrl: string
+    displayDateTime: string
 }> = async (context) => {
     const { host } = context.req.headers;
 
@@ -59,18 +61,26 @@ export const getServerSideProps: GetServerSideProps<{
         };
     }
 
-    const displayDateTime = (() => new Intl.DateTimeFormat('en-US', {
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-    }).format(new Date()))();
+    const displayDateTime = (epoch: number) => {
+        const date = new Date(epoch * 1000);
+
+        const month = date.toLocaleString('en-US', { month: 'long' });
+        const day = date.getDate();
+        const year = date.getFullYear();
+        const time = date.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+
+        return `${month} ${day}${year !== new Date().getFullYear() ? ` ${year}` : ''} at ${time}`;
+    };
 
     return {
         props: {
             post: data.post,
             blogUrl,
-            displayDateTime,
+            displayDateTime: displayDateTime(data.post.time),
         },
     };
 };
@@ -78,6 +88,17 @@ export const getServerSideProps: GetServerSideProps<{
 export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { classes } = useStyles();
     const clipboard = useClipboard({ timeout: 500 });
+    const stripHtmlRegex = post.description.replace(/<[^<]+?>/g, ' ');
+
+    const popupCenterScreen = (url: string, w: number, h: number, focus = true) => {
+        const top = (window.screen.height - h) / 4;
+        const left = (window.screen.width - w) / 2;
+        const popup = window.open(url, '', `scrollbars=yes,width=${w},height=${h},top=${top},left=${left}`);
+        if (focus && popup) {
+            popup.focus();
+        }
+        return popup;
+    };
 
     const openModal = (platform: string) => modals.openConfirmModal({
         title: 'Are you sure?',
@@ -85,9 +106,10 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => {
             const url = platform === 'Twitter'
-                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${post.title} (${blogUrl})`)}`
+                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${post.title} ${blogUrl}`)}`
                 : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`;
-            window.open(url);
+
+            popupCenterScreen(url, 550, 450);
         },
     });
 
@@ -100,24 +122,37 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
     };
 
     const gradient = gradients[post.project.toLowerCase()] || gradients.default;
-
     return (
-        <Container size="lg" className={classes.wrapper}>
-            <div className={classes.wrapper}>
-                <Grid gutter={80}>
-                    <Col span={12} md={5} className={classes.grid}>
-                        <Image src={post.image} alt={post.title} radius={10} />
-                        <Grid
-                            style={{
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Grid.Col xs={6}>
+        <>
+            <Head>
+                <title>{`${post.title} · Blog`}</title>
+                <meta property="og:title" content={post.title} />
+                <meta property="og:description" content={stripHtmlRegex} />
+                <meta property="og:image" content={post.image} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={blogUrl} />
+            </Head>
+            <Container size="lg" className={classes.wrapper}>
+                <div className={classes.wrapper}>
+                    <Grid gutter={80}>
+                        <Col span={12} md={5} className={classes.grid}>
+                            <div className={classes.image}>
+                                <Image src={post.image} alt={post.title} radius={20} />
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    marginTop: 8,
+                                    justifyContent: 'space-between',
+                                }}
+                            >
                                 <div
                                     style={{
                                         display: 'flex',
                                         alignItems: 'center',
-                                        marginTop: 8,
+                                        marginBottom: 'auto',
                                     }}
                                 >
                                     <Avatar src={post.author.image} size={24} radius="xl" mr="xs" />
@@ -125,86 +160,86 @@ export default function Blog({ post, blogUrl, displayDateTime }: InferGetServerS
                                         {post.author.name}
                                     </Text>
                                 </div>
-                            </Grid.Col>
-                            <Grid.Col
-                                xs={6}
-                                style={{
-                                    textAlign: 'right',
-                                }}
-                            >
                                 <div
                                     style={{
                                         display: 'flex',
-                                        alignItems: 'center',
                                         marginTop: 8,
                                         justifyContent: 'flex-end',
+                                        flexDirection: 'column',
+                                        alignItems: 'flex-end',
                                     }}
                                 >
                                     <Text fz="sm" inline>
                                         {displayDateTime}
                                     </Text>
-                                </div>
-                            </Grid.Col>
-                        </Grid>
-                        <ModalsProvider>
-                            <Grid
-                                style={{
-                                    justifyContent: 'flex-end',
-                                }}
-                                mt={10}
-                            >
-                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Twitter')}>
-                                    <IconBrandTwitter size="1.25rem" />
-                                </Button>
-                                <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Facebook')}>
-                                    <IconBrandFacebook size="1.25rem" />
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    className={classes.iconButton}
-                                    color={clipboard.copied ? 'teal' : 'blue'}
-                                    onClick={() => {
-                                        clipboard.copy(blogUrl);
+                                    <Grid
+                                        style={{
+                                            justifyContent: 'flex-end',
+                                        }}
+                                        mt={10}
+                                    >
+                                        <ModalsProvider>
+                                            <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Twitter')}>
+                                                <IconBrandTwitter size="1.25rem" />
+                                            </Button>
+                                            <Button variant="outline" className={classes.iconButton} onClick={() => openModal('Facebook')}>
+                                                <IconBrandFacebook size="1.25rem" />
+                                            </Button>
+                                            <Button
+                                                variant="outline"
+                                                className={classes.iconButton}
+                                                color={clipboard.copied ? 'teal' : 'pink'}
+                                                onClick={() => {
+                                                    clipboard.copy(blogUrl);
 
-                                        notifications.show({
-                                            title: 'Copied to clipboard',
-                                            message: '',
-                                            color: 'teal',
-                                            icon: <IconCheck size="1rem" />,
-                                            autoClose: 1500,
-                                        });
+                                                    notifications.show({
+                                                        title: 'Copied to clipboard',
+                                                        message: '',
+                                                        color: 'teal',
+                                                        icon: <IconCheck size="1rem" />,
+                                                        autoClose: 1500,
+                                                    });
+                                                }}
+                                            >
+                                                <IconCopy size="1.25rem" />
+                                            </Button>
+                                        </ModalsProvider>
+                                    </Grid>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col span={12} md={7}>
+                            <div style={{ position: 'relative' }}>
+                                <div className={classes.project}>
+                                    <Badge className={classes.project} variant="gradient" gradient={gradient}>
+                                        {post.project}
+                                    </Badge>
+                                </div>
+                                <Title
+                                    className={classes.title}
+                                    order={2}
+                                    style={{
+                                        width: 'fit-content',
                                     }}
                                 >
-                                    <IconCopy size="1.25rem" />
-                                </Button>
-                            </Grid>
-                        </ModalsProvider>
-                    </Col>
-                    <Col span={12} md={7}>
-                        <div style={{ position: 'relative' }}>
-                            <div className={classes.project}>
-                                <Badge className={classes.project} variant="gradient" gradient={gradient}>
-                                    {post.project}
-                                </Badge>
+                                    {post.title}
+                                    <hr />
+                                </Title>
                             </div>
-                            <Title className={classes.title} order={2} style={{
-                                width: 'fit-content',
-                            }}>
-                                {post.title}
-                                <hr />
-                            </Title>
-                        </div>
-                        {post.description.split('\n').map((paragraph, index) => (
-                            <Text key={index} size="lg" className={classes.paragraph}
-                                dangerouslySetInnerHTML={{
-                                    __html: paragraph,
-                                }}
-                            ></Text>
-                        ))}
-                    </Col>
-
-                </Grid>
-            </div>
-        </Container>
+                            {post.description.split('\n').map((paragraph, index) => (
+                                <Text
+                                    key={index}
+                                    size="lg"
+                                    className={classes.paragraph}
+                                    dangerouslySetInnerHTML={{
+                                        __html: paragraph,
+                                    }}
+                                ></Text>
+                            ))}
+                        </Col>
+                    </Grid>
+                </div>
+            </Container>
+        </>
     );
 }

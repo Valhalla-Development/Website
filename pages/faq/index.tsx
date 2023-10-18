@@ -5,13 +5,13 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import useStyles from './FAQ.styles';
 
 type Question = {
-    question: string;
-    answer: string;
-    id: string;
-};
+    question: string
+    answer: string
+    id: string
+}
 
 export const getServerSideProps: GetServerSideProps<{
-    questions: Question[];
+    questions: Question[]
 }> = async () => ({
     props: {
         questions: [
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps<{
             },
             {
                 question: 'How do I gain access to the API?',
-                answer: 'To gain access to our API, please join our <a href="https://discord.gg/Q3ZhdRJ" target="_blank" rel="noopener noreferrer">Discord Server</a> and raise a ticket. We will assist you in creating an API key.',
+                answer: 'To gain access to our API, please join our <a target="_blank" href="https://discord.gg/Q3ZhdRJ" target="_blank" rel="noopener noreferrer">Discord Server</a> and raise a ticket. We will assist you in creating an API key.',
                 id: 'api-access',
             },
             {

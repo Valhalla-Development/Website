@@ -12,12 +12,19 @@ export default function privacyPolicy() {
             <div className={classes.wrapper}>
                 <Grid gutter={80}>
                     <Col span={12} md={5}>
-                        <Title className={classes.title} order={2}>
-                            Comprehensive Privacy Policy
-                        </Title>
-                        <Text c="dimmed">
-                            We aim to be as transparent as possible with our users. This privacy policy is designed to help you understand what information we collect and how we use it.
-                        </Text>
+                        <div
+                            style={{
+                                position: 'sticky',
+                                top: '120px',
+                            }}
+                        >
+                            <Title className={classes.title} order={2}>
+                                Comprehensive Privacy Policy
+                            </Title>
+                            <Text c="dimmed">
+                                We aim to be as transparent as possible with our users. This privacy policy is designed to help you understand what information we collect and how we use it.
+                            </Text>
+                        </div>
                     </Col>
                     <Col span={12} md={7}>
                         <h1>Privacy Policy</h1>

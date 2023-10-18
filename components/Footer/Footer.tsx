@@ -9,13 +9,13 @@ import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 import useStyles from './Footer.styles';
 
 interface IconProps extends ActionIconProps {
-  label: string;
-  icon: ReactNode;
-  href: string;
+    label: string
+    icon: ReactNode
+    href: string
 }
 
 interface FooterProps {
-  footerLinks: { link: string; label: string }[];
+    footerLinks: { link: string; label: string }[]
 }
 
 const Icon = ({
@@ -37,11 +37,7 @@ export function Footer({ footerLinks }: FooterProps) {
     const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
     const items = footerLinks.map((link) => (
-        <Link
-            className={cx(classes.anchor, { [classes.mainLinkActive]: router.pathname === link.link })}
-            key={link.label}
-            href={link.link}
-        >
+        <Link className={cx(classes.anchor, { [classes.mainLinkActive]: router.pathname === link.link })} key={link.label} href={link.link}>
             {link.label}
         </Link>
     ));
@@ -50,7 +46,7 @@ export function Footer({ footerLinks }: FooterProps) {
         <div className={classes.footer}>
             <Container className={classes.inner}>
                 <Link href="/">
-                    <Image src='./favicon.svg' width='28' />
+                    <Image src="/favicon.svg" width="28" />
                 </Link>
                 <Group className={classes.links}>{items}</Group>
                 <Group spacing={0} className={classes.links} position="right" noWrap>

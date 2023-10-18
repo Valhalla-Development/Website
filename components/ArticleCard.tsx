@@ -81,10 +81,20 @@ export function ArticleCard({
     className, image, title, description, author, project, slug, blogUrl, ...others
 }: ArticleCardProps & Omit<ComponentPropsWithoutRef<'div'>, keyof ArticleCardProps>) {
     const { classes, cx } = useStyles();
-    const linkProps = { href: `/blog/${slug}`, target: '_blank', rel: 'noopener noreferrer' };
+    const linkProps = { href: `/blog/${slug}` };
     const clipboard = useClipboard({ timeout: 500 });
     const stripHtmlRegex = description.replace(/<[^<]+?>/g, ' ');
     const [sharePopoverOpened, setSharePopoverOpened] = useState(false);
+
+    const popupCenterScreen = (url: string, w: number, h: number, focus = true) => {
+        const top = (window.screen.height - h) / 4;
+        const left = (window.screen.width - w) / 2;
+        const popup = window.open(url, '', `scrollbars=yes,width=${w},height=${h},top=${top},left=${left}`);
+        if (focus && popup) {
+            popup.focus();
+        }
+        return popup;
+    };
 
     const openModal = (platform: string) => modals.openConfirmModal({
         title: 'Are you sure?',
@@ -92,9 +102,14 @@ export function ArticleCard({
         labels: { confirm: 'Confirm', cancel: 'Cancel' },
         onConfirm: () => {
             const url = platform === 'Twitter'
-                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${title} (${blogUrl}${slug})`)}`
+                ? `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${title} ${blogUrl}${slug}`)}`
                 : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl + slug)}`;
-            window.open(url);
+
+            popupCenterScreen(
+                url,
+                550,
+                450,
+            );
         },
     });
 

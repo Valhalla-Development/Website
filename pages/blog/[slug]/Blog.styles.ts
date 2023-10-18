@@ -2,8 +2,10 @@ import { createStyles, rem } from '@mantine/core';
 
 export default createStyles((theme) => ({
     wrapper: {
-        // padding: `calc(${theme.spacing.xl} * 2) ${theme.spacing.xl}`,
-        paddingTop: 50,
+        [theme.fn.smallerThan('md')]: {
+            paddingTop: 10,
+        },
+        paddingTop: 30,
     },
 
     iconButton: {
@@ -44,7 +46,17 @@ export default createStyles((theme) => ({
         [theme.fn.largerThan('md')]: {
             borderRight: '1px solid',
             height: '50vh',
+            position: 'sticky',
+            top: '75px',
         },
+    },
+
+    image: {
+        /* [theme.fn.smallerThan('md')]: {
+             width: '0',
+        }, */
+        width: '100%',
+        height: 'auto',
     },
 
     project: {

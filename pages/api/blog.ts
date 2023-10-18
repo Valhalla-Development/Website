@@ -6,8 +6,7 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
             image: 'https://www.ragnarokbot.com/upload/files/Valhalla_1687797020.png',
             title: 'Valhalla Introduction',
             description:
-                '<h2>Valhalla Development Introduction</h2>'
-                + '<section>'
+                '<section>'
                 + '    <p>'
                 + '        Welcome to Valhalla Development, a new chapter in the journey that started with the creation of Ragnarok in 2018. After creating three distinct Discord bots, I realized I didn\'t want to continue this journey alone. Valhalla Development is born out of the desire to create projects with the community, fostering collaboration and innovation.'
                 + '    </p>'
@@ -37,9 +36,10 @@ export default function hander(req: NextApiRequest, res: NextApiResponse) {
                 + '</section>',
             author: {
                 name: 'Ragnar Lotbrok',
-                image: 'https://cdn.discordapp.com/avatars/151516555757223936/e4f075a62b5e2719c356ef1be855fa9f.webp?size=2048',
+                image: 'https://avatars.githubusercontent.com/u/30740511',
             },
             project: 'website',
+            time: 1691340607,
             slug: 'valhalla-introduction',
         },
     ];

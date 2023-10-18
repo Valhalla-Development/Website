@@ -31,9 +31,9 @@ import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 import useStyles, { headerHeight } from './Header.styles';
 
 interface IconProps extends ActionIconProps {
-    label: string;
-    icon: ReactNode;
-    href: string;
+    label: string
+    icon: ReactNode
+    href: string
 }
 
 const Icon = ({
@@ -49,12 +49,12 @@ const Icon = ({
 );
 
 interface LinkProps {
-    label: string;
-    link: string;
+    label: string
+    link: string
 }
 
 interface CustomHeaderProps {
-    mainLinks: LinkProps[];
+    mainLinks: LinkProps[]
 }
 
 const data = [
@@ -104,7 +104,7 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
     ));
 
     const links = data.map((item) => (
-        <Link href={item.link} key={item.title} className={classes.link}>
+        <Link target={item.link.includes('http') ? '_blank' : ''} href={item.link} key={item.title} className={classes.link}>
             <UnstyledButton className={classes.subLink} key={item.title}>
                 <Group noWrap align="flex-start">
                     <ThemeIcon size={34} variant="default" radius="md">
@@ -125,10 +125,10 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
 
     const icons = (
         <Paper className={classes.icons}>
-            <Link href="https://discord.gg/Q3ZhdRJ">
+            <Link target="_blank" href="https://discord.gg/Q3ZhdRJ">
                 <IconBrandDiscord size="1.8rem" stroke={1.2} color={iconColor} />
             </Link>
-            <Link href="https://github.com/Valhalla-Development">
+            <Link target="_blank" href="https://github.com/Valhalla-Development">
                 <IconBrandGithub size="1.8rem" stroke={1.2} color={iconColor} />
             </Link>
             <ColorSchemeToggle />
@@ -159,10 +159,17 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
     }, [opened, toggle]);
 
     return (
-        <Header height={headerHeight} mb={120}>
+        <Header
+            height={headerHeight}
+            mb={120}
+            bg={colorScheme === 'dark' ? '#1a1b1ee3' : '#ffffffe3'}
+            style={{
+                backdropFilter: 'blur(12px)',
+            }}
+        >
             <Container className={classes.inner}>
                 <Link href="/">
-                    <Image src="./favicon.svg" width="28" />
+                    <Image src="/favicon.svg" width="28" />
                 </Link>
                 <div className={classes.links}>
                     <Group spacing={10} position="right" className={classes.mainLinks}>
