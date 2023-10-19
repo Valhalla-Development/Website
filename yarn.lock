@@ -983,10 +983,10 @@
     fast-deep-equal "^3.1.3"
     klona "^2.0.5"
 
-"@mantine/hooks@^6.0.17":
-  version "6.0.17"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-6.0.17.tgz#dc942c87e6dcfa14a70e4e4a162c22eeb4ff3724"
-  integrity sha512-7vf2w1NlzKlUynSuyI2DAIKoEOYKYC8k+tlSsk3BRdbzhbJAiWxcYzJy5seg5dFW1WIpKAZ0wiVdHXf/WRlRgg==
+"@mantine/hooks@^6.0.21":
+  version "6.0.21"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-6.0.21.tgz#bc009d8380ad18455b90f3ddaf484de16a13da95"
+  integrity sha512-sYwt5wai25W6VnqHbS5eamey30/HD5dNXaZuaVEAJ2i2bBv8C0cCiczygMDpAFiSYdXoSMRr/SZ2CrrPTzeNew==
 
 "@mantine/modals@^6.0.17":
   version "6.0.17"

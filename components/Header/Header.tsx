@@ -136,7 +136,9 @@ export function CustomHeader({ mainLinks }: CustomHeaderProps) {
     );
 
     const mobileNavigation = (
-        <Drawer opened={opened} onClose={toggle} padding={20} position="right" size={100}>
+        <Drawer opened={opened} onClose={toggle} padding={20} position="right" size={100} transitionProps={{
+            transition: 'slide-left'
+        }}>
             <div className={classes.mobileNavigation}>
                 <div className={classes.tabs}>{mainItems}</div>
                 {icons}
