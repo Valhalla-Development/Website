@@ -1,8 +1,33 @@
-.idea
-node_modules
-.next
+# ========================
+# System generated files
+# ========================
+
+# macOS generated files
 .DS_Store
-yarn-error.log
-.turbo
+
+# Environment variables
 .env
-pnpm-lock.yaml
+
+# ========================
+# IDEs and editors
+# ========================
+
+# JetBrains IDEs (e.g., WebStorm, IntelliJ)
+.idea/
+
+# ========================
+# Dependency management
+# ========================
+
+# Yarn: lock file and error log
+yarn-error.log
+.yarn/
+.pnp.cjs
+.pnp.loader.mjs
+
+# ========================
+# Build output
+# ========================
+
+.next
+.turbo
