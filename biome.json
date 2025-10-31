@@ -1,0 +1,17 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+    "extends": ["ultracite/core", "ultracite/next"],
+    "linter": {
+      "rules": {
+        "suspicious": {
+          "noConsole": "off"
+        }
+      }
+    },
+    "javascript": {
+      "formatter": {
+        "indentWidth": 4,
+        "lineWidth": 100
+      }
+    }
+  }
