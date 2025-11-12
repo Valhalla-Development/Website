@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
+import Providers from "./components/providers";
+import ThemeToggle from "./components/theme-toggle";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -29,8 +31,13 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
                 suppressHydrationWarning
             >
-                <Navbar />
-                {children}
+                <Providers>
+                    <div className="fixed top-6 right-6 z-50">
+                        <ThemeToggle />
+                    </div>
+                    <Navbar />
+                    {children}
+                </Providers>
             </body>
         </html>
     );
