@@ -55,7 +55,7 @@ export default function Navbar() {
                     duration: 0.2,
                 }}
             >
-                <div className="rounded-full border border-zinc-200 bg-white/90 px-6 py-3 shadow-md backdrop-blur supports-backdrop-filter:bg-white/60 dark:border-zinc-700 dark:bg-zinc-800/90">
+                <div className="rounded-full border border-zinc-200/20 px-6 py-3 backdrop-blur-sm dark:border-zinc-700/20">
                     <div className="flex items-center justify-center gap-8">
                         {links.map((link) => {
                             const isActive = pathname === link.href;
