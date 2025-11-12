@@ -71,7 +71,7 @@ export default function Navbar() {
                                 >
                                     <span className="relative z-10">{link.label}</span>
                                     {isActive && (
-                                        <span className="-bottom-1 absolute inset-x-0 mx-auto h-px w-full bg-linear-to-r from-transparent via-blue-500 to-transparent" />
+                                        <span className="-bottom-1 absolute inset-x-0 mx-auto h-px w-full bg-linear-to-r from-transparent via-red-500 to-transparent" />
                                     )}
                                 </Link>
                             );
