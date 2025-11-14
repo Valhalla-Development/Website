@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import FOG from "vanta/dist/vanta.fog.min";
@@ -8,23 +9,37 @@ type VantaFogBackgroundProps = {
     className?: string;
 };
 
-export default function VantaFogBackground({ className }: VantaFogBackgroundProps) {
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const effectRef = useRef<ReturnType<typeof FOG> | null>(null);
-    const [isReady, setIsReady] = useState(false);
+type BlendMode = "screen" | "multiply" | "normal";
 
-    useEffect(() => {
-        if (!containerRef.current || effectRef.current) {
-            return undefined;
-        }
+type VantaPreset = {
+    canvasOpacity: number;
+    backgroundColor: string;
+    radialGradient: string;
+    radialOpacity: number;
+    radialBlendMode: BlendMode;
+    floorGradient: string;
+    floorOpacity: number;
+    vanta: {
+        highlightColor: number;
+        midtoneColor: number;
+        lowlightColor: number;
+        baseColor: number;
+        blurFactor: number;
+        speed: number;
+        zoom: number;
+    };
+};
 
-        let cancelled = false;
-        effectRef.current = FOG({
-            el: containerRef.current,
-            THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
+const PRESETS: Record<"dark" | "light", VantaPreset> = {
+    dark: {
+        canvasOpacity: 0.08,
+        backgroundColor: "#020208",
+        radialGradient: "radial-gradient(circle at top, rgba(15,23,42,0.55), transparent 80%)",
+        radialOpacity: 0.45,
+        radialBlendMode: "screen",
+        floorGradient: "linear-gradient(0deg, var(--color-background) 0%, rgba(2,2,8,0))",
+        floorOpacity: 0.65,
+        vanta: {
             highlightColor: 0xff4d6d,
             midtoneColor: 0x170715,
             lowlightColor: 0x050208,
@@ -32,6 +47,56 @@ export default function VantaFogBackground({ className }: VantaFogBackgroundProp
             blurFactor: 0.5,
             speed: 0.85,
             zoom: 1.2,
+        },
+    },
+    light: {
+        canvasOpacity: 0.15,
+        backgroundColor: "#fdfbff",
+        radialGradient: "radial-gradient(circle at top, rgba(255,183,197,0.35), transparent 78%)",
+        radialOpacity: 0.55,
+        radialBlendMode: "multiply",
+        floorGradient: "linear-gradient(0deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0))",
+        floorOpacity: 0.5,
+        vanta: {
+            highlightColor: 0xff9db0,
+            midtoneColor: 0xffe4f1,
+            lowlightColor: 0xf2f5ff,
+            baseColor: 0xffffff,
+            blurFactor: 0.7,
+            speed: 0.55,
+            zoom: 1.12,
+        },
+    },
+};
+
+export default function VantaFogBackground({ className }: VantaFogBackgroundProps) {
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const effectRef = useRef<ReturnType<typeof FOG> | null>(null);
+    const [isReady, setIsReady] = useState(false);
+    const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const themeKey: "dark" | "light" = resolvedTheme === "light" ? "light" : "dark";
+    const preset = PRESETS[themeKey];
+
+    useEffect(() => {
+        if (!mounted || !containerRef.current) {
+            return undefined;
+        }
+
+        let cancelled = false;
+        setIsReady(false);
+        effectRef.current = FOG({
+            el: containerRef.current,
+            THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            ...preset.vanta,
         });
 
         const timeout = window.setTimeout(() => {
@@ -47,23 +112,45 @@ export default function VantaFogBackground({ className }: VantaFogBackgroundProp
                 effectRef.current.destroy();
                 effectRef.current = null;
             }
-            setIsReady(false);
         };
-    }, []);
+    }, [mounted, themeKey]);
+
+    if (!mounted) {
+        return (
+            <div
+                aria-hidden
+                className={`pointer-events-none fixed inset-0 -z-10 ${className ? className : ""}`}
+                style={{ backgroundColor: "var(--color-background)" }}
+            />
+        );
+    }
 
     return (
         <div
             aria-hidden
             className={`pointer-events-none fixed inset-0 -z-10 overflow-hidden ${className ? className : ""}`}
         >
-            <div className="absolute inset-0 bg-[#020208]" />
+            <div className="absolute inset-0" style={{ backgroundColor: preset.backgroundColor }} />
             <div
                 className="absolute inset-0 transition-opacity duration-1200 ease-out"
                 ref={containerRef}
-                style={{ opacity: isReady ? 0.08 : 0 }}
+                style={{ opacity: isReady ? preset.canvasOpacity : 0 }}
             />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.55),transparent_80%)] opacity-45 mix-blend-screen" />
-            <div className="absolute inset-x-0 bottom-[-10%] h-[45%] bg-linear-to-t from-background via-background/85 to-transparent opacity-65" />
+            <div
+                className="absolute inset-0"
+                style={{
+                    background: preset.radialGradient,
+                    opacity: preset.radialOpacity,
+                    mixBlendMode: preset.radialBlendMode,
+                }}
+            />
+            <div
+                className="absolute inset-x-0 bottom-[-10%] h-[45%]"
+                style={{
+                    background: preset.floorGradient,
+                    opacity: preset.floorOpacity,
+                }}
+            />
         </div>
     );
 }
