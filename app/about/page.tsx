@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const principles = [
     {
         tag: "Mindset",
@@ -138,6 +140,39 @@ export default function About() {
                                 </span>
                             </li>
                         </ul>
+                    </div>
+                </section>
+
+                <section className="relative overflow-hidden rounded-[40px] border border-foreground/10 bg-background/95 p-8 shadow-[0_45px_140px_rgba(0,0,0,0.18)]">
+                    <div className="pointer-events-none absolute inset-0">
+                        <div className="-top-16 absolute left-6 h-40 w-40 rounded-full bg-rose-500/15 blur-3xl" />
+                        <div className="absolute right-0 bottom-0 h-48 w-48 rounded-full bg-sky-500/15 blur-3xl" />
+                    </div>
+                    <div className="relative z-10 flex flex-col gap-6 sm:flex-row sm:items-start">
+                        <Image
+                            alt="Ragnar's GitHub profile"
+                            className="h-24 w-24 rounded-[40px] border border-white/10 object-cover shadow-[0_25px_60px_rgba(0,0,0,0.25)]"
+                            height={96}
+                            src="https://avatars.githubusercontent.com/u/30740511?v=4"
+                            width={96}
+                        />
+                        <div className="space-y-4">
+                            <p className="text-foreground/55 text-xs uppercase tracking-[0.45em]">
+                                Word from the founder
+                            </p>
+                            <p className="text-balance text-foreground/90 text-lg leading-relaxed">
+                                Valhalla Development was born from a desire to grow alongside the
+                                community. Collaboration should feel easier than shepherding a solo
+                                project, so this studio is my promise to build tools with people,
+                                not just for them.
+                            </p>
+                            <div>
+                                <p className="font-semibold">Ragnar Lothbrok</p>
+                                <p className="text-foreground/60 text-sm">
+                                    Founder, Valhalla Development
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
