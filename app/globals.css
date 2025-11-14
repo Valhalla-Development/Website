@@ -198,17 +198,21 @@ body {
   transition: var(--transition);
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container {
+/* Dark mode styles - apply to both checked state and SSR dark mode */
+.theme-switch__checkbox:checked + .theme-switch__container,
+.dark .theme-switch__checkbox:disabled + .theme-switch__container {
   background-color: var(--container-night-bg);
 }
 
 .theme-switch__checkbox:checked
   + .theme-switch__container
+  .theme-switch__circle-container,
+.dark
+  .theme-switch__checkbox:disabled
+  + .theme-switch__container
   .theme-switch__circle-container {
   left: calc(
-    100% -
-    var(--circle-container-offset) -
-    var(--circle-container-diameter)
+    100% - var(--circle-container-offset) - var(--circle-container-diameter)
   );
 }
 
@@ -223,17 +227,27 @@ body {
   );
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon,
+.dark
+  .theme-switch__checkbox:disabled
+  + .theme-switch__container
+  .theme-switch__moon {
   transform: translate(0);
 }
 
-.theme-switch__checkbox:checked
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds,
+.dark
+  .theme-switch__checkbox:disabled
   + .theme-switch__container
   .theme-switch__clouds {
   bottom: -4.062em;
 }
 
 .theme-switch__checkbox:checked
+  + .theme-switch__container
+  .theme-switch__stars-container,
+.dark
+  .theme-switch__checkbox:disabled
   + .theme-switch__container
   .theme-switch__stars-container {
   top: 50%;
