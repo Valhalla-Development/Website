@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, useCallback, useEffect, useState } from "react";
-
+import Footer from "./footer";
 import Loader from "./loader";
 import Navbar from "./navbar";
 import ThemeToggle from "./theme-toggle";
@@ -60,7 +60,8 @@ export default function AppShell({ children }: AppShellProps) {
                     <ThemeToggle />
                 </div>
                 <Navbar />
-                <div>{children}</div>
+                <main>{children}</main>
+                <Footer />
             </div>
             {renderLoader && (
                 <div
