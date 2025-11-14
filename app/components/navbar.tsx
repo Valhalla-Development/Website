@@ -1,36 +1,51 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
     const pathname = usePathname();
-    const { scrollYProgress } = useScroll();
     const [visible, setVisible] = useState(true);
+    const lastScrollYRef = useRef(0);
 
-    const SCROLL_THRESHOLD = 0.05;
+    const SCROLL_THRESHOLD = 50;
     const HIDDEN_Y_POSITION = -100;
 
-    useMotionValueEvent(scrollYProgress, "change", (current) => {
-        if (typeof current === "number") {
-            const previous = scrollYProgress.getPrevious();
-            if (previous === undefined) {
-                return;
-            }
-            const direction = current - previous;
-            const currentScroll = scrollYProgress.get();
+    // Hide/show navbar based on manual scroll position and direction
+    useEffect(() => {
+        const handleScroll = () => {
+            const current = window.scrollY || 0;
+            const last = lastScrollYRef.current;
 
-            if (currentScroll < SCROLL_THRESHOLD) {
+            if (current < SCROLL_THRESHOLD) {
                 setVisible(true);
-            } else if (direction < 0) {
-                setVisible(true);
-            } else {
+            } else if (current > last) {
+                // Scrolling down
                 setVisible(false);
+            } else {
+                // Scrolling up
+                setVisible(true);
             }
+
+            lastScrollYRef.current = current;
+        };
+
+        // Initialize on mount so first load has a correct state
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Ensure navbar is visible whenever the route changes and reset scroll tracking
+    useEffect(() => {
+        setVisible(true);
+        if (typeof window !== "undefined") {
+            lastScrollYRef.current = window.scrollY || 0;
         }
-    });
+    }, [pathname]);
 
     const links = [
         { href: "/", label: "Home" },
