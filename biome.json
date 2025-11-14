@@ -1,14 +1,14 @@
 {
-    "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+    "$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
     "extends": ["ultracite/core", "ultracite/next"],
     "linter": {
       "rules": {
         "suspicious": {
           "noConsole": "off"
+        },
+        "correctness": {
+          "useExhaustiveDependencies": "off"
         }
-      },
-      "correctness": {
-        "useExhaustiveDependencies": "off"
       }
     },
     "javascript": {

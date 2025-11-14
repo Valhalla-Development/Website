@@ -50,7 +50,9 @@ export default function ThemeToggle() {
                     checked={false}
                     className="theme-switch__checkbox"
                     disabled
-                    onChange={() => {}}
+                    onChange={() => {
+                        /* noop */
+                    }}
                     type="checkbox"
                 />
                 <ToggleContent />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { type ReactNode, useCallback, useEffect, useState } from "react";
 
 import Loader from "./loader";
 import Navbar from "./navbar";
@@ -27,7 +27,7 @@ export default function AppShell({ children }: AppShellProps) {
             const timer = window.setTimeout(() => setLoaderVisible(false), 100);
             return () => window.clearTimeout(timer);
         }
-        return undefined;
+        return;
     }, [minDelayDone, renderLoader, vantaReady]);
 
     useEffect(() => {
@@ -35,14 +35,17 @@ export default function AppShell({ children }: AppShellProps) {
             const timer = window.setTimeout(() => setRenderLoader(false), 400);
             return () => window.clearTimeout(timer);
         }
-        return undefined;
+        return;
     }, [loaderVisible, renderLoader]);
 
-    const handleVantaReady = useCallback((ready: boolean) => {
-        if (renderLoader) {
-            setVantaReady(ready);
-        }
-    }, [renderLoader]);
+    const handleVantaReady = useCallback(
+        (ready: boolean) => {
+            if (renderLoader) {
+                setVantaReady(ready);
+            }
+        },
+        [renderLoader]
+    );
 
     return (
         <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
@@ -66,7 +69,7 @@ export default function AppShell({ children }: AppShellProps) {
                     }`}
                 >
                     <Loader />
-                    <p className="mt-6 text-xs uppercase tracking-[0.35em] text-foreground/70">
+                    <p className="mt-6 text-foreground/70 text-xs uppercase tracking-[0.35em]">
                         Launching Valhalla
                     </p>
                 </div>
@@ -74,4 +77,3 @@ export default function AppShell({ children }: AppShellProps) {
         </div>
     );
 }
-

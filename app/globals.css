@@ -212,7 +212,9 @@ body {
   + .theme-switch__container
   .theme-switch__circle-container {
   left: calc(
-    100% - var(--circle-container-offset) - var(--circle-container-diameter)
+    100% -
+    var(--circle-container-offset) -
+    var(--circle-container-diameter)
   );
 }
 
@@ -235,7 +237,9 @@ body {
   transform: translate(0);
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds,
+.theme-switch__checkbox:checked
+  + .theme-switch__container
+  .theme-switch__clouds,
 .dark
   .theme-switch__checkbox:disabled
   + .theme-switch__container
@@ -384,7 +388,16 @@ body {
 .loading-hamster .hamster__limb--br,
 .loading-hamster .hamster__limb--bl {
   border-radius: 0.75em 0.75em 0 0;
-  clip-path: polygon(0 0, 100% 0, 100% 30%, 70% 90%, 70% 100%, 30% 100%, 40% 90%, 0 30%);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 30%,
+    70% 90%,
+    70% 100%,
+    30% 100%,
+    40% 90%,
+    0 30%
+  );
   top: 1em;
   left: 2.8em;
   width: 1.5em;
@@ -420,13 +433,17 @@ body {
 .loading-hamster .spoke {
   animation: spoke var(--dur) linear infinite;
   background:
-    radial-gradient(100% 100% at center, hsl(0, 0%, 60%) 4.8%, hsla(0, 0%, 60%, 0) 5%),
+    radial-gradient(
+      100% 100% at center,
+      hsl(0, 0%, 60%) 4.8%,
+      hsla(0, 0%, 60%, 0) 5%
+    ),
     linear-gradient(
       hsla(0, 0%, 55%, 0) 46.9%,
       hsl(0, 0%, 65%) 47% 52.9%,
       hsla(0, 0%, 65%, 0) 53%
     )
-      50% 50% / 99% 99% no-repeat;
+    50% 50% / 99% 99% no-repeat;
 }
 
 @keyframes hamster {

@@ -2,13 +2,14 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
 import FOG from "vanta/dist/vanta.fog.min";
 
 type VantaFogBackgroundProps = {
     className?: string;
     onReadyChange?: (ready: boolean) => void;
 };
+
+type ThreeModule = typeof import("three");
 
 type BlendMode = "screen" | "multiply" | "normal";
 
@@ -41,10 +42,10 @@ const PRESETS: Record<"dark" | "light", VantaPreset> = {
         floorGradient: "linear-gradient(0deg, var(--color-background) 0%, rgba(2,2,8,0))",
         floorOpacity: 0.65,
         vanta: {
-            highlightColor: 0xff4d6d,
-            midtoneColor: 0x170715,
-            lowlightColor: 0x050208,
-            baseColor: 0x010101,
+            highlightColor: 0xff_4d_6d,
+            midtoneColor: 0x17_07_15,
+            lowlightColor: 0x05_02_08,
+            baseColor: 0x01_01_01,
             blurFactor: 0.5,
             speed: 0.85,
             zoom: 1.2,
@@ -59,10 +60,10 @@ const PRESETS: Record<"dark" | "light", VantaPreset> = {
         floorGradient: "linear-gradient(0deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0))",
         floorOpacity: 0.5,
         vanta: {
-            highlightColor: 0xff9db0,
-            midtoneColor: 0xffe4f1,
-            lowlightColor: 0xf2f5ff,
-            baseColor: 0xffffff,
+            highlightColor: 0xff_9d_b0,
+            midtoneColor: 0xff_e4_f1,
+            lowlightColor: 0xf2_f5_ff,
+            baseColor: 0xff_ff_ff,
             blurFactor: 0.7,
             speed: 0.55,
             zoom: 1.12,
@@ -73,6 +74,7 @@ const PRESETS: Record<"dark" | "light", VantaPreset> = {
 export default function VantaFogBackground({ className, onReadyChange }: VantaFogBackgroundProps) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const effectRef = useRef<ReturnType<typeof FOG> | null>(null);
+    const threeRef = useRef<ThreeModule | null>(null);
     const [isReady, setIsReady] = useState(false);
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
@@ -89,30 +91,48 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
     }, [isReady, mounted, onReadyChange]);
 
     useEffect(() => {
-        if (!mounted || !containerRef.current) {
-            return undefined;
+        if (!(mounted && containerRef.current)) {
+            return;
         }
 
         let cancelled = false;
-        setIsReady(false);
-        effectRef.current = FOG({
-            el: containerRef.current,
-            THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            ...preset.vanta,
-        });
+        let timeout: number | undefined;
 
-        const timeout = window.setTimeout(() => {
-            if (!cancelled) {
-                setIsReady(true);
+        const init = async () => {
+            setIsReady(false);
+            let THREE = threeRef.current;
+            if (!THREE) {
+                THREE = await import("three");
+                threeRef.current = THREE;
             }
-        }, 180);
+
+            if (cancelled || !containerRef.current) {
+                return;
+            }
+
+            effectRef.current = FOG({
+                el: containerRef.current,
+                THREE,
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                ...preset.vanta,
+            });
+
+            timeout = window.setTimeout(() => {
+                if (!cancelled) {
+                    setIsReady(true);
+                }
+            }, 180);
+        };
+
+        init();
 
         return () => {
             cancelled = true;
-            window.clearTimeout(timeout);
+            if (typeof timeout === "number") {
+                window.clearTimeout(timeout);
+            }
             if (effectRef.current) {
                 effectRef.current.destroy();
                 effectRef.current = null;
@@ -124,7 +144,7 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
         return (
             <div
                 aria-hidden
-                className={`pointer-events-none fixed inset-0 -z-10 ${className ? className : ""}`}
+                className={`-z-10 pointer-events-none fixed inset-0 ${className ? className : ""}`}
                 style={{ backgroundColor: "var(--color-background)" }}
             />
         );
@@ -133,7 +153,7 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
     return (
         <div
             aria-hidden
-            className={`pointer-events-none fixed inset-0 -z-10 overflow-hidden ${className ? className : ""}`}
+            className={`-z-10 pointer-events-none fixed inset-0 overflow-hidden ${className ? className : ""}`}
         >
             <div className="absolute inset-0" style={{ backgroundColor: preset.backgroundColor }} />
             <div
@@ -159,4 +179,3 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
         </div>
     );
 }
-
