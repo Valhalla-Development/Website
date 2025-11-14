@@ -52,7 +52,6 @@ export default function Navbar() {
         { href: "/portfolio", label: "Portfolio" },
         { href: "/about", label: "About" },
         { href: "/team", label: "Team" },
-        { href: "/contact", label: "Contact" },
     ];
 
     return (
