@@ -34,7 +34,7 @@ const focusAreas = [
         title: "Website",
         tag: "Experience",
         summary:
-            "Our website is the gateway to our services and products,a clear window into the people and the craft behind Valhalla Development.",
+            "Our website is the gateway to our services and products, a clear window into the people and the craft behind Valhalla Development.",
         details:
             "It remains intentionally simple to navigate, yet rich enough to communicate our vision, team, and commitment to excellence.",
     },
@@ -44,7 +44,7 @@ const milestones = [
     {
         title: "Idea to intention",
         description:
-            "Valhalla Development began as a simple idea, to create tools that empower individuals and communities online.",
+            "Valhalla Development began as a simple idea: to create tools that empower individuals and communities online.",
     },
     {
         title: "Gap bridged",
@@ -70,13 +70,7 @@ const milestones = [
 
 export default function About() {
     return (
-        <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
-            <div aria-hidden className="-z-10 pointer-events-none absolute inset-0">
-                <div className="-translate-x-1/2 absolute top-0 left-1/2 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,99,132,0.18),transparent_70%)] blur-3xl" />
-                <div className="absolute top-1/4 right-[-10%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.14),transparent_65%)] blur-3xl" />
-                <div className="absolute bottom-[-5%] left-[-5%] h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle_at_center,rgba(217,70,239,0.12),transparent_60%)] blur-3xl" />
-            </div>
-
+        <div className="relative min-h-screen bg-background text-foreground">
             <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-32 pb-24 lg:pt-40">
                 <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
                     <div>
@@ -87,7 +81,7 @@ export default function About() {
                             Building digital infrastructure that still feels human.
                         </h1>
                         <p className="mt-6 text-foreground/80 text-lg leading-relaxed">
-                            Valhalla Development began as a simple idea, to craft solutions that
+                            Valhalla Development began as a simple idea: to craft solutions that
                             empower individuals and communities online. We saw the potential of a
                             connected world and took it upon ourselves to bridge the gap between
                             technology and the user. Today, that spirit still guides every line of
@@ -158,8 +152,8 @@ export default function About() {
                             </h2>
                         </div>
                         <p className="max-w-xl text-foreground/70 text-sm">
-                            Every touchpoint reflects the same mission: design dependable experiences
-                            that make the internet a better place.
+                            Every touchpoint reflects the same mission: design dependable
+                            experiences that make the internet a better place.
                         </p>
                     </div>
 
