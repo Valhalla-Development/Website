@@ -7,6 +7,7 @@ import FOG from "vanta/dist/vanta.fog.min";
 
 type VantaFogBackgroundProps = {
     className?: string;
+    onReadyChange?: (ready: boolean) => void;
 };
 
 type BlendMode = "screen" | "multiply" | "normal";
@@ -69,7 +70,7 @@ const PRESETS: Record<"dark" | "light", VantaPreset> = {
     },
 };
 
-export default function VantaFogBackground({ className }: VantaFogBackgroundProps) {
+export default function VantaFogBackground({ className, onReadyChange }: VantaFogBackgroundProps) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const effectRef = useRef<ReturnType<typeof FOG> | null>(null);
     const [isReady, setIsReady] = useState(false);
@@ -82,6 +83,10 @@ export default function VantaFogBackground({ className }: VantaFogBackgroundProp
 
     const themeKey: "dark" | "light" = resolvedTheme === "light" ? "light" : "dark";
     const preset = PRESETS[themeKey];
+
+    useEffect(() => {
+        onReadyChange?.(mounted && isReady);
+    }, [isReady, mounted, onReadyChange]);
 
     useEffect(() => {
         if (!mounted || !containerRef.current) {
