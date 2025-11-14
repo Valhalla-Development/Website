@@ -6,6 +6,9 @@
         "suspicious": {
           "noConsole": "off"
         }
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off"
       }
     },
     "javascript": {
