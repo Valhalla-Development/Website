@@ -91,7 +91,7 @@ export default function Footer() {
                 </div>
             </div>
             <p className="mt-6 text-center font-normal text-white/45 text-xs sm:mt-8">
-                © {currentYear} Valhalla Development.
+                © {currentYear} Valhalla Development
             </p>
         </footer>
     );
