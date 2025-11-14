@@ -143,11 +143,7 @@ export default function About() {
                     </div>
                 </section>
 
-                <section className="relative overflow-hidden rounded-[40px] border border-foreground/10 bg-background/95 p-8 shadow-[0_45px_140px_rgba(0,0,0,0.18)]">
-                    <div className="pointer-events-none absolute inset-0">
-                        <div className="-top-16 absolute left-6 h-40 w-40 rounded-full bg-rose-500/15 blur-3xl" />
-                        <div className="absolute right-0 bottom-0 h-48 w-48 rounded-full bg-sky-500/15 blur-3xl" />
-                    </div>
+                <section className="relative overflow-hidden rounded-[40px] border border-foreground/10 p-8 shadow-[0_45px_140px_rgba(0,0,0,0.18)]">
                     <div className="relative z-10 flex flex-col gap-6 sm:flex-row sm:items-start">
                         <Image
                             alt="Ragnar's GitHub profile"

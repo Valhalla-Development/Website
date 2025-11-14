@@ -59,12 +59,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
     return (
-        <div className="relative min-h-screen bg-background text-foreground">
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-24 left-0 h-72 w-72 rounded-full bg-sky-400/10 blur-[140px]" />
-                <div className="absolute top-0 right-8 h-64 w-64 rounded-full bg-indigo-500/10 blur-[140px]" />
-                <div className="absolute bottom-10 left-12 h-80 w-80 rounded-full bg-emerald-400/10 blur-[160px]" />
-            </div>
+        <div className="relative min-h-screen text-foreground">
             <main className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 py-28 lg:py-36">
                 <header className="space-y-6">
                     <div>

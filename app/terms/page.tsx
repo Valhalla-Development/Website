@@ -52,12 +52,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
     return (
-        <div className="relative min-h-screen bg-background text-foreground">
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-16 left-8 h-64 w-64 rounded-full bg-rose-500/10 blur-3xl" />
-                <div className="absolute top-1/3 right-12 h-72 w-72 rounded-full bg-sky-400/10 blur-[140px]" />
-                <div className="-translate-x-1/2 absolute bottom-0 left-1/2 h-80 w-80 rounded-full bg-violet-500/10 blur-[160px]" />
-            </div>
+        <div className="relative min-h-screen text-foreground">
             <main className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 py-28 lg:py-36">
                 <header className="space-y-6">
                     <div>
