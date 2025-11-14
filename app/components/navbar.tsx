@@ -64,7 +64,7 @@ export default function Navbar() {
                 className="-translate-x-1/2 fixed top-6 left-1/2 z-50"
                 initial={{
                     opacity: 1,
-                    y: HIDDEN_Y_POSITION,
+                    y: 0,
                 }}
                 transition={{
                     duration: 0.2,
