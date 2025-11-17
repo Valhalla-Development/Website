@@ -8,16 +8,45 @@
 :root {
   --color-background: #ffffff;
   --color-foreground: #171717;
+  --color-social-bg: #ffffff;
+  --color-social-fg: #0a0a0a;
+  --color-social-border: rgba(24, 24, 27, 0.15);
+  --color-social-hover-bg: #050505;
+  --color-social-hover-fg: #ffffff;
+  --color-social-hover-border: rgba(24, 24, 27, 0.55);
 }
 
 .dark {
   --color-background: #0a0a0a;
   --color-foreground: #ededed;
+  --color-social-bg: #050505;
+  --color-social-fg: #ededed;
+  --color-social-border: rgba(255, 255, 255, 0.25);
+  --color-social-hover-bg: #ffffff;
+  --color-social-hover-fg: #050505;
+  --color-social-hover-border: rgba(255, 255, 255, 0.6);
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+}
+
+.social-button {
+  border: 1px solid var(--color-social-border);
+  background-color: var(--color-social-bg);
+  color: var(--color-social-fg);
+  transition:
+    background-color 140ms ease-out,
+    color 140ms ease-out,
+    border-color 140ms ease-out;
+  will-change: background-color, color, border-color;
+}
+
+.social-button:hover {
+  border-color: var(--color-social-hover-border);
+  background-color: var(--color-social-hover-bg);
+  color: var(--color-social-hover-fg);
 }
 
 /* Theme switch component (from Uiverse.io by Galahhad) */
