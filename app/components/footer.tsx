@@ -62,7 +62,9 @@ export default function Footer() {
                                 className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-900/10 bg-white/80 px-4 py-1.5 font-medium text-sm text-zinc-900 shadow-sm transition-all duration-150 ease-out hover:text-zinc-950 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:text-white"
                                 href={link.href}
                                 key={link.label}
+                                rel="noreferrer noopener"
                                 scroll={false}
+                                target="_blank"
                             >
                                 <span
                                     aria-hidden
