@@ -59,7 +59,7 @@ export default function Footer() {
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                         {policyLinks.map((link) => (
                             <Link
-                                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-900/10 bg-white/80 px-4 py-1.5 font-medium text-sm text-zinc-900 shadow-sm transition-all duration-150 ease-out hover:text-zinc-950 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:text-white"
+                                className="group hover:-translate-y-0.5 relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-900/15 bg-white px-4 py-1.5 font-semibold text-(--policy-link-text) text-sm shadow-[0_10px_35px_rgba(15,23,42,0.12)] transition-all duration-150 ease-out hover:border-zinc-900/30 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/20 dark:bg-white/5 dark:text-(--policy-link-text) dark:focus-visible:ring-white/30 dark:focus-visible:ring-offset-zinc-950 dark:hover:border-white/40 dark:hover:bg-white/10"
                                 href={link.href}
                                 key={link.label}
                                 rel="noreferrer noopener"
@@ -68,13 +68,13 @@ export default function Footer() {
                             >
                                 <span
                                     aria-hidden
-                                    className="pointer-events-none absolute inset-0 rounded-full bg-zinc-900/5 opacity-0 blur-lg transition-opacity duration-200 group-hover:opacity-100 dark:bg-white/15"
+                                    className="pointer-events-none absolute inset-0 rounded-full bg-zinc-900/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-white/15"
                                 />
                                 <span
                                     aria-hidden
-                                    className={`pointer-events-none absolute inset-0 rounded-full bg-linear-to-r ${link.accent} opacity-0 blur-2xl transition-opacity duration-200 group-hover:opacity-100`}
+                                    className={`pointer-events-none absolute inset-0 rounded-full bg-linear-to-r ${link.accent} opacity-0 blur-2xl transition duration-200 group-hover:opacity-100`}
                                 />
-                                <span className="group-hover:-translate-y-0.5 relative z-10 transition-transform duration-150 group-hover:scale-[1.03]">
+                                <span className="group-hover:-translate-y-0.5 relative z-10 transition-all duration-150 group-hover:scale-[1.03]">
                                     {link.label}
                                 </span>
                             </Link>
