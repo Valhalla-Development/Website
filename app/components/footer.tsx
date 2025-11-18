@@ -55,8 +55,8 @@ export default function Footer() {
                     aria-hidden
                     className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/70 via-transparent to-rose-200/50 opacity-60 dark:from-white/10 dark:to-white/5"
                 />
-                <div className="relative flex flex-wrap items-center justify-between gap-3 font-medium text-foreground/70 text-sm">
-                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <div className="relative flex flex-col items-center justify-between gap-4 font-medium text-foreground/70 text-sm sm:flex-row sm:gap-3">
+                    <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:justify-start sm:gap-x-6">
                         {policyLinks.map((link) => (
                             <Link
                                 className="group hover:-translate-y-0.5 relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-900/15 bg-white px-4 py-1.5 font-semibold text-(--policy-link-text) text-sm shadow-[0_10px_35px_rgba(15,23,42,0.12)] transition-all duration-150 ease-out hover:border-zinc-900/30 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/20 dark:bg-white/5 dark:text-(--policy-link-text) dark:focus-visible:ring-white/30 dark:focus-visible:ring-offset-zinc-950 dark:hover:border-white/40 dark:hover:bg-white/10"
