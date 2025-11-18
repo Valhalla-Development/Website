@@ -1,7 +1,7 @@
 export default function Home() {
     return (
         <div className="min-h-screen bg-background text-foreground">
-            <main className="mx-auto max-w-6xl px-6 py-20">
+            <main className="mx-auto max-w-6xl px-6 pt-20 pb-24 lg:pt-24">
                 <div className="space-y-8">
                     <header className="space-y-3">
                         <p className="text-foreground/40 text-sm uppercase tracking-[0.3em]">

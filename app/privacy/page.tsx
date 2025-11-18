@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
     return (
         <div className="relative min-h-screen text-foreground">
-            <main className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 py-28 lg:py-36">
+            <main className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 pb-24 lg:pt-24">
                 <header className="space-y-6">
                     <div>
                         <p className="text-foreground/60 text-xs uppercase tracking-[0.35em]">
