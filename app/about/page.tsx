@@ -46,7 +46,7 @@ const milestones = [
 export default function About() {
     return (
         <div className="relative min-h-screen bg-background text-foreground">
-            <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 pb-24 lg:pt-24">
+            <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 lg:pt-24">
                 <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
                     <div>
                         <p className="text-foreground/60 text-sm uppercase tracking-[0.35em]">
