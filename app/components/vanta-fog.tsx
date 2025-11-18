@@ -34,7 +34,7 @@ type VantaPreset = {
 
 const PRESETS: Record<"dark" | "light", VantaPreset> = {
     dark: {
-        canvasOpacity: 0.08,
+        canvasOpacity: 0.25,
         backgroundColor: "#020208",
         radialGradient: "radial-gradient(circle at top, rgba(15,23,42,0.55), transparent 80%)",
         radialOpacity: 0.45,
@@ -47,12 +47,12 @@ const PRESETS: Record<"dark" | "light", VantaPreset> = {
             lowlightColor: 0x05_02_08,
             baseColor: 0x01_01_01,
             blurFactor: 0.5,
-            speed: 0.85,
+            speed: 2,
             zoom: 1.2,
         },
     },
     light: {
-        canvasOpacity: 0.15,
+        canvasOpacity: 0.25,
         backgroundColor: "#fdfbff",
         radialGradient: "radial-gradient(circle at top, rgba(255,183,197,0.35), transparent 78%)",
         radialOpacity: 0.55,
@@ -65,7 +65,7 @@ const PRESETS: Record<"dark" | "light", VantaPreset> = {
             lowlightColor: 0xf2_f5_ff,
             baseColor: 0xff_ff_ff,
             blurFactor: 0.7,
-            speed: 0.55,
+            speed: 2,
             zoom: 1.12,
         },
     },
