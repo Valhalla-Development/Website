@@ -153,19 +153,20 @@ export default function About() {
                                 <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
                                     Milestones
                                 </p>
-                                <ol className="mt-8 space-y-6 border-foreground/10 border-l pl-6">
+                                <ol className="mt-8 space-y-6">
                                     {milestones.map((milestone, index) => (
-                                        <li className="relative pl-6" key={milestone.title}>
-                                            <span className="-left-14 absolute font-semibold text-foreground/45 text-sm">
+                                        <li className="flex gap-4" key={milestone.title}>
+                                            <span className="font-semibold text-foreground/45 text-sm">
                                                 {String(index + 1).padStart(2, "0")}
                                             </span>
-                                            <span className="-left-3 absolute top-2 h-2 w-2 rounded-full bg-foreground/45" />
-                                            <h3 className="font-semibold text-lg">
-                                                {milestone.title}
-                                            </h3>
-                                            <p className="mt-2 text-foreground/70 text-sm">
-                                                {milestone.description}
-                                            </p>
+                                            <div>
+                                                <h3 className="font-semibold text-lg">
+                                                    {milestone.title}
+                                                </h3>
+                                                <p className="mt-2 text-foreground/70 text-sm">
+                                                    {milestone.description}
+                                                </p>
+                                            </div>
                                         </li>
                                     ))}
                                 </ol>
