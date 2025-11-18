@@ -95,7 +95,7 @@ export default function Footer() {
                                     className={`pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-br ${social.accent} opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100`}
                                 />
                                 <div
-                                    className="social-button group-hover:-translate-y-1 relative flex h-12 w-12 items-center justify-center rounded-2xl shadow-lg transition-transform duration-150 ease-out will-change-transform group-hover:scale-110"
+                                    className="social-button relative flex h-12 w-12 items-center justify-center rounded-2xl shadow-lg"
                                     style={{ clipPath: "url(#footerSquircleClip)" }}
                                 >
                                     <svg
