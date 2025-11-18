@@ -51,6 +51,13 @@ body {
   color: var(--color-social-hover-fg);
 }
 
+/* Ensure the social button reacts the same anywhere inside the clickable area */
+.group:hover .social-button {
+  border-color: var(--color-social-hover-border);
+  background-color: var(--color-social-hover-bg);
+  color: var(--color-social-hover-fg);
+}
+
 /* Theme switch component (from Uiverse.io by Galahhad) */
 .theme-switch {
   --toggle-size: 12px;
