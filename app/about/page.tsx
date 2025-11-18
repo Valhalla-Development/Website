@@ -66,32 +66,50 @@ export default function About() {
 
                     <div className="space-y-6">
                         <div className="rounded-[32px] border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
-                            <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
-                                Word from the founder
-                            </p>
-                            <p className="mt-4 text-balance font-semibold text-2xl leading-snug">
-                                Tools that empower individuals and communities to feel at home
-                                online.
-                            </p>
-                            <p className="mt-4 text-foreground/85 text-sm leading-relaxed">
-                                Valhalla Development was born from a desire to grow alongside the
-                                community. Collaboration should feel easier than shepherding a solo
-                                project, so this studio is my promise to build tools with people,
-                                not just for them.
-                            </p>
-                            <div className="mt-6 flex items-center gap-4">
-                                <Image
-                                    alt="Ragnar's GitHub profile"
-                                    className="h-16 w-16 rounded-3xl border border-white/10 object-cover shadow-[0_20px_50px_rgba(0,0,0,0.25)]"
-                                    height={64}
-                                    src="https://avatars.githubusercontent.com/u/30740511?v=4"
-                                    width={64}
-                                />
+                            <div className="relative flex flex-col gap-6">
+                                <div
+                                    className="-left-2 absolute top-5 flex items-center"
+                                    style={{ width: "33%", maxWidth: "16rem" }}
+                                >
+                                    <div
+                                        className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
+                                        style={{ height: "1.5rem", width: "7rem" }}
+                                    />
+                                    <div className="relative flex w-full items-center">
+                                        <div className="h-0.75 w-10 bg-linear-to-r from-transparent to-rose-500/55" />
+                                        <div className="h-0.75 flex-1 bg-linear-to-r from-rose-500/55 via-sky-400/45 to-amber-300/45 shadow-[0_0_18px_rgba(244,63,94,0.55)]" />
+                                        <div className="h-0.75 w-8 bg-linear-to-r from-amber-300/45 to-transparent" />
+                                    </div>
+                                </div>
                                 <div>
-                                    <p className="font-semibold">Ragnar Lothbrok</p>
-                                    <p className="text-foreground/60 text-sm">
-                                        Founder, Valhalla Development
+                                    <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                                        Word from the founder
                                     </p>
+                                    <p className="mt-8 text-balance font-semibold text-2xl leading-snug">
+                                        Tools that empower individuals and communities to feel at
+                                        home online.
+                                    </p>
+                                    <p className="mt-4 text-foreground/85 text-sm leading-relaxed">
+                                        Valhalla Development was born from a desire to grow
+                                        alongside the community. Collaboration should feel easier
+                                        than shepherding a solo project, so this studio is my
+                                        promise to build tools with people, not just for them.
+                                    </p>
+                                    <div className="mt-6 flex items-center gap-4">
+                                        <Image
+                                            alt="Ragnar's GitHub profile"
+                                            className="h-16 w-16 rounded-3xl border border-white/10 object-cover shadow-[0_20px_50px_rgba(0,0,0,0.25)]"
+                                            height={64}
+                                            src="https://avatars.githubusercontent.com/u/30740511?v=4"
+                                            width={64}
+                                        />
+                                        <div>
+                                            <p className="font-semibold">Ragnar Lothbrok</p>
+                                            <p className="text-foreground/60 text-sm">
+                                                Founder, Valhalla Development
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
