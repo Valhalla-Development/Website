@@ -127,49 +127,63 @@ export default function About() {
                                     </div>
                                 </div>
 
-                                <div>
-                                    <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
-                                        Our story
-                                    </p>
-                                    <h2 className="mt-4 font-semibold text-3xl tracking-tight">
-                                        Still evolving, always curious
-                                    </h2>
-                                    <p className="mt-5 text-base text-foreground/75 leading-relaxed">
-                                        What started as a curiosity project has grown into a
-                                        multi-surface platform spanning infrastructure, community
-                                        tools, and digital storytelling. Each release is another
-                                        chance to refine how we listen, respond, and raise the bar
-                                        for the teams that trust us.
-                                    </p>
-                                    <p className="mt-4 text-base text-foreground/75 leading-relaxed">
-                                        The work ahead is ambitious, but our north star stays the
-                                        same: make the internet kinder, clearer, and more capable
-                                        for everyone navigating it.
-                                    </p>
+                                <div className="relative">
+                                    <div className="absolute inset-x-0 top-0 flex items-center">
+                                        <div className="h-px w-12 bg-gradient-to-r from-transparent to-rose-500/40" />
+                                        <div className="h-px flex-1 bg-gradient-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
+                                        <div className="h-px w-12 bg-gradient-to-r from-amber-300/40 to-transparent" />
+                                    </div>
+                                    <div className="pt-10">
+                                        <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
+                                            Our story
+                                        </p>
+                                        <h2 className="mt-4 font-semibold text-3xl tracking-tight">
+                                            Still evolving, always curious
+                                        </h2>
+                                        <p className="mt-5 text-base text-foreground/75 leading-relaxed">
+                                            What started as a curiosity project has grown into a
+                                            multi-surface platform spanning infrastructure,
+                                            community tools, and digital storytelling. Each release
+                                            is another chance to refine how we listen, respond, and
+                                            raise the bar for the teams that trust us.
+                                        </p>
+                                        <p className="mt-4 text-base text-foreground/75 leading-relaxed">
+                                            The work ahead is ambitious, but our north star stays
+                                            the same: make the internet kinder, clearer, and more
+                                            capable for everyone navigating it.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
-                                    Milestones
-                                </p>
-                                <ol className="mt-8 space-y-6">
-                                    {milestones.map((milestone, index) => (
-                                        <li className="flex gap-4" key={milestone.title}>
-                                            <span className="font-semibold text-foreground/45 text-sm">
-                                                {String(index + 1).padStart(2, "0")}
-                                            </span>
-                                            <div>
-                                                <h3 className="font-semibold text-lg">
-                                                    {milestone.title}
-                                                </h3>
-                                                <p className="mt-2 text-foreground/70 text-sm">
-                                                    {milestone.description}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ol>
+                            <div className="relative">
+                                <div className="absolute inset-x-0 top-0 flex items-center">
+                                    <div className="h-px w-12 bg-gradient-to-r from-transparent to-rose-500/40" />
+                                    <div className="h-px flex-1 bg-gradient-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
+                                    <div className="h-px w-12 bg-gradient-to-r from-amber-300/40 to-transparent" />
+                                </div>
+                                <div className="pt-10">
+                                    <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
+                                        Milestones
+                                    </p>
+                                    <ol className="mt-8 space-y-6">
+                                        {milestones.map((milestone, index) => (
+                                            <li className="flex gap-4" key={milestone.title}>
+                                                <span className="font-semibold text-foreground/45 text-sm">
+                                                    {String(index + 1).padStart(2, "0")}
+                                                </span>
+                                                <div>
+                                                    <h3 className="font-semibold text-lg">
+                                                        {milestone.title}
+                                                    </h3>
+                                                    <p className="mt-2 text-foreground/70 text-sm">
+                                                        {milestone.description}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ol>
+                                </div>
                             </div>
                         </div>
                     </div>
