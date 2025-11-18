@@ -128,10 +128,19 @@ export default function About() {
                                 </div>
 
                                 <div className="relative flex flex-col gap-10">
-                                    <div className="absolute inset-x-0 top-5 flex items-center">
-                                        <div className="h-px w-12 bg-linear-to-r from-transparent to-rose-500/40" />
-                                        <div className="h-px flex-1 bg-linear-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
-                                        <div className="h-px w-12 bg-linear-to-r from-amber-300/40 to-transparent" />
+                                    <div
+                                        className="-left-2 absolute top-5 flex items-center"
+                                        style={{ width: "33%", maxWidth: "16rem" }}
+                                    >
+                                        <div
+                                            className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
+                                            style={{ height: "1.5rem", width: "7rem" }}
+                                        />
+                                        <div className="relative flex w-full items-center">
+                                            <div className="h-0.75 w-10 bg-linear-to-r from-transparent to-rose-500/55" />
+                                            <div className="h-0.75 flex-1 bg-linear-to-r from-rose-500/55 via-sky-400/45 to-amber-300/45 shadow-[0_0_18px_rgba(244,63,94,0.55)]" />
+                                            <div className="h-0.75 w-8 bg-linear-to-r from-amber-300/45 to-transparent" />
+                                        </div>
                                     </div>
                                     <div>
                                         <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
@@ -157,10 +166,19 @@ export default function About() {
                             </div>
 
                             <div className="relative flex flex-col gap-10">
-                                <div className="absolute inset-x-0 top-5 flex items-center">
-                                    <div className="h-px w-12 bg-linear-to-r from-transparent to-rose-500/40" />
-                                    <div className="h-px flex-1 bg-linear-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
-                                    <div className="h-px w-12 bg-linear-to-r from-amber-300/40 to-transparent" />
+                                <div
+                                    className="-left-2 absolute top-5 flex items-center"
+                                    style={{ width: "33%", maxWidth: "16rem" }}
+                                >
+                                    <div
+                                        className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
+                                        style={{ height: "1.5rem", width: "7rem" }}
+                                    />
+                                    <div className="relative flex w-full items-center">
+                                        <div className="h-0.75 w-10 bg-linear-to-r from-transparent to-rose-500/55" />
+                                        <div className="h-0.75 flex-1 bg-linear-to-r from-rose-500/55 via-sky-400/45 to-amber-300/45 shadow-[0_0_18px_rgba(244,63,94,0.55)]" />
+                                        <div className="h-0.75 w-8 bg-linear-to-r from-amber-300/45 to-transparent" />
+                                    </div>
                                 </div>
                                 <div>
                                     <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
