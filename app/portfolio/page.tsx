@@ -4,25 +4,45 @@ export default function Portfolio() {
             <main className="mx-auto max-w-6xl px-6 pt-20 lg:pt-24">
                 <div className="space-y-8">
                     <header className="space-y-3">
-                        <p className="text-foreground/40 text-sm uppercase tracking-[0.3em]">
+                        <p className="text-foreground/60 text-sm uppercase tracking-[0.3em]">
                             Valhalla Development
                         </p>
                         <h1 className="font-bold text-5xl">Portfolio</h1>
-                        <p className="max-w-2xl text-foreground/70 text-lg">
+                        <p className="max-w-2xl text-foreground/80 text-lg">
                             We&apos;re curating highlights from recent builds and case studies. Hang
                             tight, this page will soon showcase the full roster.
                         </p>
                     </header>
-                    <section className="rounded-3xl border border-foreground/10 bg-white/80 p-6 shadow-[0_20px_80px_rgba(15,23,42,0.08)] backdrop-blur dark:border-white/10 dark:bg-white/5">
-                        <p className="font-semibold text-foreground/60 text-sm uppercase tracking-[0.2em] dark:text-white/60">
-                            Work in progress
-                        </p>
-                        <h2 className="mt-3 font-semibold text-2xl">Portfolio coming soon</h2>
-                        <p className="mt-2 text-base text-foreground/70 dark:text-white/70">
-                            We&apos;re finishing write-ups, visuals, and stats for each project.
-                            Check back shortly to explore the work, or reach out if you need a
-                            preview in the meantime.
-                        </p>
+                    <section className="rounded-[32px] border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
+                        <div className="relative flex flex-col gap-6">
+                            <div
+                                className="-left-2 absolute top-5 flex items-center"
+                                style={{ width: "33%", maxWidth: "16rem" }}
+                            >
+                                <div
+                                    className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
+                                    style={{ height: "1.5rem", width: "7rem" }}
+                                />
+                                <div className="relative flex w-full items-center">
+                                    <div className="h-0.75 w-10 bg-linear-to-r from-transparent to-rose-500/55" />
+                                    <div className="h-0.75 flex-1 bg-linear-to-r from-rose-500/55 via-sky-400/45 to-amber-300/45 shadow-[0_0_18px_rgba(244,63,94,0.55)]" />
+                                    <div className="h-0.75 w-8 bg-linear-to-r from-amber-300/45 to-transparent" />
+                                </div>
+                            </div>
+                            <div>
+                                <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                                    Work in progress
+                                </p>
+                                <h2 className="mt-8 text-balance font-semibold text-2xl leading-snug">
+                                    Portfolio coming soon
+                                </h2>
+                                <p className="mt-4 text-foreground/85 text-sm leading-relaxed">
+                                    We&apos;re finishing write-ups, visuals, and stats for each
+                                    project. Check back shortly to explore the work, or reach out if
+                                    you need a preview in the meantime.
+                                </p>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </main>
