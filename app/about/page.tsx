@@ -129,9 +129,9 @@ export default function About() {
 
                                 <div className="relative">
                                     <div className="absolute inset-x-0 top-5 flex items-center">
-                                        <div className="h-px w-12 bg-gradient-to-r from-transparent to-rose-500/40" />
-                                        <div className="h-px flex-1 bg-gradient-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
-                                        <div className="h-px w-12 bg-gradient-to-r from-amber-300/40 to-transparent" />
+                                        <div className="h-px w-12 bg-linear-to-r from-transparent to-rose-500/40" />
+                                        <div className="h-px flex-1 bg-linear-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
+                                        <div className="h-px w-12 bg-linear-to-r from-amber-300/40 to-transparent" />
                                     </div>
                                     <div className="pt-10">
                                         <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
@@ -158,9 +158,9 @@ export default function About() {
 
                             <div className="relative flex flex-col gap-10">
                                 <div className="absolute inset-x-0 top-5 flex items-center">
-                                    <div className="h-px w-12 bg-gradient-to-r from-transparent to-rose-500/40" />
-                                    <div className="h-px flex-1 bg-gradient-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
-                                    <div className="h-px w-12 bg-gradient-to-r from-amber-300/40 to-transparent" />
+                                    <div className="h-px w-12 bg-linear-to-r from-transparent to-rose-500/40" />
+                                    <div className="h-px flex-1 bg-linear-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
+                                    <div className="h-px w-12 bg-linear-to-r from-amber-300/40 to-transparent" />
                                 </div>
                                 <div>
                                     <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
