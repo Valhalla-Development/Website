@@ -102,7 +102,7 @@ export default function About() {
                     <div className="relative overflow-hidden rounded-[40px] border border-foreground/10 bg-background/80 p-10 shadow-[0_25px_90px_rgba(0,0,0,0.12)]">
                         <div className="pointer-events-none absolute inset-x-6 top-0 h-48 rounded-full bg-linear-to-r from-rose-500/15 via-transparent to-sky-500/15 blur-3xl" />
                         <div className="relative grid gap-12 lg:grid-cols-[1.2fr,1fr]">
-                            <div className="space-y-10">
+                            <div className="flex flex-col gap-10">
                                 <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_15px_50px_rgba(0,0,0,0.08)] backdrop-blur">
                                     <div className="flex flex-wrap items-center gap-3">
                                         <p className="text-foreground/55 text-xs uppercase tracking-[0.35em]">
@@ -128,7 +128,7 @@ export default function About() {
                                 </div>
 
                                 <div className="relative">
-                                    <div className="absolute inset-x-0 top-0 flex items-center">
+                                    <div className="absolute inset-x-0 top-5 flex items-center">
                                         <div className="h-px w-12 bg-gradient-to-r from-transparent to-rose-500/40" />
                                         <div className="h-px flex-1 bg-gradient-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
                                         <div className="h-px w-12 bg-gradient-to-r from-amber-300/40 to-transparent" />
@@ -156,13 +156,13 @@ export default function About() {
                                 </div>
                             </div>
 
-                            <div className="relative">
-                                <div className="absolute inset-x-0 top-0 flex items-center">
+                            <div className="relative flex flex-col gap-10">
+                                <div className="absolute inset-x-0 top-5 flex items-center">
                                     <div className="h-px w-12 bg-gradient-to-r from-transparent to-rose-500/40" />
                                     <div className="h-px flex-1 bg-gradient-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
                                     <div className="h-px w-12 bg-gradient-to-r from-amber-300/40 to-transparent" />
                                 </div>
-                                <div className="pt-10">
+                                <div>
                                     <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
                                         Milestones
                                     </p>
