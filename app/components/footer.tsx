@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const policyLinks = [
     {
@@ -39,6 +43,14 @@ const socialLinks = [
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const { resolvedTheme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const isDark = mounted ? resolvedTheme === "dark" : false;
 
     return (
         <footer className="relative mt-12 px-6 pb-6 sm:px-8 sm:pb-8 lg:mt-20">
@@ -80,7 +92,7 @@ export default function Footer() {
                             </Link>
                         ))}
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-4">
                         {socialLinks.map((social) => (
                             <Link
                                 aria-label={`Open ${social.label}`}
@@ -111,6 +123,58 @@ export default function Footer() {
                                 </div>
                             </Link>
                         ))}
+                        <label
+                            className="themeToggle st-sunMoonThemeToggleBtn"
+                            htmlFor="themeToggle"
+                            title={`Switch to ${isDark ? "light" : "dark"} mode`}
+                        >
+                            <input
+                                checked={isDark}
+                                className="themeToggleInput"
+                                disabled={!mounted}
+                                id="themeToggle"
+                                onChange={() => setTheme(isDark ? "light" : "dark")}
+                                type="checkbox"
+                            />
+                            <svg
+                                fill="currentColor"
+                                height="18"
+                                stroke="none"
+                                viewBox="0 0 20 20"
+                                width="18"
+                            >
+                                <title>Theme toggle icon</title>
+                                <mask id="moon-mask">
+                                    <rect fill="white" height="20" width="20" x="0" y="0" />
+                                    <circle cx="11" cy="3" fill="black" r="8" />
+                                </mask>
+                                <circle
+                                    className="sunMoon"
+                                    cx="10"
+                                    cy="10"
+                                    mask="url(#moon-mask)"
+                                    r="8"
+                                />
+                                <g>
+                                    <circle className="sunRay sunRay1" cx="18" cy="10" r="1.5" />
+                                    <circle
+                                        className="sunRay sunRay2"
+                                        cx="14"
+                                        cy="16.928"
+                                        r="1.5"
+                                    />
+                                    <circle className="sunRay sunRay3" cx="6" cy="16.928" r="1.5" />
+                                    <circle className="sunRay sunRay4" cx="2" cy="10" r="1.5" />
+                                    <circle className="sunRay sunRay5" cx="6" cy="3.1718" r="1.5" />
+                                    <circle
+                                        className="sunRay sunRay6"
+                                        cx="14"
+                                        cy="3.1718"
+                                        r="1.5"
+                                    />
+                                </g>
+                            </svg>
+                        </label>
                     </div>
                 </div>
             </div>

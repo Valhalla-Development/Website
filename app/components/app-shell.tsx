@@ -4,7 +4,6 @@ import { type ReactNode, useCallback, useEffect, useState } from "react";
 import Footer from "./footer";
 import Loader from "./loader";
 import Navbar from "./navbar";
-import ThemeToggle from "./theme-toggle";
 import VantaFogBackground from "./vanta-fog";
 
 type AppShellProps = {
@@ -56,9 +55,6 @@ export default function AppShell({ children }: AppShellProps) {
                     renderLoader ? "opacity-0" : "opacity-100"
                 }`}
             >
-                <div className="fixed top-6 right-6 z-40">
-                    <ThemeToggle />
-                </div>
                 <Navbar />
                 <main>{children}</main>
                 <Footer />
