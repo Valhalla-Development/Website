@@ -127,17 +127,17 @@ export default function About() {
                                     </div>
                                 </div>
 
-                                <div className="relative">
+                                <div className="relative flex flex-col gap-10">
                                     <div className="absolute inset-x-0 top-5 flex items-center">
                                         <div className="h-px w-12 bg-linear-to-r from-transparent to-rose-500/40" />
                                         <div className="h-px flex-1 bg-linear-to-r from-rose-500/40 via-sky-400/40 to-amber-300/40" />
                                         <div className="h-px w-12 bg-linear-to-r from-amber-300/40 to-transparent" />
                                     </div>
-                                    <div className="pt-10">
+                                    <div>
                                         <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
                                             Our story
                                         </p>
-                                        <h2 className="mt-4 font-semibold text-3xl tracking-tight">
+                                        <h2 className="mt-8 font-semibold text-3xl tracking-tight">
                                             Still evolving, always curious
                                         </h2>
                                         <p className="mt-5 text-base text-foreground/75 leading-relaxed">
