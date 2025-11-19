@@ -63,11 +63,7 @@ body {
 
 /* Theme toggle component (from Uiverse.io by Type-Delta) */
 .themeToggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: var(--color-foreground);
-  width: 2.5rem;
 }
 
 .st-sunMoonThemeToggleBtn {

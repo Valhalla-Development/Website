@@ -124,7 +124,7 @@ export default function Footer() {
                             </Link>
                         ))}
                         <label
-                            className="themeToggle st-sunMoonThemeToggleBtn"
+                            className="themeToggle st-sunMoonThemeToggleBtn relative flex h-12 w-12 cursor-pointer items-center justify-center"
                             htmlFor="themeToggle"
                             title={`Switch to ${isDark ? "light" : "dark"} mode`}
                         >
