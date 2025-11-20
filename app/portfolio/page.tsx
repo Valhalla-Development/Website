@@ -1,50 +1,153 @@
+import ProjectCard, { type ProjectCardProps } from "../components/project-card";
+
+const projects: ProjectCardProps[] = [
+    {
+        title: "Valhalla Development Website",
+        subtitle: "Portfolio & hub",
+        description:
+            "The current website is built with Next.js, Tailwind, and Three.js-powered flourishes to share the story, highlight builds, and give you a single public point for Valhalla work.",
+        tech: ["Next.js", "React", "Tailwind CSS", "Three.js"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/Website",
+        },
+    },
+    {
+        title: "TraktDiscordPresence",
+        subtitle: "Discord Rich Presence automation",
+        description:
+            "Keeps your Discord status and activity keyed to whatever you are watching on Trakt so friends see the same show or movie you do.",
+        tech: ["TypeScript", "Trakt API", "Discord RPC"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/TraktDiscordPresence",
+        },
+    },
+    {
+        title: "PM2 Pilot",
+        subtitle: "Self-hosted PM2 dashboard",
+        description:
+            "SvelteKit, TypeScript, and Tailwind CSS combine to deliver a lightweight web UI for watching PM2 processes, logs, and deployments in private environments.",
+        tech: ["TypeScript", "SvelteKit", "Tailwind CSS", "PM2"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/PM2Pilot",
+        },
+        statusTag: { text: "WIP", variant: "wip" },
+    },
+    {
+        title: "Wilbur",
+        subtitle: "Discord utility bot",
+        description:
+            "Community-focused Discord bot that keeps light moderation, playful commands, and server helpers within reach using discordx decorators.",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/Wilbur",
+        },
+    },
+    {
+        title: "DiscordGPT",
+        subtitle: "Assistant bot",
+        description:
+            "Wire up an OpenAI Assistant in Discord with this bot that routes conversations through GPT models while staying chat-native.",
+        tech: ["TypeScript", "discord.js", "discordx", "OpenAI"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/DiscordGPT",
+        },
+    },
+    {
+        title: "PreWatch",
+        subtitle: "Scene release alerts",
+        description:
+            "Tracks scene release boards and immediately notifies Discord servers so fans never miss a drop.",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/PreWatch",
+        },
+    },
+    {
+        title: "Snatchr",
+        subtitle: "Video download API",
+        description:
+            "Rust-backed API that manages YouTube downloads, cleanup, and file serving with a minimal web interface for monitoring progress.",
+        tech: ["Rust", "Axum", "Tokio", "yt-dlp", "Docker"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/Snatchr",
+        },
+    },
+    {
+        title: "ValkyrieCore",
+        subtitle: "Discord bot template",
+        description:
+            "discordx + discord.js v14 boilerplate with command logging, error channels, and hybrid sharding ready for fast bot launches.",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/ValkyrieCore",
+        },
+    },
+    {
+        title: "RedditToDiscordNotifications",
+        subtitle: "Automation script",
+        description:
+            "Watches Reddit RSS feeds and relays new posts to Discord channels with webhook-driven embeds and lightweight filtering.",
+        tech: ["TypeScript", "Reddit API", "Discord Webhooks"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/RedditToDiscordNotifications",
+        },
+    },
+    {
+        title: "ZiplineAutoUpload",
+        subtitle: "Automation script",
+        description:
+            "Monitors a directory for new files and automatically uploads them to your Zipline instance.",
+        tech: ["Python"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/ZiplineAutoUpload",
+        },
+    },
+    {
+        title: "The Seer",
+        subtitle: "Discord bot",
+        description:
+            "Legacy bot that monitored other bots and relayed their health graciously; code remains for glimpsing earlier experimentation.",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/TheSeer",
+        },
+        statusTag: { text: "Archived", variant: "archived" },
+    },
+    {
+        title: "CineSquad",
+        subtitle: "Discord bot",
+        description:
+            "Custom bot built for the Bigscreen VR community. The project is archived, but remains a solid reference for immersive Discord integrations. The README labels it as WIP, though the bot was fully completed prior to archival.",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/CineSquad",
+        },
+        statusTag: { text: "Archived", variant: "archived" },
+    },
+];
+
 export default function Portfolio() {
     return (
-        <div className="min-h-screen bg-background text-foreground">
-            <main className="mx-auto max-w-6xl px-6 pt-20 lg:pt-24">
-                <div className="space-y-8">
-                    <header className="space-y-3">
-                        <p className="text-foreground/60 text-sm uppercase tracking-[0.3em]">
+        <div className="relative min-h-screen bg-background text-foreground">
+            <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 lg:pt-24">
+                <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
+                    <div>
+                        <p className="text-foreground/60 text-sm uppercase tracking-[0.35em]">
                             Valhalla Development
                         </p>
-                        <h1 className="font-bold text-5xl">Portfolio</h1>
-                        <p className="max-w-2xl text-foreground/80 text-lg">
-                            We&apos;re curating highlights from recent builds and case studies. Hang
-                            tight, this page will soon showcase the full roster.
-                        </p>
-                    </header>
-                    <section className="rounded-[32px] border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
-                        <div className="relative flex flex-col gap-6">
-                            <div
-                                className="-left-2 absolute top-5 flex min-w-40 items-center sm:min-w-48"
-                                style={{ width: "33%", maxWidth: "16rem" }}
-                            >
-                                <div
-                                    className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
-                                    style={{ height: "1.5rem", width: "7rem" }}
-                                />
-                                <div className="relative flex w-full items-center">
-                                    <div className="h-0.75 w-10 bg-linear-to-r from-transparent to-rose-500/55" />
-                                    <div className="h-0.75 flex-1 bg-linear-to-r from-rose-500/55 via-sky-400/45 to-amber-300/45 shadow-[0_0_18px_rgba(244,63,94,0.55)]" />
-                                    <div className="h-0.75 w-8 bg-linear-to-r from-amber-300/45 to-transparent" />
-                                </div>
-                            </div>
-                            <div>
-                                <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
-                                    Work in progress
-                                </p>
-                                <h2 className="mt-8 text-balance font-semibold text-2xl leading-snug">
-                                    Portfolio coming soon
-                                </h2>
-                                <p className="mt-4 text-foreground/85 text-sm leading-relaxed">
-                                    We&apos;re finishing write-ups, visuals, and stats for each
-                                    project. Check back shortly to explore the work, or reach out if
-                                    you need a preview in the meantime.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+                        <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">
+                            Real-time automation, media tooling, and Discord-native builds
+                        </h1>
+                    </div>
+                </section>
+
+                <section className="space-y-6">
+                    <div className="grid gap-6 lg:grid-cols-2">
+                        {projects.map((project) => (
+                            <ProjectCard key={project.title} {...project} />
+                        ))}
+                    </div>
+                </section>
             </main>
         </div>
     );
