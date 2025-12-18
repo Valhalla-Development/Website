@@ -33,16 +33,6 @@ const projects: ProjectCardProps[] = [
         statusTag: { text: "WIP", variant: "wip" },
     },
     {
-        title: "Wilbur",
-        subtitle: "Discord utility bot",
-        description:
-            "Community-focused Discord bot that keeps light moderation, playful commands, and server helpers within reach using discordx decorators.",
-        tech: ["TypeScript", "discord.js", "discordx"],
-        repo: {
-            href: "https://github.com/Valhalla-Development/Wilbur",
-        },
-    },
-    {
         title: "DiscordGPT",
         subtitle: "Assistant bot",
         description:
@@ -101,6 +91,17 @@ const projects: ProjectCardProps[] = [
         repo: {
             href: "https://github.com/Valhalla-Development/ZiplineAutoUpload",
         },
+    },
+    {
+        title: "Wilbur",
+        subtitle: "Discord utility bot",
+        description:
+            "Community-focused Discord bot that keeps light moderation, playful commands, and server helpers within reach using discordx decorators.",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/Wilbur",
+        },
+        statusTag: { text: "Archived", variant: "archived" },
     },
     {
         title: "The Seer",
