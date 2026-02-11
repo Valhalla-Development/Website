@@ -61,7 +61,7 @@ export default function Navbar() {
                     y: visible ? 0 : HIDDEN_Y_POSITION,
                     opacity: visible ? 1 : 0,
                 }}
-                className="-translate-x-1/2 fixed top-6 left-1/2 z-50"
+                className="fixed top-6 left-1/2 z-50 -translate-x-1/2"
                 initial={{
                     opacity: 1,
                     y: 0,
@@ -84,7 +84,7 @@ export default function Navbar() {
                                 >
                                     <span className="relative z-10">{link.label}</span>
                                     {isActive && (
-                                        <span className="-bottom-1 absolute inset-x-0 mx-auto h-px w-full bg-linear-to-r from-transparent via-red-500 to-transparent" />
+                                        <span className="absolute inset-x-0 -bottom-1 mx-auto h-px w-full bg-linear-to-r from-transparent via-red-500 to-transparent" />
                                     )}
                                 </Link>
                             );
