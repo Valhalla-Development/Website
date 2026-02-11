@@ -4,6 +4,7 @@ import { type ReactNode, useCallback, useEffect, useState } from "react";
 import Footer from "./footer";
 import Loader from "./loader";
 import Navbar from "./navbar";
+import PetWalker from "./pets/pet-walker";
 import VantaFogBackground from "./vanta-fog";
 
 interface AppShellProps {
@@ -47,7 +48,7 @@ export default function AppShell({ children }: AppShellProps) {
     );
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
+        <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
             <VantaFogBackground onReadyChange={handleVantaReady} />
             <div
                 aria-hidden={renderLoader}
@@ -57,6 +58,7 @@ export default function AppShell({ children }: AppShellProps) {
             >
                 <Navbar />
                 <main>{children}</main>
+                <PetWalker />
                 <Footer />
             </div>
             {renderLoader && (
