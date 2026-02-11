@@ -54,7 +54,7 @@ export default function Team() {
                     <div className="grid gap-6 md:grid-cols-2">
                         {teamMembers.map((member) => (
                             <article
-                                className="group hover:-translate-y-1 relative overflow-hidden rounded-3xl border border-foreground/10 bg-background/85 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.08)] transition"
+                                className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-background/85 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.08)] transition hover:-translate-y-1"
                                 key={member.email}
                             >
                                 <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
