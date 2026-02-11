@@ -68,11 +68,11 @@ export default function About() {
                         <div className="rounded-[32px] border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
                             <div className="relative flex flex-col gap-6">
                                 <div
-                                    className="-left-2 absolute top-5 flex min-w-40 items-center sm:min-w-48"
+                                    className="absolute top-5 -left-2 flex min-w-40 items-center sm:min-w-48"
                                     style={{ width: "33%", maxWidth: "16rem" }}
                                 >
                                     <div
-                                        className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
+                                        className="pointer-events-none absolute -left-3 bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
                                         style={{ height: "1.5rem", width: "7rem" }}
                                     />
                                     <div className="relative flex w-full items-center">
@@ -147,11 +147,11 @@ export default function About() {
 
                                 <div className="relative flex flex-col gap-10">
                                     <div
-                                        className="-left-2 absolute top-5 flex min-w-40 items-center sm:min-w-48"
+                                        className="absolute top-5 -left-2 flex min-w-40 items-center sm:min-w-48"
                                         style={{ width: "33%", maxWidth: "16rem" }}
                                     >
                                         <div
-                                            className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
+                                            className="pointer-events-none absolute -left-3 bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
                                             style={{ height: "1.5rem", width: "7rem" }}
                                         />
                                         <div className="relative flex w-full items-center">
@@ -185,11 +185,11 @@ export default function About() {
 
                             <div className="relative flex flex-col gap-10">
                                 <div
-                                    className="-left-2 absolute top-5 flex min-w-40 items-center sm:min-w-48"
+                                    className="absolute top-5 -left-2 flex min-w-40 items-center sm:min-w-48"
                                     style={{ width: "33%", maxWidth: "16rem" }}
                                 >
                                     <div
-                                        className="-left-3 pointer-events-none absolute bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
+                                        className="pointer-events-none absolute -left-3 bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
                                         style={{ height: "1.5rem", width: "7rem" }}
                                     />
                                     <div className="relative flex w-full items-center">
