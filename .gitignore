@@ -8,6 +8,9 @@
 # Environment variables
 .env
 
+# TypeScript build info
+tsconfig.tsbuildinfo
+
 # ========================
 # IDEs and editors
 # ========================
@@ -19,11 +22,10 @@
 # Dependency management
 # ========================
 
-# Yarn: lock file and error log
-yarn-error.log
-.yarn/
-.pnp.cjs
-.pnp.loader.mjs
+# Bun: lock file and error log
+bun.lock
+
+# Dependencies
 node_modules
 
 # ========================
@@ -31,5 +33,3 @@ node_modules
 # ========================
 
 .next
-.turbo
-
