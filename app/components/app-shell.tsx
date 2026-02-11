@@ -6,9 +6,9 @@ import Loader from "./loader";
 import Navbar from "./navbar";
 import VantaFogBackground from "./vanta-fog";
 
-type AppShellProps = {
+interface AppShellProps {
     children: ReactNode;
-};
+}
 
 export default function AppShell({ children }: AppShellProps) {
     const [vantaReady, setVantaReady] = useState(false);

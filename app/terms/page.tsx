@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-type Section = {
+interface Section {
     title: string;
     body: string[];
-};
+}
 
 const lastUpdated = "November 14, 2025";
 

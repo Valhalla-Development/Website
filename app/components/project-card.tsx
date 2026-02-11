@@ -1,4 +1,4 @@
-export type ProjectCardProps = {
+export interface ProjectCardProps {
     title: string;
     subtitle: string;
     description: string;
@@ -10,7 +10,7 @@ export type ProjectCardProps = {
         text: string;
         variant?: "neutral" | "wip" | "archived";
     };
-};
+}
 
 const ArrowIcon = () => (
     <svg
