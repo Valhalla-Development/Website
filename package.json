@@ -1,13 +1,13 @@
 {
-  "name": "website",
-  "version": "2.0.87",
-  "description": "Homepage for Valhalla Deelopment",
+  "name": "valhallaportal",
+  "version": "2.0.89",
+  "description": "Portal for Valhalla Development",
   "license": "GPL-3.0-or-later",
   "author": "Ragnar Lothbrok <ragnarlothbrokjr@proton.me>",
-  "homepage": "https://github.com/Valhalla-Development/Website#readme",
-  "repository": "https://github.com/Valhalla-Development/Website.git",
+  "homepage": "https://github.com/Valhalla-Development/ValhallaPortal#readme",
+  "repository": "https://github.com/Valhalla-Development/ValhallaPortal.git",
   "bugs": {
-    "url": "https://github.com/Valhalla-Development/Website/issues"
+    "url": "https://github.com/Valhalla-Development/ValhallaPortal/issues"
   },
   "scripts": {
     "lint": "tsc --noEmit -p tsconfig.json && biome check --files-ignore-unknown=true --diagnostic-level=error --no-errors-on-unmatched app",
