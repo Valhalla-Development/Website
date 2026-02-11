@@ -4,16 +4,16 @@ import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
 
-type VantaFogBackgroundProps = {
+interface VantaFogBackgroundProps {
     className?: string;
     onReadyChange?: (ready: boolean) => void;
-};
+}
 
 type ThreeModule = typeof import("three");
 
 type BlendMode = "screen" | "multiply" | "normal";
 
-type VantaPreset = {
+interface VantaPreset {
     canvasOpacity: number;
     backgroundColor: string;
     radialGradient: string;
@@ -30,7 +30,7 @@ type VantaPreset = {
         speed: number;
         zoom: number;
     };
-};
+}
 
 const PRESETS: Record<"dark" | "light", VantaPreset> = {
     dark: {
@@ -144,7 +144,7 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
         return (
             <div
                 aria-hidden
-                className={`-z-10 pointer-events-none fixed inset-0 ${className ? className : ""}`}
+                className={`pointer-events-none fixed inset-0 -z-10 ${className ? className : ""}`}
                 style={{ backgroundColor: "var(--color-background)" }}
             />
         );
@@ -153,7 +153,7 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
     return (
         <div
             aria-hidden
-            className={`-z-10 pointer-events-none fixed inset-0 overflow-hidden ${className ? className : ""}`}
+            className={`pointer-events-none fixed inset-0 -z-10 overflow-hidden ${className ? className : ""}`}
         >
             <div className="absolute inset-0" style={{ backgroundColor: preset.backgroundColor }} />
             <div
