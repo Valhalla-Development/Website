@@ -2,7 +2,7 @@ import type { ProjectCardProps } from "../components/project-card";
 
 export const projects: ProjectCardProps[] = [
     {
-        title: "Valhalla Development Website",
+        title: "Valhalla Portal",
         subtitle: "Portfolio & hub",
         description:
             "The current website is built with Next.js, Tailwind, and Three.js-powered flourishes to share the story, highlight builds, and give you a single public point for Valhalla work.",
