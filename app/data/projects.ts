@@ -12,6 +12,16 @@ export const projects: ProjectCardProps[] = [
         },
     },
     {
+        title: "Ragnarok",
+        subtitle: "A multi-purpose Discord bot",
+        description:
+            "Feature-rich Discord bot with economy, leveling, AI chat (OpenRouter) and server moderation tools.",
+        tech: ["TypeScript", "discord.js", "discordx", "OpenRouter"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/Ragnarok",
+        },
+    },
+    {
         title: "TraktDiscordPresence",
         subtitle: "Discord Rich Presence automation",
         description:
