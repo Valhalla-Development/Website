@@ -22,6 +22,19 @@ export const projects: ProjectCardProps[] = [
         },
     },
     {
+        title: "Movier",
+        subtitle: "Movie & TV data library",
+        description:
+            "TypeScript library to fetch and work with movie and TV metadata. Use it in Node or the browser; ship it with your app.",
+        tech: ["TypeScript", "TMDB"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/movier",
+        },
+        npm: {
+            href: "https://www.npmjs.com/package/@valhalladev/movier",
+        },
+    },
+    {
         title: "TraktDiscordPresence",
         subtitle: "Discord Rich Presence automation",
         description:
