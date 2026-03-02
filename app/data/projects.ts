@@ -22,17 +22,6 @@ export const projects: ProjectCardProps[] = [
         },
     },
     {
-        title: "PM2 Pilot",
-        subtitle: "Self-hosted PM2 dashboard",
-        description:
-            "SvelteKit, TypeScript, and Tailwind CSS combine to deliver a lightweight web UI for watching PM2 processes, logs, and deployments in private environments.",
-        tech: ["TypeScript", "SvelteKit", "Tailwind CSS", "PM2"],
-        repo: {
-            href: "https://github.com/Valhalla-Development/PM2Pilot",
-        },
-        statusTag: { text: "WIP", variant: "wip" },
-    },
-    {
         title: "DiscordGPT",
         subtitle: "Assistant bot",
         description:
