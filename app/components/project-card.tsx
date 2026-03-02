@@ -1,5 +1,8 @@
 export interface ProjectCardProps {
     description: string;
+    npm?: {
+        href: string;
+    };
     repo: {
         href: string;
     };
@@ -49,6 +52,7 @@ export default function ProjectCard({
     description,
     tech,
     repo,
+    npm,
     statusTag,
 }: ProjectCardProps) {
     const statusVariant = statusTag?.variant ?? "neutral";
@@ -92,15 +96,28 @@ export default function ProjectCard({
                             </li>
                         ))}
                     </ul>
-                    <a
-                        className="group/cta inline-flex items-center gap-2 font-semibold text-foreground text-sm transition hover:text-foreground/70 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4"
-                        href={repo.href}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        View on GitHub
-                        <ArrowIcon />
-                    </a>
+                    <div className="flex flex-wrap items-center gap-3">
+                        <a
+                            className="group/cta inline-flex items-center gap-2 font-semibold text-foreground text-sm transition hover:text-foreground/70 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4"
+                            href={repo.href}
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            View on GitHub
+                            <ArrowIcon />
+                        </a>
+                        {npm && (
+                            <a
+                                className="inline-flex items-center gap-2 rounded-full border border-[#CB3837]/45 bg-[#CB3837]/10 px-3 py-1.5 font-semibold text-[#CB3837] text-sm transition hover:border-[#CB3837]/70 hover:bg-[#CB3837]/18 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4"
+                                href={npm.href}
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                View on npm
+                                <ArrowIcon />
+                            </a>
+                        )}
+                    </div>
                 </div>
             </div>
         </article>
