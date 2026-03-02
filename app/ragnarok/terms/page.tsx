@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 interface Section {
-    title: string;
     body: string[];
+    title: string;
 }
 
 const lastUpdated = "February 17, 2026";
@@ -32,7 +32,7 @@ const sections: Section[] = [
     {
         title: "Limitation of Liability",
         body: [
-            "The Bot and all features are provided on an \"as is\" and \"as available\" basis. We make no warranties, express or implied, regarding accuracy, reliability, availability, or fitness for a particular purpose.",
+            'The Bot and all features are provided on an "as is" and "as available" basis. We make no warranties, express or implied, regarding accuracy, reliability, availability, or fitness for a particular purpose.',
             "To the fullest extent permitted by law, Valhalla Development, its team, and collaborators are not responsible for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Bot, including but not limited to lost economy data, AI output, or service interruptions.",
         ],
     },

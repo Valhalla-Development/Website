@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 interface Section {
-    title: string;
     body: string[];
+    title: string;
 }
 
 const lastUpdated = "November 14, 2025";

@@ -47,8 +47,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .petWalker {
-    animation: none;
     left: 1rem;
     transform: none;
+    animation: none;
   }
 }

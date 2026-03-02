@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 interface Section {
-    title: string;
     body: string[];
+    title: string;
 }
 
 const lastUpdated = "February 17, 2026";
@@ -11,7 +11,7 @@ const sections: Section[] = [
     {
         title: "Introduction",
         body: [
-            "Valhalla Development operates Ragnarok (\"the Bot\"), a Discord bot. This Privacy Policy explains how we collect, use, store, and protect data when you use the Bot. By inviting or using the Bot, you consent to the practices described below.",
+            'Valhalla Development operates Ragnarok ("the Bot"), a Discord bot. This Privacy Policy explains how we collect, use, store, and protect data when you use the Bot. By inviting or using the Bot, you consent to the practices described below.',
         ],
     },
     {
@@ -51,7 +51,7 @@ const sections: Section[] = [
     {
         title: "Changes to this Privacy Policy",
         body: [
-            "We may update this policy when our practices evolve or regulations change. The \"Last updated\" date reflects the latest version. Material changes will be highlighted so you can review what's new. Continued use of the Bot after changes constitutes acceptance of the updated policy.",
+            'We may update this policy when our practices evolve or regulations change. The "Last updated" date reflects the latest version. Material changes will be highlighted so you can review what\'s new. Continued use of the Bot after changes constitutes acceptance of the updated policy.',
         ],
     },
 ];
@@ -76,8 +76,8 @@ export default function PrivacyPage() {
                     </div>
                     <p className="text-foreground/75 text-lg leading-relaxed">
                         Transparency is part of the promise we make to the communities we work with.
-                        This policy explains how your data is collected, used, and protected when you
-                        use the Ragnarok Discord bot.
+                        This policy explains how your data is collected, used, and protected when
+                        you use the Ragnarok Discord bot.
                     </p>
                     <p className="text-foreground/55 text-sm">Last updated: {lastUpdated}</p>
                 </header>

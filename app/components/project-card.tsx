@@ -1,8 +1,5 @@
 export interface ProjectCardProps {
-    title: string;
-    subtitle: string;
     description: string;
-    tech: string[];
     repo: {
         href: string;
     };
@@ -10,6 +7,9 @@ export interface ProjectCardProps {
         text: string;
         variant?: "neutral" | "wip" | "archived";
     };
+    subtitle: string;
+    tech: string[];
+    title: string;
 }
 
 const ArrowIcon = () => (

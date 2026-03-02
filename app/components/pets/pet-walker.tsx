@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import styles from "./pet-walker.module.css";
 
 interface Pet {
-    src: string;
     bottom: string;
     label: string;
+    src: string;
 }
 
 /**

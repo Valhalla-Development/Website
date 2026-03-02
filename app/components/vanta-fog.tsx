@@ -14,13 +14,13 @@ type ThreeModule = typeof import("three");
 type BlendMode = "screen" | "multiply" | "normal";
 
 interface VantaPreset {
-    canvasOpacity: number;
     backgroundColor: string;
-    radialGradient: string;
-    radialOpacity: number;
-    radialBlendMode: BlendMode;
+    canvasOpacity: number;
     floorGradient: string;
     floorOpacity: number;
+    radialBlendMode: BlendMode;
+    radialGradient: string;
+    radialOpacity: number;
     vanta: {
         highlightColor: number;
         midtoneColor: number;
