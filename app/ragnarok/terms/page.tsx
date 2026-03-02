@@ -90,10 +90,8 @@ export default function TermsPage() {
                                         </h2>
                                     </div>
                                     <div className="space-y-4 text-base text-foreground/75 leading-relaxed">
-                                        {section.body.map((paragraph, paragraphIndex) => (
-                                            <p key={`${section.title}-${paragraphIndex}`}>
-                                                {paragraph}
-                                            </p>
+                                        {section.body.map((paragraph) => (
+                                            <p key={`${section.title}-${paragraph}`}>{paragraph}</p>
                                         ))}
                                     </div>
                                 </div>
