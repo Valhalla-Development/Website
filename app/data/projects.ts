@@ -45,16 +45,6 @@ export const projects: ProjectCardProps[] = [
         },
     },
     {
-        title: "DiscordGPT",
-        subtitle: "Assistant bot",
-        description:
-            "Wire up an OpenAI Assistant in Discord with this bot that routes conversations through GPT models while staying chat-native.",
-        tech: ["TypeScript", "discord.js", "discordx", "OpenAI"],
-        repo: {
-            href: "https://github.com/Valhalla-Development/DiscordGPT",
-        },
-    },
-    {
         title: "PreWatch",
         subtitle: "Scene release alerts",
         description:
@@ -103,6 +93,17 @@ export const projects: ProjectCardProps[] = [
         repo: {
             href: "https://github.com/Valhalla-Development/ZiplineAutoUpload",
         },
+    },
+    {
+        title: "DiscordGPT",
+        subtitle: "Assistant bot",
+        description:
+            "Wire up an OpenAI Assistant in Discord with this bot that routes conversations through GPT models while staying chat-native.",
+        tech: ["TypeScript", "discord.js", "discordx", "OpenAI"],
+        repo: {
+            href: "https://github.com/Valhalla-Development/DiscordGPT",
+        },
+        statusTag: { text: "Archived", variant: "archived" },
     },
     {
         title: "Wilbur",
