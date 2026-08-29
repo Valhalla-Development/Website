@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
-import FOG from "vanta/dist/vanta.fog.min";
 
 interface VantaFogBackgroundProps {
     className?: string;
@@ -12,6 +11,40 @@ interface VantaFogBackgroundProps {
 type ThreeModule = typeof import("three");
 
 type BlendMode = "screen" | "multiply" | "normal";
+
+interface VantaEffect {
+    destroy: () => void;
+}
+
+const SOFTWARE_RENDERER_PATTERNS = ["swiftshader", "llvmpipe", "software rasterizer"];
+
+function supportsAcceleratedWebGl() {
+    const canvas = document.createElement("canvas");
+    const contextAttributes: WebGLContextAttributes = {
+        failIfMajorPerformanceCaveat: true,
+        powerPreference: "high-performance",
+    };
+
+    try {
+        const context =
+            canvas.getContext("webgl2", contextAttributes) ??
+            canvas.getContext("webgl", contextAttributes);
+
+        if (!context) {
+            return false;
+        }
+
+        const rendererInfo = context.getExtension("WEBGL_debug_renderer_info");
+        const renderer = rendererInfo
+            ? String(context.getParameter(rendererInfo.UNMASKED_RENDERER_WEBGL)).toLowerCase()
+            : "";
+        context.getExtension("WEBGL_lose_context")?.loseContext();
+
+        return !SOFTWARE_RENDERER_PATTERNS.some((pattern) => renderer.includes(pattern));
+    } catch {
+        return false;
+    }
+}
 
 interface VantaPreset {
     backgroundColor: string;
@@ -96,34 +129,52 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
 
         let cancelled = false;
         let timeout: number | undefined;
-        let effect: ReturnType<typeof FOG> | undefined;
+        let effect: VantaEffect | undefined;
 
         const init = async () => {
             setIsReady(false);
-            let THREE = threeRef.current;
-            if (!THREE) {
-                THREE = await import("three");
-                threeRef.current = THREE;
-            }
 
-            if (cancelled || !containerRef.current) {
+            if (!supportsAcceleratedWebGl()) {
+                document.documentElement.dataset.renderingMode = "software";
+                setIsReady(true);
                 return;
             }
 
-            effect = FOG({
-                el: containerRef.current,
-                gyroControls: false,
-                mouseControls: true,
-                THREE,
-                touchControls: true,
-                ...preset.vanta,
-            });
+            document.documentElement.dataset.renderingMode = "accelerated";
 
-            timeout = window.setTimeout(() => {
+            try {
+                let THREE = threeRef.current;
+                const fogModulePromise = import("vanta/dist/vanta.fog.min");
+                if (!THREE) {
+                    THREE = await import("three");
+                    threeRef.current = THREE;
+                }
+                const { default: FOG } = await fogModulePromise;
+
+                if (cancelled || !containerRef.current) {
+                    return;
+                }
+
+                effect = FOG({
+                    el: containerRef.current,
+                    gyroControls: false,
+                    mouseControls: true,
+                    THREE,
+                    touchControls: true,
+                    ...preset.vanta,
+                });
+
+                timeout = window.setTimeout(() => {
+                    if (!cancelled) {
+                        setIsReady(true);
+                    }
+                }, 180);
+            } catch {
                 if (!cancelled) {
+                    document.documentElement.dataset.renderingMode = "software";
                     setIsReady(true);
                 }
-            }, 180);
+            }
         };
 
         init();

@@ -11,8 +11,11 @@ interface AppShellProps {
     children: ReactNode;
 }
 
+const BACKGROUND_READY_TIMEOUT_MS = 4000;
+
 export default function AppShell({ children }: AppShellProps) {
     const [vantaReady, setVantaReady] = useState(false);
+    const [backgroundTimedOut, setBackgroundTimedOut] = useState(false);
     const [minDelayDone, setMinDelayDone] = useState(false);
     const [loaderVisible, setLoaderVisible] = useState(true);
     const [renderLoader, setRenderLoader] = useState(true);
@@ -23,11 +26,19 @@ export default function AppShell({ children }: AppShellProps) {
     }, []);
 
     useEffect(() => {
-        if (renderLoader && vantaReady && minDelayDone) {
+        const timer = window.setTimeout(
+            () => setBackgroundTimedOut(true),
+            BACKGROUND_READY_TIMEOUT_MS
+        );
+        return () => window.clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (renderLoader && (vantaReady || backgroundTimedOut) && minDelayDone) {
             const timer = window.setTimeout(() => setLoaderVisible(false), 100);
             return () => window.clearTimeout(timer);
         }
-    }, [minDelayDone, renderLoader, vantaReady]);
+    }, [backgroundTimedOut, minDelayDone, renderLoader, vantaReady]);
 
     useEffect(() => {
         if (!loaderVisible && renderLoader) {
