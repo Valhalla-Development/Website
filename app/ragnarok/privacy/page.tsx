@@ -9,56 +9,56 @@ const lastUpdated = "February 17, 2026";
 
 const sections: Section[] = [
     {
-        title: "Introduction",
         body: [
             'Valhalla Development operates Ragnarok ("the Bot"), a Discord bot. This Privacy Policy explains how we collect, use, store, and protect data when you use the Bot. By inviting or using the Bot, you consent to the practices described below.',
         ],
+        title: "Introduction",
     },
     {
-        title: "Information We Collect",
         body: [
             "The Bot receives and stores data necessary to operate its features. This includes: Discord user IDs and server (guild) IDs when you interact with the Bot; economy data such as balances, bank amounts, items, farm plots, and cooldowns; experience points and levels; AI usage statistics (query counts, whitelist/blacklist status, persona settings); AI chat conversation history when you use the AI chat feature; birthday information you provide; and server-specific configuration (e.g., welcome messages, logging, starboard, role menus).",
             "This data is stored in a database and is associated with your Discord identity and the servers where you use the Bot. We do not collect your email address or real-world identity unless you provide it to us directly (e.g., via email support).",
         ],
+        title: "Information We Collect",
     },
     {
-        title: "How We Use Your Information",
         body: [
             "We use the collected data to provide and improve the Bot's features, including economy, leveling, AI chat, birthdays, and server moderation tools. AI chat messages and conversation history are processed to generate responses; this processing is performed by third-party AI services (see Third-Party Services below).",
             "We may use aggregated, anonymized data for internal analytics or to improve the Bot. We do not sell your personal data.",
         ],
+        title: "How We Use Your Information",
     },
     {
-        title: "Third-Party Services",
         body: [
             "The Bot uses OpenRouter to power its AI chat feature. When you use AI chat, your prompts and conversation history are sent to OpenRouter for processing. OpenRouter's privacy policy governs how they handle that data. We also store data in MongoDB and interact with the Discord API. These services have their own privacy and data handling practices.",
             "We share data only as necessary to operate the Bot. We do not sell or rent your data to third parties for marketing or other purposes.",
         ],
+        title: "Third-Party Services",
     },
     {
-        title: "Data Retention and Deletion",
         body: [
             "When the Bot is removed from a Discord server, we automatically delete server-specific configuration data (e.g., welcome, logging, starboard, role menu settings) for that server. However, user-level data such as economy balances, levels, AI chat history, and birthdays may persist in our database because it is tied to your Discord user ID across servers.",
             "You can clear your AI chat history using the Bot's /queries command. Server administrators can clear all AI history for their server via the /config command. To request deletion of your data, contact us at the email below. We will process deletion requests within a reasonable timeframe.",
         ],
+        title: "Data Retention and Deletion",
     },
     {
-        title: "Security",
         body: [
             "We implement administrative and technical measures to protect your data. Access to stored data is restricted and we use industry-standard practices where applicable. No security practice is infallible; if you suspect unauthorized access or a data incident, please contact us immediately.",
         ],
+        title: "Security",
     },
     {
-        title: "Changes to this Privacy Policy",
         body: [
             'We may update this policy when our practices evolve or regulations change. The "Last updated" date reflects the latest version. Material changes will be highlighted so you can review what\'s new. Continued use of the Bot after changes constitutes acceptance of the updated policy.',
         ],
+        title: "Changes to this Privacy Policy",
     },
 ];
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Ragnarok",
     description: "Learn how Ragnarok collects, uses, and protects your data.",
+    title: "Privacy Policy | Ragnarok",
 };
 
 export default function PrivacyPage() {

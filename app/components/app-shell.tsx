@@ -27,7 +27,6 @@ export default function AppShell({ children }: AppShellProps) {
             const timer = window.setTimeout(() => setLoaderVisible(false), 100);
             return () => window.clearTimeout(timer);
         }
-        return;
     }, [minDelayDone, renderLoader, vantaReady]);
 
     useEffect(() => {
@@ -35,7 +34,6 @@ export default function AppShell({ children }: AppShellProps) {
             const timer = window.setTimeout(() => setRenderLoader(false), 400);
             return () => window.clearTimeout(timer);
         }
-        return;
     }, [loaderVisible, renderLoader]);
 
     const handleVantaReady = useCallback(

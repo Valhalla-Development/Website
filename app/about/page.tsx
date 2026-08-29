@@ -17,29 +17,29 @@ const drivers = [
 
 const milestones = [
     {
-        title: "Idea to intention",
         description:
             "Valhalla Development began as a simple idea: to create tools that empower individuals and communities online.",
+        title: "Idea to intention",
     },
     {
-        title: "Gap bridged",
         description:
             "We recognized the potential of a connected world and set out to bridge the distance between technology and the people who use it.",
+        title: "Gap bridged",
     },
     {
-        title: "API becomes backbone",
         description:
             "The platform matured into a robust API layer, giving partners a dependable foundation to build their own experiences.",
+        title: "API becomes backbone",
     },
     {
-        title: "Community-first automation",
         description:
             "Discord Bots followed, translating our values into tangible helpers that keep digital communities thriving.",
+        title: "Community-first automation",
     },
     {
-        title: "A living gateway",
         description:
             "Today, the website ties every initiative together, inviting visitors into our process and spotlighting the people behind the work.",
+        title: "A living gateway",
     },
 ];
 
@@ -69,7 +69,7 @@ export default function About() {
                             <div className="relative flex flex-col gap-6">
                                 <div
                                     className="absolute top-5 -left-2 flex min-w-40 items-center sm:min-w-48"
-                                    style={{ width: "33%", maxWidth: "16rem" }}
+                                    style={{ maxWidth: "16rem", width: "33%" }}
                                 >
                                     <div
                                         className="pointer-events-none absolute -left-3 bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
@@ -148,7 +148,7 @@ export default function About() {
                                 <div className="relative flex flex-col gap-10">
                                     <div
                                         className="absolute top-5 -left-2 flex min-w-40 items-center sm:min-w-48"
-                                        style={{ width: "33%", maxWidth: "16rem" }}
+                                        style={{ maxWidth: "16rem", width: "33%" }}
                                     >
                                         <div
                                             className="pointer-events-none absolute -left-3 bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"
@@ -186,7 +186,7 @@ export default function About() {
                             <div className="relative flex flex-col gap-10">
                                 <div
                                     className="absolute top-5 -left-2 flex min-w-40 items-center sm:min-w-48"
-                                    style={{ width: "33%", maxWidth: "16rem" }}
+                                    style={{ maxWidth: "16rem", width: "33%" }}
                                 >
                                     <div
                                         className="pointer-events-none absolute -left-3 bg-linear-to-r from-rose-500/55 via-sky-400/35 to-transparent opacity-80 blur-2xl"

@@ -17,17 +17,17 @@ interface Pet {
  * - Full credits: app/components/pets/CREDITS.md and public/pets/CREDITS.md
  */
 const PETS: Pet[] = [
-    { src: "/pets/chicken.gif", bottom: "-5px", label: "Chicken" },
-    { src: "/pets/dog.gif", bottom: "-17px", label: "Dog" },
-    { src: "/pets/cockatiel.gif", bottom: "-10px", label: "Cockatiel" },
-    { src: "/pets/crab.gif", bottom: "-20px", label: "Crab" },
-    { src: "/pets/fox.gif", bottom: "-9px", label: "Fox" },
-    { src: "/pets/horse.gif", bottom: "-11px", label: "Horse" },
-    { src: "/pets/panda.gif", bottom: "0px", label: "Panda" },
-    { src: "/pets/totoro.gif", bottom: "-27px", label: "Totoro" },
-    { src: "/pets/rabbit.gif", bottom: "0px", label: "Rabbit" },
-    { src: "/pets/duck.gif", bottom: "-5px", label: "Duck" },
-    { src: "/pets/snake.gif", bottom: "0px", label: "Snake" },
+    { bottom: "-5px", label: "Chicken", src: "/pets/chicken.gif" },
+    { bottom: "-17px", label: "Dog", src: "/pets/dog.gif" },
+    { bottom: "-10px", label: "Cockatiel", src: "/pets/cockatiel.gif" },
+    { bottom: "-20px", label: "Crab", src: "/pets/crab.gif" },
+    { bottom: "-9px", label: "Fox", src: "/pets/fox.gif" },
+    { bottom: "-11px", label: "Horse", src: "/pets/horse.gif" },
+    { bottom: "0px", label: "Panda", src: "/pets/panda.gif" },
+    { bottom: "-27px", label: "Totoro", src: "/pets/totoro.gif" },
+    { bottom: "0px", label: "Rabbit", src: "/pets/rabbit.gif" },
+    { bottom: "-5px", label: "Duck", src: "/pets/duck.gif" },
+    { bottom: "0px", label: "Snake", src: "/pets/snake.gif" },
 ];
 
 export default function PetWalker() {
@@ -47,8 +47,8 @@ export default function PetWalker() {
             className={styles.petWalker}
             style={
                 {
-                    backgroundImage: `url(${pet.src})`,
                     "--pet-bottom-offset": pet.bottom,
+                    backgroundImage: `url(${pet.src})`,
                 } as Record<string, string>
             }
             title={pet.label}

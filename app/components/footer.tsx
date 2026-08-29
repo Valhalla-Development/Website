@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const policyLinks = [
     {
@@ -51,6 +51,10 @@ export default function Footer() {
     }, []);
 
     const isDark = mounted ? resolvedTheme === "dark" : false;
+
+    const handleThemeToggle = useCallback(() => {
+        setTheme(isDark ? "light" : "dark");
+    }, [isDark, setTheme]);
 
     return (
         <footer className="relative mt-12 px-6 pb-6 sm:px-8 sm:pb-8 lg:mt-20">
@@ -133,7 +137,7 @@ export default function Footer() {
                                 className="themeToggleInput"
                                 disabled={!mounted}
                                 id="themeToggle"
-                                onChange={() => setTheme(isDark ? "light" : "dark")}
+                                onChange={handleThemeToggle}
                                 type="checkbox"
                             />
                             <svg

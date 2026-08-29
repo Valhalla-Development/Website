@@ -2,140 +2,140 @@ import type { ProjectCardProps } from "../components/project-card";
 
 export const projects: ProjectCardProps[] = [
     {
-        title: "Valhalla Portal",
-        subtitle: "Portfolio & hub",
         description:
             "The current website is built with Next.js, Tailwind, and Three.js-powered flourishes to share the story, highlight builds, and give you a single public point for Valhalla work.",
-        tech: ["Next.js", "React", "Tailwind CSS", "Three.js"],
         repo: {
             href: "https://github.com/Valhalla-Development/ValhallaPortal",
         },
+        subtitle: "Portfolio & hub",
+        tech: ["Next.js", "React", "Tailwind CSS", "Three.js"],
+        title: "Valhalla Portal",
     },
     {
-        title: "Ragnarok",
-        subtitle: "A multi-purpose Discord bot",
         description:
             "Feature-rich Discord bot with economy, leveling, AI chat (OpenRouter) and server moderation tools.",
-        tech: ["TypeScript", "discord.js", "discordx", "OpenRouter"],
         repo: {
             href: "https://github.com/Valhalla-Development/Ragnarok",
         },
+        subtitle: "A multi-purpose Discord bot",
+        tech: ["TypeScript", "discord.js", "discordx", "OpenRouter"],
+        title: "Ragnarok",
     },
     {
-        title: "Movier",
-        subtitle: "Movie & TV data library",
         description:
             "TypeScript library to fetch and work with movie and TV metadata. Use it in Node or the browser; ship it with your app.",
-        tech: ["TypeScript", "TMDB"],
-        repo: {
-            href: "https://github.com/Valhalla-Development/movier",
-        },
         npm: {
             href: "https://www.npmjs.com/package/@valhalladev/movier",
         },
+        repo: {
+            href: "https://github.com/Valhalla-Development/movier",
+        },
+        subtitle: "Movie & TV data library",
+        tech: ["TypeScript", "TMDB"],
+        title: "Movier",
     },
     {
-        title: "TraktDiscordPresence",
-        subtitle: "Discord Rich Presence automation",
         description:
             "Keeps your Discord status and activity keyed to whatever you are watching on Trakt so friends see the same show or movie you do.",
-        tech: ["TypeScript", "Trakt API", "Discord RPC"],
         repo: {
             href: "https://github.com/Valhalla-Development/TraktDiscordPresence",
         },
+        subtitle: "Discord Rich Presence automation",
+        tech: ["TypeScript", "Trakt API", "Discord RPC"],
+        title: "TraktDiscordPresence",
     },
     {
-        title: "PreWatch",
-        subtitle: "Scene release alerts",
         description:
             "Tracks scene release boards and immediately notifies Discord servers so fans never miss a drop.",
-        tech: ["TypeScript", "discord.js", "discordx"],
         repo: {
             href: "https://github.com/Valhalla-Development/PreWatch",
         },
+        subtitle: "Scene release alerts",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        title: "PreWatch",
     },
     {
-        title: "Snatchr",
-        subtitle: "Video download API",
         description:
             "Rust-backed API that manages YouTube downloads, cleanup, and file serving with a minimal web interface for monitoring progress.",
-        tech: ["Rust", "Axum", "Tokio", "yt-dlp", "Docker"],
         repo: {
             href: "https://github.com/Valhalla-Development/Snatchr",
         },
+        subtitle: "Video download API",
+        tech: ["Rust", "Axum", "Tokio", "yt-dlp", "Docker"],
+        title: "Snatchr",
     },
     {
-        title: "ValkyrieCore",
-        subtitle: "Discord bot template",
         description:
             "discordx + discord.js v14 boilerplate with command logging, error channels, and hybrid sharding ready for fast bot launches.",
-        tech: ["TypeScript", "discord.js", "discordx"],
         repo: {
             href: "https://github.com/Valhalla-Development/ValkyrieCore",
         },
+        subtitle: "Discord bot template",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        title: "ValkyrieCore",
     },
     {
-        title: "RedditToDiscordNotifications",
-        subtitle: "Automation script",
         description:
             "Watches Reddit RSS feeds and relays new posts to Discord channels with webhook-driven embeds and lightweight filtering.",
-        tech: ["TypeScript", "Reddit API", "Discord Webhooks"],
         repo: {
             href: "https://github.com/Valhalla-Development/RedditToDiscordNotifications",
         },
+        subtitle: "Automation script",
+        tech: ["TypeScript", "Reddit API", "Discord Webhooks"],
+        title: "RedditToDiscordNotifications",
     },
     {
-        title: "ZiplineAutoUpload",
-        subtitle: "Automation script",
         description:
             "Monitors a directory for new files and automatically uploads them to your Zipline instance.",
-        tech: ["Python"],
         repo: {
             href: "https://github.com/Valhalla-Development/ZiplineAutoUpload",
         },
+        subtitle: "Automation script",
+        tech: ["Python"],
+        title: "ZiplineAutoUpload",
     },
     {
-        title: "DiscordGPT",
-        subtitle: "Assistant bot",
         description:
             "Wire up an OpenAI Assistant in Discord with this bot that routes conversations through GPT models while staying chat-native.",
-        tech: ["TypeScript", "discord.js", "discordx", "OpenAI"],
         repo: {
             href: "https://github.com/Valhalla-Development/DiscordGPT",
         },
         statusTag: { text: "Archived", variant: "archived" },
+        subtitle: "Assistant bot",
+        tech: ["TypeScript", "discord.js", "discordx", "OpenAI"],
+        title: "DiscordGPT",
     },
     {
-        title: "Wilbur",
-        subtitle: "Discord utility bot",
         description:
             "Community-focused Discord bot that keeps light moderation, playful commands, and server helpers within reach using discordx decorators.",
-        tech: ["TypeScript", "discord.js", "discordx"],
         repo: {
             href: "https://github.com/Valhalla-Development/Wilbur",
         },
         statusTag: { text: "Archived", variant: "archived" },
+        subtitle: "Discord utility bot",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        title: "Wilbur",
     },
     {
-        title: "The Seer",
-        subtitle: "Discord bot",
         description:
             "Legacy bot that monitored other bots and relayed their health graciously; code remains for glimpsing earlier experimentation.",
-        tech: ["TypeScript", "discord.js", "discordx"],
         repo: {
             href: "https://github.com/Valhalla-Development/TheSeer",
         },
         statusTag: { text: "Archived", variant: "archived" },
+        subtitle: "Discord bot",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        title: "The Seer",
     },
     {
-        title: "CineSquad",
-        subtitle: "Discord bot",
         description:
             "Custom bot built for the Bigscreen VR community. The project is archived, but remains a solid reference for immersive Discord integrations. The README labels it as WIP, though the bot was fully completed prior to archival.",
-        tech: ["TypeScript", "discord.js", "discordx"],
         repo: {
             href: "https://github.com/Valhalla-Development/CineSquad",
         },
         statusTag: { text: "Archived", variant: "archived" },
+        subtitle: "Discord bot",
+        tech: ["TypeScript", "discord.js", "discordx"],
+        title: "CineSquad",
     },
 ];

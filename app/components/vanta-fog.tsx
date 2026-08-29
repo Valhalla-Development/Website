@@ -34,37 +34,37 @@ interface VantaPreset {
 
 const PRESETS: Record<"dark" | "light", VantaPreset> = {
     dark: {
-        canvasOpacity: 0.25,
         backgroundColor: "#020208",
-        radialGradient: "radial-gradient(circle at top, rgba(15,23,42,0.55), transparent 80%)",
-        radialOpacity: 0.45,
-        radialBlendMode: "screen",
+        canvasOpacity: 0.25,
         floorGradient: "linear-gradient(0deg, var(--color-background) 0%, rgba(2,2,8,0))",
         floorOpacity: 0.65,
+        radialBlendMode: "screen",
+        radialGradient: "radial-gradient(circle at top, rgba(15,23,42,0.55), transparent 80%)",
+        radialOpacity: 0.45,
         vanta: {
-            highlightColor: 0xff_4d_6d,
-            midtoneColor: 0x17_07_15,
-            lowlightColor: 0x05_02_08,
             baseColor: 0x01_01_01,
             blurFactor: 0.5,
+            highlightColor: 0xff_4d_6d,
+            lowlightColor: 0x05_02_08,
+            midtoneColor: 0x17_07_15,
             speed: 2,
             zoom: 1.2,
         },
     },
     light: {
-        canvasOpacity: 0.25,
         backgroundColor: "#fdfbff",
-        radialGradient: "radial-gradient(circle at top, rgba(255,183,197,0.35), transparent 78%)",
-        radialOpacity: 0.55,
-        radialBlendMode: "multiply",
+        canvasOpacity: 0.25,
         floorGradient: "linear-gradient(0deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0))",
         floorOpacity: 0.5,
+        radialBlendMode: "multiply",
+        radialGradient: "radial-gradient(circle at top, rgba(255,183,197,0.35), transparent 78%)",
+        radialOpacity: 0.55,
         vanta: {
-            highlightColor: 0xff_9d_b0,
-            midtoneColor: 0xff_e4_f1,
-            lowlightColor: 0xf2_f5_ff,
             baseColor: 0xff_ff_ff,
             blurFactor: 0.7,
+            highlightColor: 0xff_9d_b0,
+            lowlightColor: 0xf2_f5_ff,
+            midtoneColor: 0xff_e4_f1,
             speed: 2,
             zoom: 1.12,
         },
@@ -73,7 +73,6 @@ const PRESETS: Record<"dark" | "light", VantaPreset> = {
 
 export default function VantaFogBackground({ className, onReadyChange }: VantaFogBackgroundProps) {
     const containerRef = useRef<HTMLDivElement | null>(null);
-    const effectRef = useRef<ReturnType<typeof FOG> | null>(null);
     const threeRef = useRef<ThreeModule | null>(null);
     const [isReady, setIsReady] = useState(false);
     const { resolvedTheme } = useTheme();
@@ -97,6 +96,7 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
 
         let cancelled = false;
         let timeout: number | undefined;
+        let effect: ReturnType<typeof FOG> | undefined;
 
         const init = async () => {
             setIsReady(false);
@@ -110,12 +110,12 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
                 return;
             }
 
-            effectRef.current = FOG({
+            effect = FOG({
                 el: containerRef.current,
-                THREE,
-                mouseControls: true,
-                touchControls: true,
                 gyroControls: false,
+                mouseControls: true,
+                THREE,
+                touchControls: true,
                 ...preset.vanta,
             });
 
@@ -133,10 +133,7 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
             if (typeof timeout === "number") {
                 window.clearTimeout(timeout);
             }
-            if (effectRef.current) {
-                effectRef.current.destroy();
-                effectRef.current = null;
-            }
+            effect?.destroy();
         };
     }, [mounted, themeKey]);
 
@@ -165,8 +162,8 @@ export default function VantaFogBackground({ className, onReadyChange }: VantaFo
                 className="absolute inset-0"
                 style={{
                     background: preset.radialGradient,
-                    opacity: preset.radialOpacity,
                     mixBlendMode: preset.radialBlendMode,
+                    opacity: preset.radialOpacity,
                 }}
             />
             <div

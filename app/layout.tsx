@@ -5,18 +5,18 @@ import AppShell from "./components/app-shell";
 import Providers from "./components/providers";
 
 const geistSans = Geist({
-    variable: "--font-geist-sans",
     subsets: ["latin"],
+    variable: "--font-geist-sans",
 });
 
 const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
     subsets: ["latin"],
+    variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
-    title: "Valhalla Development",
     description: "Homepage for Valhalla Development",
+    title: "Valhalla Development",
 };
 
 export default function RootLayout({

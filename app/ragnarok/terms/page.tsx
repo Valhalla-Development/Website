@@ -9,45 +9,45 @@ const lastUpdated = "February 17, 2026";
 
 const sections: Section[] = [
     {
-        title: "Introduction",
         body: [
             `Ragnarok ("the Bot") is a Discord bot built by Valhalla Development. By inviting, using, or interacting with the Bot in any Discord server, you agree to these Terms of Service ("Terms") and confirm that you will comply with all applicable laws and Discord's Terms of Service and Developer Policy.`,
             "If you disagree with any portion of these Terms, please remove the Bot from your server and refrain from using it. Continued use signifies your acceptance of the most current version.",
         ],
+        title: "Introduction",
     },
     {
-        title: "Discord Terms and Policies",
         body: [
             "Use of the Bot is subject to Discord's Terms of Service and Developer Policy. You must use Discord in accordance with those terms. We do not control Discord and are not responsible for Discord's services or policies.",
             "By using the Bot, you represent that you have the authority to add bots to the servers you manage and that your use complies with Discord's rules and your server's own guidelines.",
         ],
+        title: "Discord Terms and Policies",
     },
     {
-        title: "Prohibited Conduct",
         body: [
             "Do not use the Bot to harass, abuse, spam, or harm other users. Do not attempt to exploit, reverse-engineer, or abuse the Bot's features (including but not limited to economy commands, leveling, or AI chat) in ways that degrade service, circumvent limits, or unfairly disadvantage others.",
             "Attempting to gain unauthorized access to the Bot, its data, or related systems; impersonating the Bot or its operator; or using the Bot to distribute malware, illegal content, or content that violates Discord's Terms is strictly prohibited.",
         ],
+        title: "Prohibited Conduct",
     },
     {
-        title: "Limitation of Liability",
         body: [
             'The Bot and all features are provided on an "as is" and "as available" basis. We make no warranties, express or implied, regarding accuracy, reliability, availability, or fitness for a particular purpose.',
             "To the fullest extent permitted by law, Valhalla Development, its team, and collaborators are not responsible for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Bot, including but not limited to lost economy data, AI output, or service interruptions.",
         ],
+        title: "Limitation of Liability",
     },
     {
-        title: "Intellectual Property",
         body: [
             "All original content, code, designs, and creative direction of the Bot remain the exclusive property of Valhalla Development. The Bot's name and branding may not be used to imply endorsement or affiliation without permission.",
             "User-generated content (e.g., messages sent to the AI, custom configs) remains yours; by using the Bot you grant us a license to process and store that content as necessary to provide the service, as described in our Privacy Policy.",
         ],
+        title: "Intellectual Property",
     },
 ];
 
 export const metadata: Metadata = {
-    title: "Terms of Service | Ragnarok",
     description: "Terms governing the use of the Ragnarok Discord bot.",
+    title: "Terms of Service | Ragnarok",
 };
 
 export default function TermsPage() {

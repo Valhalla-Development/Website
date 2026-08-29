@@ -9,52 +9,52 @@ const lastUpdated = "November 14, 2025";
 
 const sections: Section[] = [
     {
-        title: "Introduction",
         body: [
             "Valhalla Development respects the trust that teams place in us when they share information. This Privacy Policy explains how we collect, use, and safeguard the data connected to this website.",
             "If you continue using the site, you consent to the practices described below.",
         ],
+        title: "Introduction",
     },
     {
-        title: "Information We Collect",
         body: [
             "When you browse the site we automatically receive technical details such as your IP address, browser type, device information, and referring URL. This helps us understand traffic patterns and troubleshoot issues.",
             "If you contact us directly, we collect the information you provide (typically your name, email address, and any context you add in your message).",
         ],
+        title: "Information We Collect",
     },
     {
-        title: "Use of Information",
         body: [
             "We analyze aggregated technical data to improve site performance, prioritize content, and prevent abuse.",
             "Contact information is used solely to respond to your inquiries, share updates you have requested, or follow up on opportunities to collaborate.",
         ],
+        title: "Use of Information",
     },
     {
-        title: "Disclosure of Information",
         body: [
             "We share information only with trusted service providers that help us operate the website or deliver communications on our behalf, and they are required to protect your data.",
             "We may also disclose information if legally required or if we believe it is necessary to prevent harm or protect our rights or the rights of others.",
         ],
+        title: "Disclosure of Information",
     },
     {
-        title: "Security",
         body: [
             "Safeguarding data is part of what we build every day. We implement administrative, technical, and physical measures designed to protect personal information.",
             "No security practice is infallible, so we encourage you to contact us immediately if you suspect unauthorized activity related to your data.",
         ],
+        title: "Security",
     },
     {
-        title: "Changes to this Privacy Policy",
         body: [
             "We update this policy when our practices evolve or regulations shift. The “Last updated” date reflects the latest version.",
             "If the changes are material, we will highlight them here so you can easily review what’s new.",
         ],
+        title: "Changes to this Privacy Policy",
     },
 ];
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Valhalla Development",
     description: "Learn how Valhalla Development collects, uses, and protects your data.",
+    title: "Privacy Policy | Valhalla Development",
 };
 
 export default function PrivacyPage() {

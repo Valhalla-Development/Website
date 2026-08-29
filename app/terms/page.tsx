@@ -9,45 +9,45 @@ const lastUpdated = "November 14, 2025";
 
 const sections: Section[] = [
     {
-        title: "Introduction",
         body: [
             `Valhalla Development builds digital infrastructure meant to feel personal, reliable, and human. By visiting or using our website, you agree to these Terms of Service ("Terms") and confirm that you will comply with all applicable laws.`,
             "If you disagree with any portion of these Terms, please refrain from accessing the site. Continued use signifies your acceptance of the most current version.",
         ],
+        title: "Introduction",
     },
     {
-        title: "Changes to These Terms",
         body: [
             "We iterate quickly and may adjust both our products and these Terms to reflect new capabilities or legal requirements.",
             "Whenever we update the Terms we will revise the “Last updated” date above, and your ongoing use of the site constitutes acceptance of the revised language.",
         ],
+        title: "Changes to These Terms",
     },
     {
-        title: "Prohibited Conduct",
         body: [
             "Do not use the website in a way that could degrade performance, interrupt service, or interfere with another person’s experience.",
             "Attempting to gain unauthorized access, scraping beyond reasonable use, probing for vulnerabilities, or misrepresenting your identity when interacting with us is strictly prohibited.",
         ],
+        title: "Prohibited Conduct",
     },
     {
-        title: "Limitation of Liability",
         body: [
             "The website and all content are provided on an “as is” and “as available” basis. We make no warranties, express or implied, regarding accuracy, reliability, or availability.",
             "To the fullest extent permitted by law, Valhalla Development, its team, and collaborators are not responsible for any indirect, incidental, special, consequential, or punitive damages arising from your use of the website.",
         ],
+        title: "Limitation of Liability",
     },
     {
-        title: "Intellectual Property",
         body: [
             "All original content, designs, code, trademarks, and creative direction published on this site remain the exclusive property of Valhalla Development.",
             "You may not copy, modify, distribute, or otherwise exploit our materials without prior written permission. Any approved use must retain our attribution and existing notices.",
         ],
+        title: "Intellectual Property",
     },
 ];
 
 export const metadata: Metadata = {
-    title: "Terms of Service | Valhalla Development",
     description: "Understand the guidelines governing the use of Valhalla Development's website.",
+    title: "Terms of Service | Valhalla Development",
 };
 
 export default function TermsPage() {

@@ -58,8 +58,8 @@ export default function Navbar() {
         <AnimatePresence mode="wait">
             <motion.nav
                 animate={{
-                    y: visible ? 0 : HIDDEN_Y_POSITION,
                     opacity: visible ? 1 : 0,
+                    y: visible ? 0 : HIDDEN_Y_POSITION,
                 }}
                 className="fixed top-6 left-1/2 z-50 -translate-x-1/2"
                 initial={{
