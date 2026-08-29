@@ -69,7 +69,7 @@ export default function PrivacyPage() {
             <div className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
                 <header className="space-y-6">
                     <div>
-                        <p className="text-foreground/60 text-xs uppercase tracking-[0.35em]">
+                        <p className="text-foreground/70 text-xs uppercase tracking-[0.35em]">
                             Privacy
                         </p>
                         <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
                         This policy explains how your data is collected, used, and protected when
                         you use the Ragnarok Discord bot.
                     </p>
-                    <p className="text-foreground/55 text-sm">Last updated: {lastUpdated}</p>
+                    <p className="text-foreground/70 text-sm">Last updated: {lastUpdated}</p>
                 </header>
 
                 <section className="rounded-[36px] border border-foreground/10 bg-background/85 shadow-[0_25px_90px_rgba(0,0,0,0.1)]">
@@ -96,7 +96,7 @@ export default function PrivacyPage() {
                                 </div>
                                 <div className="relative space-y-4">
                                     <div className="flex flex-wrap items-center gap-4">
-                                        <span className="font-mono text-foreground/50 text-xs uppercase tracking-[0.4em]">
+                                        <span className="font-mono text-foreground/70 text-xs uppercase tracking-[0.4em]">
                                             {String(index + 1).padStart(2, "0")}
                                         </span>
                                         <h2 className="font-semibold text-2xl tracking-tight">
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
                 </section>
 
                 <section className="rounded-3xl border border-foreground/10 bg-linear-to-r from-sky-500/5 via-background/70 to-background/30 p-8 shadow-[0_25px_80px_rgba(0,0,0,0.1)]">
-                    <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                    <p className="text-foreground/70 text-xs uppercase tracking-[0.4em]">
                         Contact us
                     </p>
                     <h3 className="mt-4 font-semibold text-2xl">Questions about your privacy?</h3>

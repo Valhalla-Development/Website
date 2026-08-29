@@ -7,27 +7,29 @@ const baseStats = [
     { label: "Primary stack", value: "TypeScript + Rust" },
 ];
 
-const featuredProjects = projects
-    .filter((project) => project.statusTag?.variant !== "archived")
-    .slice(0, 2);
+const activeProjects = projects.filter((project) => project.statusTag?.variant !== "archived");
+const featuredProjects = activeProjects.slice(0, 2);
 
 export default function Home() {
-    const stats = [{ label: "Open-source projects", value: String(projects.length) }, ...baseStats];
+    const stats = [
+        { label: "Active projects", value: String(activeProjects.length) },
+        ...baseStats,
+    ];
 
     return (
         <div className="min-h-screen bg-background text-foreground">
             <div className="mx-auto flex max-w-6xl flex-col gap-14 px-6 pt-20 lg:gap-20 lg:pt-24">
                 <section className="grid gap-12 lg:grid-cols-[1.4fr,1fr]">
                     <div>
-                        <p className="text-foreground/55 text-sm uppercase tracking-[0.35em]">
+                        <p className="text-foreground/70 text-sm uppercase tracking-[0.35em]">
                             Valhalla Development
                         </p>
                         <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-6xl">
                             Building software that keeps online communities moving.
                         </h1>
                         <p className="mt-6 max-w-2xl text-foreground/80 text-lg leading-relaxed">
-                            We design and ship automation, infrastructure, and Discord-native tools
-                            that help teams stay reliable, responsive, and human as they scale.
+                            Discord bots, release alerts, and media tooling — shipped for people who
+                            run servers, then opened so others can fork and keep going.
                         </p>
                         <div className="mt-8 flex flex-wrap items-center gap-3">
                             <Link
@@ -46,7 +48,7 @@ export default function Home() {
                     </div>
 
                     <div className="rounded-[32px] border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
-                        <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                        <p className="text-foreground/70 text-xs uppercase tracking-[0.4em]">
                             At a glance
                         </p>
                         <div className="mt-8 space-y-6">
@@ -66,7 +68,7 @@ export default function Home() {
                 <section className="space-y-8 pb-4">
                     <div className="flex flex-wrap items-end justify-between gap-4">
                         <div>
-                            <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                            <p className="text-foreground/70 text-xs uppercase tracking-[0.4em]">
                                 Selected work
                             </p>
                             <h2 className="mt-3 font-semibold text-3xl tracking-tight">

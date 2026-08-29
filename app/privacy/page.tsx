@@ -5,48 +5,55 @@ interface Section {
     title: string;
 }
 
-const lastUpdated = "November 14, 2025";
+const lastUpdated = "August 29, 2026";
 
 const sections: Section[] = [
     {
         body: [
-            "Valhalla Development respects the trust that teams place in us when they share information. This Privacy Policy explains how we collect, use, and safeguard the data connected to this website.",
-            "If you continue using the site, you consent to the practices described below.",
+            "This policy covers the valhalladev.org website only. It does not cover Discord bots or other products unless a page says so.",
+            "If you keep using the site, you are agreeing to what is written here.",
         ],
         title: "Introduction",
     },
     {
         body: [
-            "When you browse the site we automatically receive technical details such as your IP address, browser type, device information, and referring URL. This helps us understand traffic patterns and troubleshoot issues.",
-            "If you contact us directly, we collect the information you provide (typically your name, email address, and any context you add in your message).",
+            "We do not run first-party analytics or advertising trackers on this site.",
+            "Your browser still sends ordinary request data — IP address, user agent, and the page you asked for — to whoever hosts or proxies the site, including Cloudflare. Those logs exist so the site can be served and kept online.",
+            "If you email us, we keep what you send so we can reply.",
         ],
         title: "Information We Collect",
     },
     {
         body: [
-            "We analyze aggregated technical data to improve site performance, prioritize content, and prevent abuse.",
-            "Contact information is used solely to respond to your inquiries, share updates you have requested, or follow up on opportunities to collaborate.",
+            "Host and CDN logs are used to run and protect the website, not to build marketing profiles.",
+            "Mail is used only to answer you.",
         ],
         title: "Use of Information",
     },
     {
         body: [
-            "We share information only with trusted service providers that help us operate the website or deliver communications on our behalf, and they are required to protect your data.",
-            "We may also disclose information if legally required or if we believe it is necessary to prevent harm or protect our rights or the rights of others.",
+            "Hosting and CDN providers see the request data needed to deliver pages. We do not sell personal information.",
+            "We may share information if the law requires it, or if we need to stop harm or defend our rights.",
         ],
         title: "Disclosure of Information",
     },
     {
         body: [
-            "Safeguarding data is part of what we build every day. We implement administrative, technical, and physical measures designed to protect personal information.",
-            "No security practice is infallible, so we encourage you to contact us immediately if you suspect unauthorized activity related to your data.",
+            "You can ask what contact mail we hold, or ask us to delete it, by writing to the address below.",
+            "CDN and host logs stay only as long as those providers keep them.",
+        ],
+        title: "Your Rights",
+    },
+    {
+        body: [
+            "We take reasonable steps to keep mail and account access to the site under control.",
+            "No setup is perfect. Write to us if you think something has gone wrong.",
         ],
         title: "Security",
     },
     {
         body: [
-            "We update this policy when our practices evolve or regulations shift. The “Last updated” date reflects the latest version.",
-            "If the changes are material, we will highlight them here so you can easily review what’s new.",
+            "We update this policy when the site or the law changes. The date at the top is the latest version.",
         ],
         title: "Changes to this Privacy Policy",
     },
@@ -63,7 +70,7 @@ export default function PrivacyPage() {
             <div className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
                 <header className="space-y-6">
                     <div>
-                        <p className="text-foreground/60 text-xs uppercase tracking-[0.35em]">
+                        <p className="text-foreground/70 text-xs uppercase tracking-[0.35em]">
                             Privacy
                         </p>
                         <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">
@@ -75,7 +82,7 @@ export default function PrivacyPage() {
                         This policy explains exactly how your data is treated when you visit or
                         collaborate with Valhalla Development.
                     </p>
-                    <p className="text-foreground/55 text-sm">Last updated: {lastUpdated}</p>
+                    <p className="text-foreground/70 text-sm">Last updated: {lastUpdated}</p>
                 </header>
 
                 <section className="rounded-[36px] border border-foreground/10 bg-background/85 shadow-[0_25px_90px_rgba(0,0,0,0.1)]">
@@ -90,7 +97,7 @@ export default function PrivacyPage() {
                                 </div>
                                 <div className="relative space-y-4">
                                     <div className="flex flex-wrap items-center gap-4">
-                                        <span className="font-mono text-foreground/50 text-xs uppercase tracking-[0.4em]">
+                                        <span className="font-mono text-foreground/70 text-xs uppercase tracking-[0.4em]">
                                             {String(index + 1).padStart(2, "0")}
                                         </span>
                                         <h2 className="font-semibold text-2xl tracking-tight">
@@ -109,7 +116,7 @@ export default function PrivacyPage() {
                 </section>
 
                 <section className="rounded-3xl border border-foreground/10 bg-linear-to-r from-sky-500/5 via-background/70 to-background/30 p-8 shadow-[0_25px_80px_rgba(0,0,0,0.1)]">
-                    <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                    <p className="text-foreground/70 text-xs uppercase tracking-[0.4em]">
                         Contact us
                     </p>
                     <h3 className="mt-4 font-semibold text-2xl">Questions about your privacy?</h3>

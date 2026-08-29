@@ -56,7 +56,7 @@ export default function About() {
             <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 lg:pt-24">
                 <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
                     <div>
-                        <p className="text-foreground/60 text-sm uppercase tracking-[0.35em]">
+                        <p className="text-foreground/70 text-sm uppercase tracking-[0.35em]">
                             Valhalla Development
                         </p>
                         <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">
@@ -89,7 +89,7 @@ export default function About() {
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                                    <p className="text-foreground/70 text-xs uppercase tracking-[0.4em]">
                                         Word from the founder
                                     </p>
                                     <p className="mt-8 text-balance font-semibold text-2xl leading-snug">
@@ -130,7 +130,7 @@ export default function About() {
                             <div className="flex flex-col gap-10">
                                 <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_15px_50px_rgba(0,0,0,0.08)] backdrop-blur">
                                     <div className="flex flex-wrap items-center gap-3">
-                                        <p className="text-foreground/55 text-xs uppercase tracking-[0.35em]">
+                                        <p className="text-foreground/70 text-xs uppercase tracking-[0.35em]">
                                             What drives us
                                         </p>
                                         <span className="text-foreground/60 text-xs">
@@ -168,7 +168,7 @@ export default function About() {
                                         </div>
                                     </div>
                                     <div>
-                                        <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
+                                        <p className="text-foreground/70 text-xs uppercase tracking-[0.35em]">
                                             Our story
                                         </p>
                                         <h2 className="mt-8 font-semibold text-3xl tracking-tight">
@@ -206,7 +206,7 @@ export default function About() {
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-foreground/50 text-xs uppercase tracking-[0.35em]">
+                                    <p className="text-foreground/70 text-xs uppercase tracking-[0.35em]">
                                         Milestones
                                     </p>
                                     <ol className="mt-8 space-y-6">

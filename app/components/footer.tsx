@@ -73,28 +73,31 @@ export default function Footer() {
                 />
                 <div className="relative flex flex-col items-center justify-between gap-4 font-medium text-foreground/70 text-sm sm:flex-row sm:gap-3">
                     <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:justify-start sm:gap-x-6">
-                        {policyLinks.map((link) => (
-                            <Link
-                                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-900/15 bg-white px-4 py-1.5 font-semibold text-(--policy-link-text) text-sm shadow-[0_10px_35px_rgba(15,23,42,0.12)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:border-zinc-900/30 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/20 dark:bg-white/5 dark:text-(--policy-link-text) dark:focus-visible:ring-white/30 dark:focus-visible:ring-offset-zinc-950 dark:hover:border-white/40 dark:hover:bg-white/10"
-                                href={link.href}
-                                key={link.label}
-                                rel="noreferrer noopener"
-                                scroll={false}
-                                target="_blank"
-                            >
-                                <span
-                                    aria-hidden
-                                    className="pointer-events-none absolute inset-0 rounded-full bg-zinc-900/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-white/15"
-                                />
-                                <span
-                                    aria-hidden
-                                    className={`pointer-events-none absolute inset-0 rounded-full bg-linear-to-r ${link.accent} opacity-0 blur-2xl transition duration-200 group-hover:opacity-100`}
-                                />
-                                <span className="relative z-10 transition-all duration-150 group-hover:-translate-y-0.5 group-hover:scale-[1.03]">
-                                    {link.label}
-                                </span>
-                            </Link>
-                        ))}
+                        {policyLinks.map((link) => {
+                            const external = link.href.startsWith("http");
+                            return (
+                                <Link
+                                    className="group relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-900/15 bg-white px-4 py-1.5 font-semibold text-(--policy-link-text) text-sm shadow-[0_10px_35px_rgba(15,23,42,0.12)] transition-all duration-150 ease-out hover:-translate-y-0.5 hover:border-zinc-900/30 hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/20 dark:bg-white/5 dark:text-(--policy-link-text) dark:focus-visible:ring-white/30 dark:focus-visible:ring-offset-zinc-950 dark:hover:border-white/40 dark:hover:bg-white/10"
+                                    href={link.href}
+                                    key={link.label}
+                                    {...(external
+                                        ? { rel: "noreferrer noopener", target: "_blank" }
+                                        : {})}
+                                >
+                                    <span
+                                        aria-hidden
+                                        className="pointer-events-none absolute inset-0 rounded-full bg-zinc-900/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-white/15"
+                                    />
+                                    <span
+                                        aria-hidden
+                                        className={`pointer-events-none absolute inset-0 rounded-full bg-linear-to-r ${link.accent} opacity-0 blur-2xl transition duration-200 group-hover:opacity-100`}
+                                    />
+                                    <span className="relative z-10 transition-all duration-150 group-hover:-translate-y-0.5 group-hover:scale-[1.03]">
+                                        {link.label}
+                                    </span>
+                                </Link>
+                            );
+                        })}
                     </div>
                     <div className="flex items-center gap-4">
                         {socialLinks.map((social) => (
@@ -130,9 +133,9 @@ export default function Footer() {
                         <label
                             className="themeToggle st-sunMoonThemeToggleBtn relative flex h-12 w-12 cursor-pointer items-center justify-center"
                             htmlFor="themeToggle"
-                            title={`Switch to ${isDark ? "light" : "dark"} mode`}
                         >
                             <input
+                                aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
                                 checked={isDark}
                                 className="themeToggleInput"
                                 disabled={!mounted}
@@ -182,7 +185,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <p className="mt-6 text-center font-normal text-foreground/50 text-xs sm:mt-8">
+            <p className="mt-6 text-center font-normal text-foreground/70 text-xs sm:mt-8">
                 © {currentYear} Valhalla Development
             </p>
         </footer>

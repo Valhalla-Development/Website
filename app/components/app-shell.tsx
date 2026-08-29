@@ -54,8 +54,14 @@ export default function AppShell({ children }: AppShellProps) {
                     renderLoader ? "opacity-0" : "opacity-100"
                 }`}
             >
+                <a
+                    className="sr-only z-[100] rounded-full bg-foreground px-4 py-2 font-semibold text-background text-sm focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+                    href="#content"
+                >
+                    Skip to content
+                </a>
                 <Navbar />
-                <main>{children}</main>
+                <main id="content">{children}</main>
                 <PetWalker />
                 <Footer />
             </div>

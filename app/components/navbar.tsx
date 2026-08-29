@@ -76,6 +76,7 @@ export default function Navbar() {
                             const isActive = pathname === link.href;
                             return (
                                 <Link
+                                    aria-current={isActive ? "page" : undefined}
                                     className={`relative transition-colors ${
                                         isActive ? "font-medium" : "opacity-70 hover:opacity-100"
                                     }`}

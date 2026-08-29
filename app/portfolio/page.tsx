@@ -17,7 +17,7 @@ export default function Portfolio() {
             <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 lg:pt-24">
                 <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
                     <div>
-                        <p className="text-foreground/60 text-sm uppercase tracking-[0.35em]">
+                        <p className="text-foreground/70 text-sm uppercase tracking-[0.35em]">
                             Valhalla Development
                         </p>
                         <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">

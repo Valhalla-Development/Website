@@ -1,5 +1,11 @@
+import Link from "next/link";
+
 export interface ProjectCardProps {
     description: string;
+    links?: {
+        href: string;
+        label: string;
+    }[];
     npm?: {
         href: string;
     };
@@ -53,6 +59,7 @@ export default function ProjectCard({
     tech,
     repo,
     npm,
+    links,
     statusTag,
 }: ProjectCardProps) {
     const statusVariant = statusTag?.variant ?? "neutral";
@@ -71,7 +78,7 @@ export default function ProjectCard({
                     className="pointer-events-none absolute inset-0 opacity-70 mix-blend-screen blur-2xl transition duration-700 group-hover:opacity-100"
                     style={accentStyle}
                 />
-                <div className="relative flex flex-wrap items-center gap-3 text-foreground/55 text-xs uppercase tracking-[0.3em]">
+                <div className="relative flex flex-wrap items-center gap-3 text-foreground/70 text-xs uppercase tracking-[0.3em]">
                     <span>{subtitle}</span>
                     {statusTag && (
                         <span
@@ -117,6 +124,33 @@ export default function ProjectCard({
                                 <ArrowIcon />
                             </a>
                         )}
+                        {links?.map((link) => {
+                            const external = link.href.startsWith("http");
+                            const className =
+                                "group/cta inline-flex items-center gap-2 font-semibold text-foreground text-sm transition hover:text-foreground/70 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4";
+
+                            if (external) {
+                                return (
+                                    <a
+                                        className={className}
+                                        href={link.href}
+                                        key={link.href}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
+                                        {link.label}
+                                        <ArrowIcon />
+                                    </a>
+                                );
+                            }
+
+                            return (
+                                <Link className={className} href={link.href} key={link.href}>
+                                    {link.label}
+                                    <ArrowIcon />
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

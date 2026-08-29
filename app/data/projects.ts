@@ -4,6 +4,12 @@ export const projects: ProjectCardProps[] = [
     {
         description:
             "The current website is built with Next.js, Tailwind, and Three.js-powered flourishes to share the story, highlight builds, and give you a single public point for Valhalla work.",
+        links: [
+            {
+                href: "https://valhalladev.org",
+                label: "Visit site",
+            },
+        ],
         repo: {
             href: "https://github.com/Valhalla-Development/ValhallaPortal",
         },
