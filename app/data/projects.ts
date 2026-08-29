@@ -129,7 +129,7 @@ export const projects: ProjectCardProps[] = [
     },
     {
         description:
-            "Custom bot built for the Bigscreen VR community. The project is archived, but remains a solid reference for immersive Discord integrations. The README labels it as WIP, though the bot was fully completed prior to archival.",
+            "Custom bot built for the Bigscreen VR community. The project is archived and remains a reference for immersive Discord integrations.",
         repo: {
             href: "https://github.com/Valhalla-Development/CineSquad",
         },

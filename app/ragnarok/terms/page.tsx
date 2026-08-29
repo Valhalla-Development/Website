@@ -47,13 +47,15 @@ const sections: Section[] = [
 
 export const metadata: Metadata = {
     description: "Terms governing the use of the Ragnarok Discord bot.",
-    title: "Terms of Service | Ragnarok",
+    title: {
+        absolute: "Terms of Service | Ragnarok",
+    },
 };
 
 export default function TermsPage() {
     return (
         <div className="relative min-h-screen text-foreground">
-            <main className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
+            <div className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
                 <header className="space-y-6">
                     <div>
                         <p className="text-foreground/60 text-xs uppercase tracking-[0.35em]">
@@ -116,7 +118,7 @@ export default function TermsPage() {
                         and we will respond as quickly as we can.
                     </p>
                 </section>
-            </main>
+            </div>
         </div>
     );
 }

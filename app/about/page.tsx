@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+    description:
+        "How Valhalla Development started, what drives the studio, and the work we take on with communities.",
+    title: "About",
+};
 
 const drivers = [
     {
@@ -46,7 +53,7 @@ const milestones = [
 export default function About() {
     return (
         <div className="relative min-h-screen bg-background text-foreground">
-            <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 lg:pt-24">
+            <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pt-20 lg:pt-24">
                 <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
                     <div>
                         <p className="text-foreground/60 text-sm uppercase tracking-[0.35em]">
@@ -224,7 +231,7 @@ export default function About() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </div>
         </div>
     );
 }

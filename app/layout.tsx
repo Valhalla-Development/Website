@@ -14,9 +14,29 @@ const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
 });
 
+const siteDescription =
+    "Automation, infrastructure, and Discord-native tools from Valhalla Development.";
+
 export const metadata: Metadata = {
-    description: "Homepage for Valhalla Development",
-    title: "Valhalla Development",
+    description: siteDescription,
+    metadataBase: new URL("https://valhalladev.org"),
+    openGraph: {
+        description: siteDescription,
+        locale: "en_GB",
+        siteName: "Valhalla Development",
+        title: "Valhalla Development",
+        type: "website",
+        url: "/",
+    },
+    title: {
+        default: "Valhalla Development",
+        template: "%s | Valhalla Development",
+    },
+    twitter: {
+        card: "summary",
+        description: siteDescription,
+        title: "Valhalla Development",
+    },
 };
 
 export default function RootLayout({

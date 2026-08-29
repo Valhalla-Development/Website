@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProjectCard from "./components/project-card";
 import { projects } from "./data/projects";
 
 const baseStats = [
@@ -6,12 +7,16 @@ const baseStats = [
     { label: "Primary stack", value: "TypeScript + Rust" },
 ];
 
+const featuredProjects = projects
+    .filter((project) => project.statusTag?.variant !== "archived")
+    .slice(0, 2);
+
 export default function Home() {
     const stats = [{ label: "Open-source projects", value: String(projects.length) }, ...baseStats];
 
     return (
         <div className="min-h-screen bg-background text-foreground">
-            <main className="mx-auto flex max-w-6xl flex-col gap-14 px-6 pt-20 lg:gap-20 lg:pt-24">
+            <div className="mx-auto flex max-w-6xl flex-col gap-14 px-6 pt-20 lg:gap-20 lg:pt-24">
                 <section className="grid gap-12 lg:grid-cols-[1.4fr,1fr]">
                     <div>
                         <p className="text-foreground/55 text-sm uppercase tracking-[0.35em]">
@@ -57,7 +62,31 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-            </main>
+
+                <section className="space-y-8 pb-4">
+                    <div className="flex flex-wrap items-end justify-between gap-4">
+                        <div>
+                            <p className="text-foreground/55 text-xs uppercase tracking-[0.4em]">
+                                Selected work
+                            </p>
+                            <h2 className="mt-3 font-semibold text-3xl tracking-tight">
+                                What we are shipping
+                            </h2>
+                        </div>
+                        <Link
+                            className="font-semibold text-foreground text-sm underline-offset-4 transition hover:text-foreground/70 hover:underline"
+                            href="/portfolio"
+                        >
+                            See the full portfolio
+                        </Link>
+                    </div>
+                    <div className="grid gap-6 lg:grid-cols-2">
+                        {featuredProjects.map((project) => (
+                            <ProjectCard key={project.title} {...project} />
+                        ))}
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }

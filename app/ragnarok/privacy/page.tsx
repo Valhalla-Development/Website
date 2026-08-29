@@ -58,13 +58,15 @@ const sections: Section[] = [
 
 export const metadata: Metadata = {
     description: "Learn how Ragnarok collects, uses, and protects your data.",
-    title: "Privacy Policy | Ragnarok",
+    title: {
+        absolute: "Privacy Policy | Ragnarok",
+    },
 };
 
 export default function PrivacyPage() {
     return (
         <div className="relative min-h-screen text-foreground">
-            <main className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
+            <div className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
                 <header className="space-y-6">
                     <div>
                         <p className="text-foreground/60 text-xs uppercase tracking-[0.35em]">
@@ -129,7 +131,7 @@ export default function PrivacyPage() {
                         .
                     </p>
                 </section>
-            </main>
+            </div>
         </div>
     );
 }

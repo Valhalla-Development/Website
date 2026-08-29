@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+    description: "The people behind Valhalla Development.",
+    title: "Team",
+};
 
 const teamMembers = [
     {
@@ -38,7 +44,7 @@ const teamMembers = [
 export default function Team() {
     return (
         <div className="relative min-h-screen bg-background text-foreground">
-            <main className="mx-auto flex max-w-6xl flex-col gap-12 px-6 pt-20 lg:pt-24">
+            <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 pt-20 lg:pt-24">
                 <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
                     <div>
                         <p className="text-foreground/55 text-sm uppercase tracking-[0.35em]">
@@ -51,6 +57,7 @@ export default function Team() {
                 </section>
 
                 <section>
+                    <h2 className="sr-only">Team members</h2>
                     <div className="grid gap-6 md:grid-cols-2">
                         {teamMembers.map((member) => (
                             <article
@@ -95,7 +102,7 @@ export default function Team() {
                         ))}
                     </div>
                 </section>
-            </main>
+            </div>
         </div>
     );
 }

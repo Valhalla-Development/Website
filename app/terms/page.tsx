@@ -38,8 +38,8 @@ const sections: Section[] = [
     },
     {
         body: [
-            "All original content, designs, code, trademarks, and creative direction published on this site remain the exclusive property of Valhalla Development.",
-            "You may not copy, modify, distribute, or otherwise exploit our materials without prior written permission. Any approved use must retain our attribution and existing notices.",
+            "Branding, writing, and original creative direction on this website belong to Valhalla Development unless a notice says otherwise.",
+            "Source code we publish under an open-source licence — including this site, released under GPL-3.0-or-later — may be used on the terms of that licence. Third-party marks and dependencies remain the property of their owners.",
         ],
         title: "Intellectual Property",
     },
@@ -47,13 +47,13 @@ const sections: Section[] = [
 
 export const metadata: Metadata = {
     description: "Understand the guidelines governing the use of Valhalla Development's website.",
-    title: "Terms of Service | Valhalla Development",
+    title: "Terms of Service",
 };
 
 export default function TermsPage() {
     return (
         <div className="relative min-h-screen text-foreground">
-            <main className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
+            <div className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-20 lg:pt-24">
                 <header className="space-y-6">
                     <div>
                         <p className="text-foreground/60 text-xs uppercase tracking-[0.35em]">
@@ -117,7 +117,7 @@ export default function TermsPage() {
                         and we will respond as quickly as we can.
                     </p>
                 </section>
-            </main>
+            </div>
         </div>
     );
 }
