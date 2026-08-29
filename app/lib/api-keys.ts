@@ -76,7 +76,10 @@ export async function issueKey(discordId: string): Promise<IssuedKey> {
         key: hashApiKey(raw),
         wrapped: wrapKey(raw),
     };
-    await ApiKey.findOneAndUpdate({ discordId }, doc, { new: true, upsert: true });
+    await ApiKey.findOneAndUpdate({ discordId }, doc, {
+        returnDocument: "after",
+        upsert: true,
+    });
     return { hint: doc.hint, key: raw };
 }
 
