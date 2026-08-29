@@ -55,7 +55,7 @@ export default function AppShell({ children }: AppShellProps) {
                 }`}
             >
                 <a
-                    className="sr-only z-[100] rounded-full bg-foreground px-4 py-2 font-semibold text-background text-sm focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+                    className="sr-only z-100 rounded-full bg-foreground px-4 py-2 font-semibold text-background text-sm focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
                     href="#content"
                 >
                     Skip to content

@@ -47,7 +47,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="rounded-[32px] border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
+                    <div className="rounded-4xl border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
                         <p className="text-foreground/70 text-xs uppercase tracking-[0.4em]">
                             At a glance
                         </p>

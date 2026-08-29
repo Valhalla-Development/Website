@@ -17,8 +17,7 @@ export default function DiscordWidget() {
 
     return (
         <iframe
-            allowTransparency
-            className="h-[500px] w-full rounded-2xl bg-transparent"
+            className="h-125 w-full rounded-2xl bg-transparent"
             sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
             src={`https://discord.com/widget?id=${GUILD_ID}&theme=${theme}`}
             title="Valhalla Development Discord"

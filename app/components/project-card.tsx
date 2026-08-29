@@ -77,7 +77,7 @@ export default function ProjectCard({
     }
     const accentStyle = buildAccentStyle(`${title}-${subtitle}`);
     return (
-        <article className="group relative overflow-hidden rounded-[32px] border border-foreground/10 bg-foreground/[0.05] p-px shadow-[0_35px_120px_rgba(0,0,0,0.18)]">
+        <article className="group relative overflow-hidden rounded-4xl border border-foreground/10 bg-foreground/[0.05] p-px shadow-[0_35px_120px_rgba(0,0,0,0.18)]">
             <div className="relative flex h-full flex-col gap-6 rounded-[30px] bg-background/95 p-8 backdrop-blur-xl">
                 <div
                     aria-hidden="true"

@@ -72,7 +72,7 @@ export default function About() {
                     </div>
 
                     <div className="space-y-6">
-                        <div className="rounded-[32px] border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
+                        <div className="rounded-4xl border border-foreground/10 bg-linear-to-br from-foreground/5 via-background/60 to-background/90 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.14)] backdrop-blur-lg">
                             <div className="relative flex flex-col gap-6">
                                 <div
                                     className="absolute top-5 -left-2 flex min-w-40 items-center sm:min-w-48"
