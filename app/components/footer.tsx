@@ -25,6 +25,11 @@ const policyLinks = [
         href: "/contact",
         label: "Contact",
     },
+    {
+        accent: "from-violet-400/45 via-violet-200/30 to-transparent",
+        href: "/key",
+        label: "API key",
+    },
 ];
 
 const socialLinks = [

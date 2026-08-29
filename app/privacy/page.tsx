@@ -20,6 +20,7 @@ const sections: Section[] = [
             "We do not run first-party analytics or advertising trackers on this site.",
             "Your browser still sends ordinary request data — IP address, user agent, and the page you asked for — to whoever hosts or proxies the site, including Cloudflare. Those logs exist so the site can be served and kept online.",
             "If you email us, we keep what you send so we can reply.",
+            "If you sign in on /key, Discord sends us your user id, username, and avatar. We keep a session cookie, your Discord id, and a hashed API key (plus a wrapped copy so we can show it again). Refreshing the key replaces the old token.",
         ],
         title: "Information We Collect",
     },
@@ -27,6 +28,7 @@ const sections: Section[] = [
         body: [
             "Host and CDN logs are used to run and protect the website, not to build marketing profiles.",
             "Mail is used only to answer you.",
+            "Discord sign-in is only used to prove who you are and to hand you an API key. We do not post to Discord or join servers on your behalf.",
         ],
         title: "Use of Information",
     },

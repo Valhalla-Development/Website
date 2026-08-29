@@ -5,7 +5,7 @@ interface Section {
     title: string;
 }
 
-const lastUpdated = "November 14, 2025";
+const lastUpdated = "August 29, 2026";
 
 const sections: Section[] = [
     {
@@ -28,6 +28,13 @@ const sections: Section[] = [
             "Attempting to gain unauthorized access, scraping beyond reasonable use, probing for vulnerabilities, or misrepresenting your identity when interacting with us is strictly prohibited.",
         ],
         title: "Prohibited Conduct",
+    },
+    {
+        body: [
+            "API keys from /key are personal. Do not share them, and do not use someone else’s. Refreshing a key invalidates the previous one.",
+            "Keys are meant for the published Valhalla API. Do not use them to overload, scrape beyond reasonable use, or bypass other limits.",
+        ],
+        title: "API Keys",
     },
     {
         body: [

@@ -18,7 +18,7 @@
 
 ## 🌟 Welcome
 
-This repo is [valhalladev.org](https://valhalladev.org): the studio homepage, portfolio, team, legal pages, and a contact page with the Discord widget. Open-source work lives in the other Valhalla repos; this one is the front door.
+This repo is [valhalladev.org](https://valhalladev.org): the studio homepage, portfolio, team, legal pages, a contact page with the Discord widget, and `/key` for Discord-signed API tokens. Open-source work lives in the other Valhalla repos; this one is the front door.
 
 ## 🎮 Features
 
@@ -36,7 +36,7 @@ This repo is [valhalladev.org](https://valhalladev.org): the studio homepage, po
   <tr>
     <td width="50%">
       <h3>👥 Team & contact</h3>
-      <p>The crew, plus <code>/contact</code> with the Discord server widget and a mail address.</p>
+      <p>The crew, plus <code>/contact</code> with the Discord server widget, a mail address, and <code>/key</code> for a Bearer token.</p>
     </td>
     <td width="50%">
       <h3>📜 Legal</h3>
@@ -83,6 +83,8 @@ This repo is [valhalladev.org](https://valhalladev.org): the studio homepage, po
    ```
 
    Local site: `http://localhost:3000`
+
+   For `/key`, copy `.env.example` and fill `MongoUri` (same as the API), a Discord OAuth app with redirect `http://localhost:3000/api/auth/callback`, and a 32+ character `SESSION_SECRET`. Production redirect is `https://valhalladev.org/api/auth/callback`.
 
 ## 🤝 Contributing
 
