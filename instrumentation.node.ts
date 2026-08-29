@@ -30,9 +30,7 @@ export function registerNode(): void {
 
     log.ready({
         boot: `${process.uptime().toFixed(2)}s`,
-        contact: `${origin}/contact`,
         heap: `${heapMb.toLocaleString("en")} MB`,
-        home: origin,
         name: "Portal",
         origin,
         pid: String(process.pid),

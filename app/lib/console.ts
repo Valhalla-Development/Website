@@ -247,9 +247,7 @@ export const log = {
 
     ready(stats: {
         boot: string;
-        contact: string;
         heap: string;
-        home: string;
         name: string;
         origin: string;
         pid: string;
@@ -270,15 +268,8 @@ export const log = {
         console.log(arrow(CYAN, "Heap:", stats.heap, CYAN));
         console.log(arrow(WHITE, "Boot:", stats.boot, CYAN));
         console.log(arrow(GRAY, "PID:", stats.pid, WHITE));
-        console.log(heading(`${stats.name} Links`));
         console.log(
             `${fg(BLUE, ">>", BOLD)}${fg(WHITE, " Origin: ", BOLD)}${link(stats.origin, stats.origin, BLUE)}`
-        );
-        console.log(
-            `${fg(CYAN, ">>", BOLD)}${fg(WHITE, " Home: ", BOLD)}${link(stats.home, stats.home, CYAN)}`
-        );
-        console.log(
-            `${fg(GREEN, ">>", BOLD)}${fg(WHITE, " Contact: ", BOLD)}${link(stats.contact, stats.contact, GREEN)}`
         );
         console.log(`${rule}\n`);
     },
