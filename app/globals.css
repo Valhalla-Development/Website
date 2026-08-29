@@ -34,6 +34,26 @@ body {
   background-color: var(--color-background);
 }
 
+/* Keep the static fallback responsive when the browser is using software rendering. */
+html[data-rendering-mode="software"] [class*="backdrop-blur"] {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+html[data-rendering-mode="software"]
+  [class*="blur-"]:not([class*="backdrop-blur"]) {
+  display: none !important;
+}
+
+html[data-rendering-mode="software"] *,
+html[data-rendering-mode="software"] *::before,
+html[data-rendering-mode="software"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
+}
+
 .social-button {
   color: var(--color-social-fg);
   background-color: var(--color-social-bg);
