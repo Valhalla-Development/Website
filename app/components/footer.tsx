@@ -20,6 +20,11 @@ const policyLinks = [
         href: "/terms",
         label: "Terms",
     },
+    {
+        accent: "from-amber-400/45 via-amber-200/30 to-transparent",
+        href: "/contact",
+        label: "Contact",
+    },
 ];
 
 const socialLinks = [

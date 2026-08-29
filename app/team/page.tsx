@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Script from "next/script";
 
 export const metadata: Metadata = {
     description: "The people behind Valhalla Development.",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 const teamMembers = [
     {
         avatar: "https://avatars.githubusercontent.com/u/30740511?v=4",
-        bio: "Ragnar keeps the studio anchored to a people-first mission, stewarding the core platform and the partnerships that trust it.",
+        bio: "Founder. Owns studio direction, the public site, and the partnerships that sit on top of it.",
         email: "ragnarlothbrokjr@proton.me",
         location: "Manchester, UK",
         name: "Ragnar",
@@ -17,7 +18,7 @@ const teamMembers = [
     },
     {
         avatar: "https://avatars.githubusercontent.com/u/46864390?v=4",
-        bio: "zeen wrangles the backend, guarding infrastructure, tuning pipelines, and making sure every automation lands with confidence.",
+        bio: "Backend and pipelines. Guards the infrastructure so the automation actually lands.",
         email: "mrdennis1212@pm.me",
         location: "Germany, DE",
         name: "zeen",
@@ -25,7 +26,7 @@ const teamMembers = [
     },
     {
         avatar: "https://avatars.githubusercontent.com/u/68955155?v=4",
-        bio: "iMidnight handles the front-of-house, shaping the visual language of our interfaces and sweating the details in every interaction.",
+        bio: "Front-end. Shapes the visual language and the details in the interfaces we ship.",
         email: "mohaidarus@gmail.com",
         location: "London, UK",
         name: "iMidnight",
@@ -33,7 +34,7 @@ const teamMembers = [
     },
     {
         avatar: "https://avatars.githubusercontent.com/u/18649687?v=4",
-        bio: "Danel keeps the pipes humming and reminds us that reliability is a love language for every community we support.",
+        bio: "Systems admin. Hosts, uptime, and the boring reliability work.",
         email: "danelsonic123@serverargentina.com",
         location: "Buenos Aires, AR",
         name: "DanelSonic123",
@@ -41,19 +42,43 @@ const teamMembers = [
     },
 ];
 
+const peopleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: teamMembers.map((member, index) => ({
+        "@type": "ListItem",
+        item: {
+            "@type": "Person",
+            image: member.avatar,
+            jobTitle: member.role,
+            name: member.name,
+            worksFor: {
+                "@type": "Organization",
+                name: "Valhalla Development",
+                url: "https://valhalladev.org",
+            },
+        },
+        position: index + 1,
+    })),
+};
+
 export default function Team() {
     return (
         <div className="relative min-h-screen bg-background text-foreground">
+            <Script id="team-jsonld" type="application/ld+json">
+                {JSON.stringify(peopleJsonLd)}
+            </Script>
             <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 pt-20 lg:pt-24">
-                <section className="grid gap-12 lg:grid-cols-[1.5fr,1fr]">
-                    <div>
-                        <p className="text-foreground/70 text-sm uppercase tracking-[0.35em]">
-                            Valhalla Development
-                        </p>
-                        <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">
-                            Meet the crew keeping human warmth in shipping software.
-                        </h1>
-                    </div>
+                <section>
+                    <p className="text-foreground/70 text-sm uppercase tracking-[0.35em]">
+                        Valhalla Development
+                    </p>
+                    <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">
+                        Meet the crew keeping human warmth in shipping software.
+                    </h1>
+                    <p className="mt-6 max-w-2xl text-foreground/80 text-lg leading-relaxed">
+                        Four people. Roles and a line of what each one actually does.
+                    </p>
                 </section>
 
                 <section>

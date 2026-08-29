@@ -46,6 +46,12 @@ const ACCENT_GRADIENTS = [
     "radial-gradient(circle at 12% -18%, rgba(248,113,113,0.38) 0%, rgba(244,114,182,0.12) 40%, transparent 60%), radial-gradient(circle at 78% 5%, rgba(217,70,239,0.35) 0%, rgba(236,72,153,0.12) 48%, transparent 72%)",
 ] as const;
 
+const primaryCta =
+    "inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-foreground px-5 py-2.5 font-semibold text-background text-sm transition hover:opacity-90 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4";
+
+const secondaryCta =
+    "inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-background px-5 py-2.5 font-semibold text-foreground text-sm transition hover:bg-foreground/5 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4";
+
 const buildAccentStyle = (seed: string) => {
     const hash = Array.from(seed).reduce((total, char) => total + char.charCodeAt(0), 0);
     const gradient = ACCENT_GRADIENTS[hash % ACCENT_GRADIENTS.length];
@@ -105,7 +111,7 @@ export default function ProjectCard({
                     </ul>
                     <div className="flex flex-wrap items-center gap-3">
                         <a
-                            className="group/cta inline-flex items-center gap-2 font-semibold text-foreground text-sm transition hover:text-foreground/70 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4"
+                            className={`group/cta ${primaryCta}`}
                             href={repo.href}
                             rel="noreferrer"
                             target="_blank"
@@ -115,7 +121,7 @@ export default function ProjectCard({
                         </a>
                         {npm && (
                             <a
-                                className="inline-flex items-center gap-2 rounded-full border border-[#CB3837]/45 bg-[#CB3837]/10 px-3 py-1.5 font-semibold text-[#CB3837] text-sm transition hover:border-[#CB3837]/70 hover:bg-[#CB3837]/18 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4"
+                                className={secondaryCta}
                                 href={npm.href}
                                 rel="noreferrer"
                                 target="_blank"
@@ -126,13 +132,11 @@ export default function ProjectCard({
                         )}
                         {links?.map((link) => {
                             const external = link.href.startsWith("http");
-                            const className =
-                                "group/cta inline-flex items-center gap-2 font-semibold text-foreground text-sm transition hover:text-foreground/70 focus-visible:outline-2 focus-visible:outline-foreground/40 focus-visible:outline-offset-4";
 
                             if (external) {
                                 return (
                                     <a
-                                        className={className}
+                                        className={secondaryCta}
                                         href={link.href}
                                         key={link.href}
                                         rel="noreferrer"
@@ -145,7 +149,7 @@ export default function ProjectCard({
                             }
 
                             return (
-                                <Link className={className} href={link.href} key={link.href}>
+                                <Link className={secondaryCta} href={link.href} key={link.href}>
                                     {link.label}
                                     <ArrowIcon />
                                 </Link>

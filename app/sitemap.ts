@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "/about",
         "/portfolio",
         "/team",
+        "/contact",
         "/privacy",
         "/terms",
         "/ragnarok/privacy",

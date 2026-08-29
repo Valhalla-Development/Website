@@ -70,8 +70,8 @@ export default function Navbar() {
                     duration: 0.2,
                 }}
             >
-                <div className="rounded-full border border-zinc-200/20 px-6 py-3 backdrop-blur-sm dark:border-zinc-700/20">
-                    <div className="flex items-center justify-center gap-8">
+                <div className="max-w-[calc(100vw-1.5rem)] rounded-full border border-zinc-200/20 px-3 py-2 backdrop-blur-sm sm:px-6 sm:py-3 dark:border-zinc-700/20">
+                    <div className="flex flex-wrap items-center justify-center gap-3 text-sm sm:gap-8 sm:text-base">
                         {links.map((link) => {
                             const isActive = pathname === link.href;
                             return (

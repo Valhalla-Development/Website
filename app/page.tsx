@@ -24,7 +24,7 @@ export default function Home() {
                         <p className="text-foreground/70 text-sm uppercase tracking-[0.35em]">
                             Valhalla Development
                         </p>
-                        <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-6xl">
+                        <h1 className="mt-4 text-balance font-semibold text-4xl tracking-tight sm:text-5xl">
                             Building software that keeps online communities moving.
                         </h1>
                         <p className="mt-6 max-w-2xl text-foreground/80 text-lg leading-relaxed">
